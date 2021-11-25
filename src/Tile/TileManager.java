@@ -69,10 +69,18 @@ public class TileManager extends Tile {
             int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
             int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
             switch (mapTile[worldCol][worldRow]) {
-                case '*' -> g2.drawImage(brick.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-                case '#' -> g2.drawImage(wall.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-                case 'x' -> g2.drawImage(portal.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-                default -> g2.drawImage(grass.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                case '*':
+                    g2.drawImage(brick.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                    break;
+                case '#':
+                    g2.drawImage(wall.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                    break;
+                case 'x':
+                    g2.drawImage(portal.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                    break;
+                default:
+                    g2.drawImage(grass.image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                    break;
             }
             worldCol++;
             if (worldCol == gamePanel.maxWorldCol) {
