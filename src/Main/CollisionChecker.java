@@ -1,30 +1,58 @@
 package Main;
 
-import Entities.Player;
+import Entities.Entity;
 
 public class CollisionChecker {
-    GamePanel gp;
+    GamePanel gamePanel;
     public CollisionChecker(GamePanel gp) {
-        this.gp = gp;
+        this.gamePanel = gp;
     }
-    public boolean isCollisionTop(Player player, int screenX, int screenY, int screenWidth, int screenHeight) {
-        return isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x, player.screenY + player.solidArea.y)
-                && isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x + player.solidArea.width, player.screenY + player.solidArea.y);
-    }
-    public boolean isCollisionLeft(Player player, int screenX, int screenY, int screenWidth, int screenHeight) {
-        return isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x, player.screenY + player.solidArea.y)
-                && isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x, player.screenY + player.solidArea.y);
-    }
-    public boolean isCollisionRight(Player player, int screenX, int screenY, int screenWidth, int screenHeight) {
-        return isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x + player.solidArea.width, player.screenY + player.solidArea.y)
-                && isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x, player.screenY + player.solidArea.y + player.solidArea.height);
-    }
-    public boolean isCollisionBottom(Player player, int screenX, int screenY, int screenWidth, int screenHeight) {
-        return isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x + player.solidArea.width, player.screenY + player.solidArea.y)
-                && isPointInRect(screenX, screenY, screenWidth, screenHeight, player.screenX + player.solidArea.x, player.screenY + player.solidArea.y + player.solidArea.height);
-    }
-    boolean isPointInRect(int rectX, int rectY, int rectWidth, int rectHeight, int pointX, int pointY) {
-        return pointX > rectX && pointX < rectX + rectWidth
-                && pointY > rectY && pointY < rectY + rectHeight;
+
+    public void checkTile(Entity entity) {
+        int entityLeftWorldX = entity.screenX + entity.solidArea.x;
+        int entityRightWorldX = entity.screenX + entity.solidArea.x + entity.solidArea.width;
+        int entityTopWorldY = entity.screenY + entity.solidArea.y;
+        int entityBottomWorldY = entity.screenY + entity.solidArea.y + entity.solidArea.height;
+
+        int entityLeftCol = entityLeftWorldX/gamePanel.tileSize;
+        int entityRightCol = entityRightWorldX/gamePanel.tileSize;
+        int entityTopRow = entityTopWorldY/gamePanel.tileSize;
+        int entityBottomRow = entityBottomWorldY/gamePanel.tileSize;
+
+        int tileNum1, tileNum2;
+        switch (entity.direction) {
+            case "up" -> {
+                entityTopRow = (entityTopWorldY - entity.speed) / gamePanel.tileSize;
+                tileNum1 = gamePanel.tileManager.mapTile[entityLeftCol][entityTopRow];
+                tileNum2 = gamePanel.tileManager.mapTile[entityRightCol][entityTopRow];
+                if (gamePanel.tileManager.tiles[tileNum1].collision || gamePanel.tileManager.tiles[tileNum2].collision) {
+                    entity.collisionOn = true;
+                }
+            }
+            case "down" -> {
+                entityBottomRow = (entityBottomWorldY + entity.speed) / gamePanel.tileSize;
+                tileNum1 = gamePanel.tileManager.mapTile[entityLeftCol][entityBottomRow];
+                tileNum2 = gamePanel.tileManager.mapTile[entityRightCol][entityBottomRow];
+                if (gamePanel.tileManager.tiles[tileNum1].collision || gamePanel.tileManager.tiles[tileNum2].collision) {
+                    entity.collisionOn = true;
+                }
+            }
+            case "left" -> {
+                entityLeftCol = (entityLeftWorldX - entity.speed) / gamePanel.tileSize;
+                tileNum1 = gamePanel.tileManager.mapTile[entityLeftCol][entityTopRow];
+                tileNum2 = gamePanel.tileManager.mapTile[entityLeftCol][entityBottomRow];
+                if (gamePanel.tileManager.tiles[tileNum1].collision || gamePanel.tileManager.tiles[tileNum2].collision) {
+                    entity.collisionOn = true;
+                }
+            }
+            case "right" -> {
+                entityRightCol = (entityRightWorldX + entity.speed) / gamePanel.tileSize;
+                tileNum1 = gamePanel.tileManager.mapTile[entityRightCol][entityTopRow];
+                tileNum2 = gamePanel.tileManager.mapTile[entityRightCol][entityBottomRow];
+                if (gamePanel.tileManager.tiles[tileNum1].collision || gamePanel.tileManager.tiles[tileNum2].collision) {
+                    entity.collisionOn = true;
+                }
+            }
+        }
     }
 }

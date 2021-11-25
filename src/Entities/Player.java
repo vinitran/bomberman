@@ -8,27 +8,16 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-import static javax.imageio.ImageIO.*;
+import static javax.imageio.ImageIO.read;
 
 public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
-
-    public int screenX;
-    public int screenY;
-    public final int pointCenterX;
-    public final int pointCentery;
-    public boolean inCenterScreenX;
-    public boolean inCenterScreenY;
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gamePanel = gp;
         this.keyHandler = keyH;
-        inCenterScreenX = false;
-        inCenterScreenY = false;
-        screenX = gamePanel.tileSize;
-        screenY = gamePanel.tileSize;
-        pointCenterX = gamePanel.screenWidth/2 - gamePanel.tileSize/2;
-        pointCentery = gamePanel.screenHeight/2 - gamePanel.tileSize/2;
+        this.screenX = gamePanel.tileSize;
+        this.screenY = gamePanel.tileSize;
         solidArea = new Rectangle(3 * gamePanel.scale, 6 * gamePanel.scale, 6 * gamePanel.scale, 9 * gamePanel.scale);
         setDefaultValues();
         getPlayerImage();
@@ -36,7 +25,7 @@ public class Player extends Entity {
     public void setDefaultValues() {
         worldX = 0;
         worldY = 0;
-        speed = 4;
+        speed = 2;
         direction = "stand";
 
     }
@@ -62,25 +51,42 @@ public class Player extends Entity {
         }
     }
     public void update() {
-        if(keyHandler.upPressed && gamePanel.tileManager.canMovePlayerUp) {
+        if(keyHandler.upPressed) {
             direction = "up";
-            screenY -= speed;
         }
-        else if(keyHandler.downPressed && gamePanel.tileManager.canMovePlayerDown) {
+        else if(keyHandler.downPressed) {
             direction = "down";
-            screenY += speed;
         }
-        else if(keyHandler.leftPressed && gamePanel.tileManager.canMovePlayerLeft) {
+        else if(keyHandler.leftPressed) {
             direction = "left";
-            screenX -= speed;
         }
-        else if(keyHandler.rightPressed && gamePanel.tileManager.canMovePlayerRight) {
+        else if(keyHandler.rightPressed) {
             direction = "right";
-            screenX += speed;
         }
         else {
             direction = "stand";
         }
+        //Check Tile Manager
+        collisionOn = false;
+        gamePanel.cChecker.checkTile(this);
+        //If collision is false, player can move
+        if (!collisionOn) {
+            switch(direction) {
+                case "up":
+                    screenY -= speed;
+                    break;
+                case "down":
+                    screenY += speed;
+                    break;
+                case "left":
+                    screenX -= speed;
+                    break;
+                case "right":
+                    screenX += speed;
+                    break;
+            }
+        }
+
         spriteCounter++;
         if (spriteCounter > 10) {
             if (spriteNum == 1) {
