@@ -1,9 +1,11 @@
-package Images;
+package Image;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import sun.applet.Main;
 
 public class LoadImage {
     private BufferedImage image = null;
@@ -16,7 +18,7 @@ public class LoadImage {
 
     private void loadImage() {
         try {
-            image = ImageIO.read(LoadImage.class.getResourceAsStream(path));
+            image = ImageIO.read(LoadImage.class.getResource(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

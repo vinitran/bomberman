@@ -6,7 +6,7 @@ import Main.KeyHandler;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import Images.Image;
+import Image.Image;
 
 public class Player extends MoveEntity {
     GamePanel gamePanel;

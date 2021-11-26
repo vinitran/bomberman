@@ -64,6 +64,7 @@ public class TileManager extends Tile {
             e.printStackTrace();
         }
     }
+    
     public void draw(Graphics2D g2) {
         int worldCol = 0;
         int worldRow = 0;
