@@ -1,19 +1,18 @@
 package Entities.MoveEntity;
 
+import Images.Image;
 import Main.GamePanel;
 import Main.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import Images.Image;
-
 public class Player extends MoveEntity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
-    public Player(GamePanel gp, KeyHandler keyH) {
+    public Player(GamePanel gp) {
         this.gamePanel = gp;
-        this.keyHandler = keyH;
+        this.keyHandler = gp.keyHandler;
         this.screenX = gamePanel.tileSize;
         this.screenY = gamePanel.tileSize;
         solidArea = new Rectangle(3 * gamePanel.scale, 6 * gamePanel.scale, 6 * gamePanel.scale, 9 * gamePanel.scale);

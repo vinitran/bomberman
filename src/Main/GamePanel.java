@@ -1,11 +1,9 @@
 package Main;
 
+import Entities.MoveEntity.Character;
 import Tile.TileManager;
 
 import javax.swing.*;
-
-import Entities.MoveEntity.Player;
-
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -27,8 +25,8 @@ public class GamePanel extends JPanel implements Runnable{
     public CollisionChecker cChecker = new CollisionChecker(this);
     int FPS = 60;
     public TileManager tileManager = new TileManager(this);
-    KeyHandler keyHandler = new KeyHandler();
-    public Player player = new Player(this,keyHandler);
+    public KeyHandler keyHandler = new KeyHandler();
+    private Character character = new Character(this);
     public GamePanel() {
         this.setPreferredSize(new Dimension(worldWidth,worldHeight));
         this.setBackground(Color.BLACK);
@@ -65,13 +63,13 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update() {
-        player.update();
+        character.update();
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         tileManager.draw(g2);
-        player.draw(g2);
+        character.draw(g2);
         g2.dispose();
     }
 }
