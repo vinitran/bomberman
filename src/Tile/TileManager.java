@@ -68,10 +68,8 @@ public class TileManager extends Tile {
         int worldCol = 0;
         int worldRow = 0;
         while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
-            int worldX = worldCol * gamePanel.tileSize;
-            int worldY = worldRow * gamePanel.tileSize;
-            int screenX = worldX + gamePanel.player.worldX;
-            int screenY = worldY + gamePanel.player.worldY;
+            int screenX = worldCol * gamePanel.tileSize;
+            int screenY = worldRow * gamePanel.tileSize;
             int tileNum = mapTile[worldCol][worldRow];
             g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
             worldCol++;

@@ -13,9 +13,9 @@ import static javax.imageio.ImageIO.read;
 public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
-    public Player(GamePanel gp, KeyHandler keyH) {
+    public Player(GamePanel gp) {
         this.gamePanel = gp;
-        this.keyHandler = keyH;
+        this.keyHandler = gp.keyHandler;
         this.screenX = gamePanel.tileSize;
         this.screenY = gamePanel.tileSize;
         solidArea = new Rectangle(3 * gamePanel.scale, 6 * gamePanel.scale, 6 * gamePanel.scale, 9 * gamePanel.scale);
@@ -31,21 +31,21 @@ public class Player extends Entity {
     }
     public void getPlayerImage() {
         try {
-            up = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_up.png")));
-            up1 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_up_1.png")));
-            up2 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_up_2.png")));
-            down = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_down.png")));
-            down1 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_down_1.png")));
-            down2 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_down_2.png")));
-            right = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_right.png")));
-            right1 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_right_1.png")));
-            right2 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_right_2.png")));
-            left = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_left.png")));
-            left1 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_left_1.png")));
-            left2 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_left_2.png")));
-            stand = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_stand.png")));
-            stand1 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_stand_1.png")));
-            stand2 = read(Objects.requireNonNull(getClass().getResourceAsStream("images/player_stand_2.png")));
+            up = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_up.png")));
+            up1 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_up_1.png")));
+            up2 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_up_2.png")));
+            down = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_down.png")));
+            down1 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_down_1.png")));
+            down2 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_down_2.png")));
+            right = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_right.png")));
+            right1 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_right_1.png")));
+            right2 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_right_2.png")));
+            left = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_left.png")));
+            left1 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_left_1.png")));
+            left2 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_left_2.png")));
+            stand = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_stand.png")));
+            stand1 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_stand_1.png")));
+            stand2 = read(Objects.requireNonNull(getClass().getResourceAsStream("Bomber/player_stand_2.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
