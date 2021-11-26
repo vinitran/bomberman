@@ -3,11 +3,23 @@ package Entities;
 import java.awt.*;
 
 public abstract class Entity {
-    public int worldX, worldY;
-    public int screenX;
-    public int screenY;
-    public int spriteNum = 1;
-    public Rectangle solidArea;
+    protected int worldX, worldY;
+    protected int screenX;
+    protected int screenY;
+    protected int spriteNum = 1;
+    protected Rectangle solidArea;
     
     public abstract void update();
+
+    public int getScreenX() {
+        return screenX;
+    }
+
+    public int getScreenY() {
+        return screenY;
+    }
+
+    public Rectangle getSolidArea() {
+        return solidArea;
+    }
 }

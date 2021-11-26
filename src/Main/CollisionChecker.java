@@ -1,6 +1,5 @@
 package Main;
 
-import Entities.Entity;
 import Entities.MoveEntity.MoveEntity;
 
 public class CollisionChecker {
@@ -11,10 +10,10 @@ public class CollisionChecker {
     }
 
     public void checkTile(MoveEntity moveEntity) {
-        int entityLeftWorldX = moveEntity.screenX + moveEntity.solidArea.x;
-        int entityRightWorldX = moveEntity.screenX + moveEntity.solidArea.x + moveEntity.solidArea.width;
-        int entityTopWorldY = moveEntity.screenY + moveEntity.solidArea.y;
-        int entityBottomWorldY = moveEntity.screenY + moveEntity.solidArea.y + moveEntity.solidArea.height;
+        int entityLeftWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
+        int entityRightWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x + moveEntity.getSolidArea().width;
+        int entityTopWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
+        int entityBottomWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y + moveEntity.getSolidArea().height;
 
         int entityLeftCol = entityLeftWorldX / gamePanel.tileSize;
         int entityRightCol = entityRightWorldX / gamePanel.tileSize;
