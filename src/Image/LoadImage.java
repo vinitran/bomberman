@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import sun.applet.Main;
-
 public class LoadImage {
     private BufferedImage image = null;
     private String path;

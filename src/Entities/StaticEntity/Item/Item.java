@@ -1,7 +1,7 @@
-package Entities.StaticEntity.Item;
+// package Entities.StaticEntity.Item;
 
-import Entities.StaticEntity.StaticEntity;
+// import Entities.StaticEntity.StaticEntity;
 
-public abstract class Item extends StaticEntity {
+// public abstract class Item extends StaticEntity {
     
-}
+// }

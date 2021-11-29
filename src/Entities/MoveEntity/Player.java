@@ -1,55 +1,72 @@
 package Entities.MoveEntity;
 
+import Main.CollisionChecker;
 import Main.GamePanel;
 import Main.KeyHandler;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 import Image.Image;
 
 public class Player extends MoveEntity {
-    GamePanel gamePanel;
-    KeyHandler keyHandler;
-    public Player(GamePanel gp, KeyHandler keyH) {
-        this.gamePanel = gp;
+    private KeyHandler keyHandler;
+    private int bombs;
+
+    public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
+        super(x, y, gp);
         this.keyHandler = keyH;
-        this.screenX = gamePanel.tileSize;
-        this.screenY = gamePanel.tileSize;
-        solidArea = new Rectangle(3 * gamePanel.scale, 6 * gamePanel.scale, 6 * gamePanel.scale, 9 * gamePanel.scale);
+        solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
         setDefaultValues();
     }
+
     public void setDefaultValues() {
         // worldX = 0;
         // worldY = 0;
+        bombs = 1;
         speed = 2;
         direction = "stand";
-
     }
 
     @Override
     public void update() {
-        if(keyHandler.upPressed) {
+        if (!alive) {
+
+        } else {
+            move();
+        }
+    }
+
+    private void move() {
+        if (keyHandler.upPressed) {
             direction = "up";
-        }
-        else if(keyHandler.downPressed) {
+        } else if (keyHandler.downPressed) {
             direction = "down";
-        }
-        else if(keyHandler.leftPressed) {
+        } else if (keyHandler.leftPressed) {
             direction = "left";
-        }
-        else if(keyHandler.rightPressed) {
+        } else if (keyHandler.rightPressed) {
             direction = "right";
-        }
-        else {
+        } else {
             direction = "stand";
         }
-        //Check Tile Manager
-        collisionOn = false;
-        gamePanel.cChecker.checkTile(this);
-        //If collision is false, player can move
-        if (!collisionOn) {
-            switch(direction) {
+        // Check Tile Manager
+        if (!CollisionChecker.checkTile(this, gamePanel)) {
+            if (!CollisionChecker.check(this, gamePanel)) {
+                switch (direction) {
+                    case "up":
+                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                        break;
+                    case "down":
+                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                        break;
+                    case "left":
+                        screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
+                        break;
+                    case "right":
+                        screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
+                        break;
+                }
+            }
+            switch (direction) {
                 case "up":
                     screenY -= speed;
                     break;
@@ -69,19 +86,18 @@ public class Player extends MoveEntity {
         if (spriteCounter > 10) {
             if (spriteNum == 1) {
                 spriteNum = 2;
-            }
-            else if (spriteNum == 2) {
+            } else if (spriteNum == 2) {
                 spriteNum = 3;
-            }
-            else if (spriteNum == 3) {
+            } else if (spriteNum == 3) {
                 spriteNum = 1;
             }
             spriteCounter = 0;
         }
     }
+
     @Override
     public void draw(Graphics2D g2) {
-        BufferedImage image = null;
+        image = null;
         switch (direction) {
             case "up":
                 switch (spriteNum) {
@@ -107,7 +123,8 @@ public class Player extends MoveEntity {
                     case 3:
                         image = Image.player_down2;
                         break;
-                };
+                }
+                ;
                 break;
             case "left":
                 switch (spriteNum) {
@@ -117,10 +134,11 @@ public class Player extends MoveEntity {
                     case 2:
                         image = Image.player_left1;
                         break;
-                    case 3: 
+                    case 3:
                         image = Image.player_left2;
                         break;
-                };
+                }
+                ;
                 break;
             case "right":
                 switch (spriteNum) {
@@ -133,7 +151,8 @@ public class Player extends MoveEntity {
                     case 3:
                         image = Image.player_right2;
                         break;
-                };
+                }
+                ;
                 break;
             case "stand":
                 switch (spriteNum) {
@@ -143,10 +162,11 @@ public class Player extends MoveEntity {
                     case 2:
                         image = Image.player_stand1;
                         break;
-                    case 3: 
+                    case 3:
                         image = Image.player_stand2;
                         break;
-                };
+                }
+                ;
                 break;
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
