@@ -3,7 +3,6 @@ package Main;
 import Tile.TileManager;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {

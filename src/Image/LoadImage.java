@@ -1,13 +1,13 @@
 package Image;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.Objects;
 
 public class LoadImage {
     private BufferedImage image = null;
-    private String path;
+    private final String path;
 
     public LoadImage(String path) {
         this.path = path;
