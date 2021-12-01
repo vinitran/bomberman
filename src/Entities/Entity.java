@@ -13,6 +13,7 @@ public abstract class Entity {
     protected Rectangle solidArea;
     protected GamePanel gamePanel;
     protected BufferedImage image = null;
+    protected int spriteCounter = 0;
     protected boolean collision = false;
     protected boolean removed = false;
 

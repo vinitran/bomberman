@@ -7,7 +7,6 @@ import Main.GamePanel;
 
 public abstract class MoveEntity extends Entity {
     protected int speed;
-    protected int spriteCounter = 0;
     protected String direction; 
     protected boolean alive = true;
     
