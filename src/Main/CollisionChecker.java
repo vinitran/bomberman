@@ -117,4 +117,74 @@ public class CollisionChecker {
         }
         return false;
     }
+
+    public static int checkItem(MoveEntity moveEntity, boolean player, GamePanel gamePanel) {
+        int index = 999;
+        for (int i=0; i<gamePanel.item.length; i++) {
+            if (gamePanel.item[i]!=null) {
+                //Get entity's solid area position
+                moveEntity.getSolidArea().x = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
+                moveEntity.getSolidArea().y = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
+                //Get the object's solid area position
+                gamePanel.item[i].solidArea.x = gamePanel.item[i].worldX + gamePanel.item[i].solidArea.x;
+                gamePanel.item[i].solidArea.y = gamePanel.item[i].worldY + gamePanel.item[i].solidArea.y;
+
+                switch (moveEntity.direction) {
+                    case "up":
+                        moveEntity.getSolidArea().y -= moveEntity.getSpeed();
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
+                            System.out.println("up collision");
+                            if (gamePanel.item[i].collision) {
+                                moveEntity.setCollision(true);
+                            }
+                            if (player == true) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        moveEntity.getSolidArea().y += moveEntity.getSpeed();
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
+                            System.out.println("down collision");
+                            if (gamePanel.item[i].collision) {
+                                moveEntity.setCollision(true);
+                            }
+                            if (player == true) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        moveEntity.getSolidArea().x -= moveEntity.getSpeed();
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
+                            System.out.println("left collision");
+                            if (gamePanel.item[i].collision) {
+                                moveEntity.setCollision(true);
+                            }
+                            if (player == true) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        moveEntity.getSolidArea().x += moveEntity.getSpeed();
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
+                            System.out.println("right collision");
+                            if (gamePanel.item[i].collision) {
+                                moveEntity.setCollision(true);
+                            }
+                            if (player == true) {
+                                index = i;
+                            }
+                        }
+                        break;
+                }
+                moveEntity.getSolidArea().x = moveEntity.solidAreaDefaultX;
+                moveEntity.getSolidArea().y = moveEntity.solidAreaDefaultY;
+                gamePanel.item[i].solidArea.x = gamePanel.item[i].solidAreaDefaultX;
+                gamePanel.item[i].solidArea.y = gamePanel.item[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
 }

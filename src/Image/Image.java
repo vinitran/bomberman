@@ -1,6 +1,7 @@
 package Image;
 
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class Image {
     public static final BufferedImage player_up = (new LoadImage("images/player_up.png")).getImage();
@@ -66,5 +67,9 @@ public class Image {
     public static final BufferedImage bomb = (new LoadImage("images/bomb.png")).getImage();
     public static final BufferedImage bomb1 = (new LoadImage("images/bomb_1.png")).getImage();
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
+
+    public static final BufferedImage Ghost = (new LoadImage("images/powerup_speed.png")).getImage();
+    public static final BufferedImage Flash = (new LoadImage("images/flash.png.png")).getImage();
+    public static final BufferedImage Portal = (new LoadImage("images/portal.png")).getImage();
 
 }

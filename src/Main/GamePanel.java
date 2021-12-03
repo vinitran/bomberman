@@ -1,7 +1,8 @@
 package Main;
 
-import Tile.TileManager;
 
+import Item.item;
+import Tile.TileManager;
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,9 +25,15 @@ public class GamePanel extends JPanel implements Runnable {
     private int FPS = 60;
     private KeyHandler keyHandler;
     public TileManager tileManager;
+    public item item[] = new item[10];
+    public UI ui = new UI(this);
+    public AssetSetter assetSetter = new AssetSetter(this);
 
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
     public GamePanel() {
-        keyHandler = new KeyHandler();
+        keyHandler = new KeyHandler(this);
         tileManager = new TileManager(this, keyHandler);
         this.setPreferredSize(new Dimension(worldWidth, worldHeight));
         this.setBackground(Color.BLACK);
@@ -38,6 +45,11 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
+    }
+
+    public void setUpGame() {
+        assetSetter.setObject();
+        gameState = playState;
     }
 
     @Override
@@ -65,13 +77,20 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        tileManager.update();
+        if (gameState == playState) {
+            tileManager.update();
+        }
+        if (gameState == pauseState) {
+            //nothing happend
+        }
+
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         tileManager.draw(g2);
+        ui.draw(g2);
         g2.dispose();
     }
 }

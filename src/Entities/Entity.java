@@ -12,6 +12,7 @@ public abstract class Entity {
     protected int spriteNum = 1;
     protected Rectangle solidArea;
     protected GamePanel gamePanel;
+    public int solidAreaDefaultX, solidAreaDefaultY;
     protected BufferedImage image = null;
     protected boolean collision = false;
     protected boolean removed = false;
@@ -34,7 +35,23 @@ public abstract class Entity {
         return screenY;
     }
 
+    public boolean isCollision() {
+        return collision;
+    }
+
+    public void setCollision(boolean collision) {
+        this.collision = collision;
+    }
+
     public Rectangle getSolidArea() {
         return solidArea;
+    }
+
+    public void setScreenX(int screenX) {
+        this.screenX = screenX;
+    }
+
+    public void setScreenY(int screenY) {
+        this.screenY = screenY;
     }
 }
