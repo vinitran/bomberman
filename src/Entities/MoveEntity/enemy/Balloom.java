@@ -9,7 +9,7 @@ import Image.Image;
 public class Balloom extends Enemy {
     public Balloom(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        speed = 5;
+        speed = 1;
         solidArea = new Rectangle(speed, speed, 16 * gamePanel.scale - speed, 16 * gamePanel.scale - speed);
         direction = "right";
         collision = true;

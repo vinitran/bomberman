@@ -12,9 +12,9 @@ import Image.Image;
 
 public class Player extends MoveEntity {
     private KeyHandler keyHandler;
-    private ArrayList<Bomb> bombs = new ArrayList<>();
-    private int nBombs;
-    private int timeSetBombs = 0;
+    private ArrayList<Bomb> bombs = new ArrayList<>(); // ds bom
+    private int nBombs; // số bom
+    private int timeSetBombs = 0; // thời gian đặt bom
 
     public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
         super(x, y, gp);
@@ -26,6 +26,7 @@ public class Player extends MoveEntity {
     public void setDefaultValues() {
         // worldX = 0;
         // worldY = 0;
+        gamePanel.setBombRadius(2);
         nBombs = 2;
         speed = 2;
         direction = "stand";
@@ -36,7 +37,10 @@ public class Player extends MoveEntity {
         if (!alive) {
 
         } else {
-            if (timeSetBombs < -50) timeSetBombs = 0; else timeSetBombs--;
+            if (timeSetBombs < -50)
+                timeSetBombs = 0;
+            else
+                timeSetBombs--;
             move();
         }
     }
@@ -52,7 +56,6 @@ public class Player extends MoveEntity {
             direction = "right";
         } else if (keyHandler.spacePressed && nBombs > 0) {
             if (timeSetBombs < 0) {
-                System.out.println(" a = " + nBombs);
                 int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
                 int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
                 bombs.add(new Bomb(xBomb, yBomb, gamePanel));
@@ -68,7 +71,6 @@ public class Player extends MoveEntity {
             } else {
                 bombs.remove(i);
                 nBombs++;
-                System.out.println(nBombs);
             }
         }
         // Check Tile Manager
@@ -76,14 +78,14 @@ public class Player extends MoveEntity {
             if (!CollisionChecker.check(this, gamePanel)) {
                 switch (direction) {
                     case "up":
-                    screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
-                    break;
+                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                        break;
                     case "down":
-                    screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
-                    break;
+                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                        break;
                     case "left":
-                    screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
-                    break;
+                        screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
+                        break;
                     case "right":
                         screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
                         break;

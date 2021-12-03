@@ -25,6 +25,8 @@ public class GamePanel extends JPanel implements Runnable {
     private int FPS = 60;
     private KeyHandler keyHandler;
     public TileManager tileManager;
+    private int bombRadius; // bán kính bom
+
 
     public GamePanel() {
         keyHandler = new KeyHandler();
@@ -39,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-        Sound.sound_loop.play();
-        Sound.sound_loop.loop();
+        // Sound.sound_loop.play();
+        // Sound.sound_loop.loop();
     }
 
     @Override
@@ -76,5 +78,13 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         tileManager.draw(g2);
         g2.dispose();
+    }
+
+    public int getBombRadius() {
+        return bombRadius;
+    }
+
+    public void setBombRadius(int bombRadius) {
+        this.bombRadius = bombRadius;
     }
 }

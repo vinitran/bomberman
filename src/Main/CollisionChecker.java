@@ -117,4 +117,9 @@ public class CollisionChecker {
         }
         return false;
     }
+
+    // check vị trí vẽ flame
+    public static boolean checkFlame(int x, int y, GamePanel gamePanel) {
+        return false;
+    }
 }

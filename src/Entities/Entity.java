@@ -12,6 +12,7 @@ public abstract class Entity {
     protected int spriteNum = 1;
     protected Rectangle solidArea;
     protected GamePanel gamePanel;
+    protected String direction; 
     protected BufferedImage image = null;
     protected int spriteCounter = 0;
     protected boolean collision = false;
