@@ -13,9 +13,9 @@ public class Brick extends StaticEntity {
     @Override
     public void update() {
         if (removed) {
-
+            direction = "exploded";
         } else {
-
+            direction = "normal";
         }
     }
 

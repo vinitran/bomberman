@@ -63,7 +63,7 @@ public class Image {
     public static final BufferedImage explosion_vertical = (new LoadImage("images/explosion_vertical.png")).getImage();
     public static final BufferedImage explosion_vertical1 = (new LoadImage("images/explosion_vertical1.png")).getImage();
     public static final BufferedImage explosion_vertical2 = (new LoadImage("images/explosion_vertical2.png")).getImage();
-    
+
     public static final BufferedImage bomb_exploded = (new LoadImage("images/bomb_exploded.png")).getImage();
     public static final BufferedImage bomb_exploded1 = (new LoadImage("images/bomb_exploded1.png")).getImage();
     public static final BufferedImage bomb_exploded2 = (new LoadImage("images/bomb_exploded2.png")).getImage();
@@ -71,17 +71,17 @@ public class Image {
     public static final BufferedImage bomb1 = (new LoadImage("images/bomb_1.png")).getImage();
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
     
-    public static final BufferedImage brick = (new LoadImage("images/brick.png")).getImage();
-    public static final BufferedImage brick_exploded = (new LoadImage("images/brick_exploded.png")).getImage();
-    public static final BufferedImage brick_exploded1 = (new LoadImage("images/brick_exploded.png")).getImage();
-    public static final BufferedImage brick_exploded2 = (new LoadImage("images/brick_exploded.png")).getImage();
-    
-    public static final BufferedImage grass = (new LoadImage("images/grass.png")).getImage();
-    public static final BufferedImage wall = (new LoadImage("images/wall.png")).getImage();
-    public static final BufferedImage portal = (new LoadImage("images/portal.png")).getImage();
-
     public static final BufferedImage Ghost = (new LoadImage("images/powerup_speed.png")).getImage();
     public static final BufferedImage Flash = (new LoadImage("images/flash.png.png")).getImage();
     public static final BufferedImage Portal = (new LoadImage("images/portal.png")).getImage();
+    
+    public static final BufferedImage brick = (new LoadImage("images/brick.png")).getImage();
+    public static final BufferedImage brick_exploded = (new LoadImage("images/brick_exploded.png  ")).getImage();
+    public static final BufferedImage brick_exploded1 = (new LoadImage("images/brick_exploded1.png")).getImage();
+    public static final BufferedImage brick_exploded2 = (new LoadImage("images/brick_exploded2.png")).getImage();
+
+    public static final BufferedImage grass = (new LoadImage("images/grass.png")).getImage();
+    public static final BufferedImage wall = (new LoadImage("images/wall.png")).getImage();
+    public static final BufferedImage portal = (new LoadImage("images/portal.png")).getImage();
 
 }

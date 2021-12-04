@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     public TileManager tileManager;
     private int bombRadius; // bán kính bom
 
+
     public item item[] = new item[10];
     public UI ui = new UI(this);
     public AssetSetter assetSetter = new AssetSetter(this);

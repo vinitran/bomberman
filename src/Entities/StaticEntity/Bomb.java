@@ -1,6 +1,7 @@
 package Entities.StaticEntity;
 
 import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Bomb extends StaticEntity {
 
     public Bomb(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
+        solidArea = new Rectangle(0 * gamePanel.scale, 0 * gamePanel.scale, 16 * gamePanel.scale, 16 * gamePanel.scale);
     }
 
     @Override
@@ -121,5 +123,9 @@ public class Bomb extends StaticEntity {
         for (Flame flame : flames) {
             flame.update();
         }
+    }
+
+    public boolean isExploded() {
+        return exploded;
     }
 }

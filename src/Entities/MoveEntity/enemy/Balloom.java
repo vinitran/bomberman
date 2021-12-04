@@ -17,6 +17,17 @@ public class Balloom extends Enemy {
 
     @Override
     public void draw(Graphics2D g2) {
+        spriteCounter++;
+        if (spriteCounter > 10) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 3;
+            } else if (spriteNum == 3) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
         image = null;
         switch (direction) {
             case "up":
@@ -72,7 +83,23 @@ public class Balloom extends Enemy {
                 }
                 break;
             case "dead":
-                image = Image.balloom_dead;
+                switch (spriteNum) {
+                    case 1:
+                        image = Image.balloom_dead;
+                        break;
+                    case 2:
+                        image = Image.mob_dead1;
+                        break;
+                    case 3: {
+                        if (spriteCounter == 9) {
+                            image = Image.mob_dead3;
+                            spriteCounter = 8;
+                        } else {
+                        image = Image.mob_dead2;
+                        }
+                    }
+                        break;
+                }
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }

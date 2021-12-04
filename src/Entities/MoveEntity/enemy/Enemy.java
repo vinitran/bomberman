@@ -14,17 +14,22 @@ public abstract class Enemy extends MoveEntity {
     @Override
     public void update() {
 
-        if(CollisionChecker.CheckEntity(gamePanel.tileManager.player,this)) {
+        if (CollisionChecker.CheckEntity(gamePanel.tileManager.player, this)) {
             alive = false;
         }
         if (!alive) {
-            direction = "dead";
+            if (!direction.equals("dead")) {
+                direction = "dead";
+                spriteCounter = 0;
+                spriteNum = 1;
+                timeToRemove = 40;
+            }
             timeToRemove--;
         } else {
             move();
         }
-        if(timeToRemove == 0) {
-            removed = true;
+        if (timeToRemove == 0) {
+            removed = true; // cần sửa lại 
         }
     }
 
@@ -63,18 +68,6 @@ public abstract class Enemy extends MoveEntity {
                     screenX += speed;
                     break;
             }
-        }
-
-        spriteCounter++;
-        if (spriteCounter > 10) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 3;
-            } else if (spriteNum == 3) {
-                spriteNum = 1;
-            }
-            spriteCounter = 0;
         }
     }
 }
