@@ -12,14 +12,16 @@ public class Player extends MoveEntity {
     private KeyHandler keyHandler;
     private int bombs;
     public boolean flash = false;
-    public boolean gameFinished = false;
-
+    public int px;
+    public int py;
     public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
         super(x, y, gp);
         this.keyHandler = keyH;
         solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+        px = gamePanel.screenWidth/2;
+        py = gamePanel.screenHeight/2;
         setDefaultValues();
     }
 
@@ -115,7 +117,7 @@ public class Player extends MoveEntity {
                     gamePanel.item[index] = null;
                     break;
                 case "Portal":
-                    gameFinished = true;
+                    gamePanel.ui.gameFinished = true;
                     break;
             }
         }
@@ -196,6 +198,23 @@ public class Player extends MoveEntity {
                 ;
                 break;
         }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        int x = px;
+        int y = py;
+        if (px > screenX) {
+            px = screenX;
+        }
+        if (py > screenY) {
+            py = screenY;
+        }
+        int rightOffset = gamePanel.screenWidth - px;
+        if (rightOffset > gamePanel.worldWidth - getScreenX()) {
+            x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+        }
+        int bottomOffset = gamePanel.screenHeight - py;
+        if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
+            y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+        }
+
+        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

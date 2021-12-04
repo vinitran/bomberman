@@ -107,7 +107,29 @@ public class TileManager extends Tile {
             for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
                 int screenX = maxCol * gamePanel.tileSize;
                 int screenY = maxRow * gamePanel.tileSize;
-                g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                int px = screenX - player.getScreenX() + player.px;
+                int py = screenY - player.getScreenY() + player.py;
+
+                //stop the camera at the edge
+                if (player.px > player.getScreenX()) {
+                    px = screenX;
+                }
+                if (player.py > player.getScreenY()) {
+                    py = screenY;
+                }
+                int rightOffset = gamePanel.screenWidth - player.px;
+                if (rightOffset > gamePanel.worldWidth - player.getScreenX()) {
+                    px = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+                }
+                int bottomOffset = gamePanel.screenHeight - player.py;
+                if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
+                    py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+                }
+
+                g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                if (player.px  > player.getScreenX() || player.py > player.getScreenY() || rightOffset > gamePanel.worldWidth - player.getScreenX() || bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
+                    g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                }
             }
         }
         for (int i=0; i<gamePanel.item.length; i++) {

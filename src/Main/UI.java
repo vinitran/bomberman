@@ -27,9 +27,10 @@ public class UI {
             int textLength;
             text = "YOU HAVE PASSED";
             textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-            int x  = gamePanel.worldWidth/2 - textLength/2;
-            int y = gamePanel.worldHeight/2 - gamePanel.tileSize*3;
+            int x  = gamePanel.screenWidth/2 - textLength/2;
+            int y = gamePanel.screenHeight/2 - gamePanel.tileSize*3;
             g2.drawString(text, x, y);
+            System.out.println("Game over");
             gamePanel.gameThread = null;
         }
         else {
