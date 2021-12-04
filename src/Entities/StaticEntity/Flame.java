@@ -17,6 +17,12 @@ public class Flame extends StaticEntity {
 
     @Override
     public void update() {
+        
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        image = null;
         spriteCounter++;
         if (spriteCounter > 10) {
             if (spriteNum == 1) {
@@ -28,11 +34,6 @@ public class Flame extends StaticEntity {
             }
             spriteCounter = 0;
         }
-    }
-
-    @Override
-    public void draw(Graphics2D g2) {
-        image = null;
         if (checkLast) {
             switch (direction) {
                 case 0:

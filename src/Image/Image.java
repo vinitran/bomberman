@@ -66,5 +66,14 @@ public class Image {
     public static final BufferedImage bomb = (new LoadImage("images/bomb.png")).getImage();
     public static final BufferedImage bomb1 = (new LoadImage("images/bomb_1.png")).getImage();
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
+    
+    public static final BufferedImage brick = (new LoadImage("images/brick")).getImage();
+    public static final BufferedImage brick_exploded = (new LoadImage("images/brick_exploded")).getImage();
+    public static final BufferedImage brick_exploded1 = (new LoadImage("images/brick_exploded")).getImage();
+    public static final BufferedImage brick_exploded2 = (new LoadImage("images/brick_exploded")).getImage();
+    
+    public static final BufferedImage grass = (new LoadImage("images/grass")).getImage();
+    public static final BufferedImage wall = (new LoadImage("images/wall")).getImage();
+    public static final BufferedImage portal = (new LoadImage("images/portal")).getImage();
 
 }
