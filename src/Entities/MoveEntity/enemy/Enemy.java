@@ -6,6 +6,7 @@ import Main.CollisionChecker;
 import Main.GamePanel;
 
 public abstract class Enemy extends MoveEntity {
+
     public Enemy(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
     }
@@ -13,10 +14,17 @@ public abstract class Enemy extends MoveEntity {
     @Override
     public void update() {
 
-        if (alive == false) {
-            
+        if(CollisionChecker.CheckEntity(gamePanel.tileManager.player,this)) {
+            alive = false;
+        }
+        if (!alive) {
+            direction = "dead";
+            timeToRemove--;
         } else {
             move();
+        }
+        if(timeToRemove == 0) {
+            removed = true;
         }
     }
 

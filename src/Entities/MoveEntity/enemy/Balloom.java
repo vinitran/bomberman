@@ -71,6 +71,8 @@ public class Balloom extends Enemy {
                         break;
                 }
                 break;
+            case "dead":
+                image = Image.balloom_dead;
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }

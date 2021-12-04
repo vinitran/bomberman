@@ -16,8 +16,11 @@ public class Image {
     public static final BufferedImage player_left1 = (new LoadImage("images/player_left_1.png")).getImage(); 
     public static final BufferedImage player_left2 = (new LoadImage("images/player_left_2.png")).getImage();
     public static final BufferedImage player_stand = (new LoadImage("images/player_stand.png")).getImage(); 
-    public static final BufferedImage player_stand1 = (new LoadImage("images/player_stand_1.png")).getImage(); 
+    public static final BufferedImage player_stand1 = (new LoadImage("images/player_stand_1.png")).getImage();
     public static final BufferedImage player_stand2 = (new LoadImage("images/player_stand_2.png")).getImage();
+    public static final BufferedImage player_dead1 = (new LoadImage("images/player_dead_1.png")).getImage();
+    public static final BufferedImage player_dead2 = (new LoadImage("images/player_dead_2.png")).getImage();
+    public static final BufferedImage player_dead3 = (new LoadImage("images/player_dead_3.png")).getImage();
 
     public static final BufferedImage balloom_left = (new LoadImage("images/balloom_left.png")).getImage(); 
     public static final BufferedImage balloom_left1 = (new LoadImage("images/balloom_left_1.png")).getImage(); 
@@ -67,13 +70,13 @@ public class Image {
     public static final BufferedImage bomb1 = (new LoadImage("images/bomb_1.png")).getImage();
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
     
-    public static final BufferedImage brick = (new LoadImage("images/brick")).getImage();
-    public static final BufferedImage brick_exploded = (new LoadImage("images/brick_exploded")).getImage();
-    public static final BufferedImage brick_exploded1 = (new LoadImage("images/brick_exploded")).getImage();
-    public static final BufferedImage brick_exploded2 = (new LoadImage("images/brick_exploded")).getImage();
+    public static final BufferedImage brick = (new LoadImage("images/brick.png")).getImage();
+    public static final BufferedImage brick_exploded = (new LoadImage("images/brick_exploded.png")).getImage();
+    public static final BufferedImage brick_exploded1 = (new LoadImage("images/brick_exploded.png")).getImage();
+    public static final BufferedImage brick_exploded2 = (new LoadImage("images/brick_exploded.png")).getImage();
     
-    public static final BufferedImage grass = (new LoadImage("images/grass")).getImage();
-    public static final BufferedImage wall = (new LoadImage("images/wall")).getImage();
-    public static final BufferedImage portal = (new LoadImage("images/portal")).getImage();
+    public static final BufferedImage grass = (new LoadImage("images/grass.png")).getImage();
+    public static final BufferedImage wall = (new LoadImage("images/wall.png")).getImage();
+    public static final BufferedImage portal = (new LoadImage("images/portal.png")).getImage();
 
 }

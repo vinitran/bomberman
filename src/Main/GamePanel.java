@@ -41,8 +41,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-        // Sound.sound_loop.play();
-        // Sound.sound_loop.loop();
+        Sound.sound_Bomberman.play();
+        Sound.sound_loop.play();
+        Sound.sound_loop.loop();
     }
 
     @Override

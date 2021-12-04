@@ -72,6 +72,8 @@ public class Oneal extends Enemy {
                         break;
                 }
                 break;
+            case "dead":
+                image = Image.oneal_dead;
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }

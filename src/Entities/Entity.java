@@ -17,7 +17,8 @@ public abstract class Entity {
     protected int spriteCounter = 0;
     protected boolean collision = false;
     protected boolean removed = false;
-
+    protected int timeToRemove = 30;
+    
     public abstract void update();
 
     public boolean isRemoved() {

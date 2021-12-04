@@ -24,9 +24,9 @@ public class TileManager extends Tile {
     GamePanel gamePanel;
     public Tile[] tiles;
     public int[][] mapTile;
-    private List<Enemy> enemy = new ArrayList<>();
-    private List<StaticEntity> sEntities = new ArrayList<>();
-    private Player player;
+    public List<Enemy> enemy = new ArrayList<>();
+    public List<StaticEntity> sEntities = new ArrayList<>();
+    public Player player;
 
     public TileManager(GamePanel gp, KeyHandler keyHandler) {
         this.gamePanel = gp;
@@ -35,10 +35,9 @@ public class TileManager extends Tile {
         getTileImage();
         loadMap("levels/level1.txt");
         player = new Player(1, 1, gp, keyHandler);
-        enemy.add(new Balloom(1, 1, gp));
+        enemy.add(new Balloom(20, 1, gp));
         enemy.add(new Oneal(20, 1, gp));
     }
-
     public void getTileImage() {
         try {
             tiles[0] = new Tile();// Grass tile
@@ -100,8 +99,9 @@ public class TileManager extends Tile {
 
     public void update() {
         player.update();
-        enemy.get(0).update();
-        enemy.get(1).update();
+        for (Enemy value : enemy) {
+            value.update();
+        }
     }
 
     public void draw(Graphics2D g2) {
@@ -110,8 +110,8 @@ public class TileManager extends Tile {
         while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
             int worldX = worldCol * gamePanel.tileSize;
             int worldY = worldRow * gamePanel.tileSize;
-            int screenX = worldX; //+ gamePanel.player.worldX;
-            int screenY = worldY; //+ gamePanel.player.worldY;
+            int screenX = worldX;
+            int screenY = worldY;
             int tileNum = mapTile[worldCol][worldRow];
             g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
             worldCol++;
@@ -120,9 +120,21 @@ public class TileManager extends Tile {
                 worldRow++;
             }
         }
+        checkRemoved();
         player.draw(g2);
-        enemy.get(0).draw(g2);
-        enemy.get(1).draw(g2);
-        
+        for (Enemy value : enemy) {
+            value.draw(g2);
+        }
+    }
+
+    public void checkRemoved() {
+        for (int i = 0; i < enemy.size(); i++) {
+            if (enemy.get(i).isRemoved()) {
+                enemy.remove(i);
+            }
+        }
+        if(player.isRemoved()) {
+
+        }
     }
 }

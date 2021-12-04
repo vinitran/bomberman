@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 import Entities.StaticEntity.Bomb;
 import Image.Image;
+import Sound.Sound;
 
 public class Player extends MoveEntity {
     private KeyHandler keyHandler;
-    private ArrayList<Bomb> bombs = new ArrayList<>(); // ds bom
-    private int nBombs; // số bom
-    private int timeSetBombs = 0; // thời gian đặt bom
-
+    private ArrayList<Bomb> bombs = new ArrayList<>();
+    private int nBombs;
+    private int timeSetBombs = 0;
     public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
         super(x, y, gp);
         this.keyHandler = keyH;
@@ -35,13 +35,17 @@ public class Player extends MoveEntity {
     @Override
     public void update() {
         if (!alive) {
-
+            direction = "dead";
+            timeToRemove--;
         } else {
-            if (timeSetBombs < -50)
-                timeSetBombs = 0;
-            else
-                timeSetBombs--;
+            if (timeSetBombs < -50) timeSetBombs = 0; else timeSetBombs--;
             move();
+        }
+        if(timeToRemove == 0) {
+            removed = true;
+        }
+        if(CollisionChecker.CheckEntity(this, gamePanel.tileManager.enemy.get(0))) {
+            alive = false;
         }
     }
 
@@ -56,6 +60,7 @@ public class Player extends MoveEntity {
             direction = "right";
         } else if (keyHandler.spacePressed && nBombs > 0) {
             if (timeSetBombs < 0) {
+                Sound.sound_makeBom.play();
                 int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
                 int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
                 bombs.add(new Bomb(xBomb, yBomb, gamePanel));
@@ -74,18 +79,18 @@ public class Player extends MoveEntity {
             }
         }
         // Check Tile Manager
-        if (!CollisionChecker.checkTile(this, gamePanel)) {
+        if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionChecker.CheckEntity(this, gamePanel.tileManager.enemy.get(0))) {
             if (!CollisionChecker.check(this, gamePanel)) {
                 switch (direction) {
                     case "up":
-                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
-                        break;
+                    screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                    break;
                     case "down":
-                        screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
-                        break;
+                    screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);
+                    break;
                     case "left":
-                        screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
-                        break;
+                    screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
+                    break;
                     case "right":
                         screenY -= ((screenY + solidArea.y) % gamePanel.tileSize - 6);
                         break;
@@ -148,7 +153,6 @@ public class Player extends MoveEntity {
                         image = Image.player_down2;
                         break;
                 }
-                ;
                 break;
             case "left":
                 switch (spriteNum) {
@@ -162,7 +166,6 @@ public class Player extends MoveEntity {
                         image = Image.player_left2;
                         break;
                 }
-                ;
                 break;
             case "right":
                 switch (spriteNum) {
@@ -176,7 +179,6 @@ public class Player extends MoveEntity {
                         image = Image.player_right2;
                         break;
                 }
-                ;
                 break;
             case "stand":
                 switch (spriteNum) {
@@ -190,8 +192,21 @@ public class Player extends MoveEntity {
                         image = Image.player_stand2;
                         break;
                 }
-                ;
                 break;
+            case "dead":
+                switch (spriteNum) {
+                    case 1:
+                        image = Image.player_dead1;
+                        break;
+                    case 2:
+                        image = Image.player_dead2;
+                        break;
+                    case 3:
+                        image = Image.player_dead3;
+                        break;
+                }
+                break;
+
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
         for (Bomb bomb : bombs) {

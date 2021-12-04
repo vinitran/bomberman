@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Image.Image;
+import Sound.Sound;
 import Main.CollisionChecker;
 import Main.GamePanel;
 
 public class Bomb extends StaticEntity {
     private int timeExplode = 120;
-    private int timeAfter = 30;
     private boolean exploded = false;
     List<Flame> flames = new ArrayList<>();
 
@@ -24,6 +24,7 @@ public class Bomb extends StaticEntity {
             timeExplode--;
         } else {
             if (!exploded) {
+                Sound.sound_Bom.play();
                 exploded = true;
                 spriteCounter = 0;
                 spriteNum = 1;
@@ -31,8 +32,8 @@ public class Bomb extends StaticEntity {
             } else {
                 updateFrame();
             }
-            if (timeAfter > 0) {
-                timeAfter--;
+            if (timeToRemove > 0) {
+                timeToRemove--;
             } else {
                 removed = true;
             }
@@ -105,7 +106,7 @@ public class Bomb extends StaticEntity {
                         x++;
                         break;
                 }
-                if (!CollisionChecker.checkFlame(x, y, gamePanel)) {
+                if (true) {//!CollisionChecker.checkFlame(x, y, gamePanel)) {
                     if (j == gamePanel.getBombRadius() - 1) {
                         flames.add(new Flame(x, y, gamePanel, i, true));
                     } else {
