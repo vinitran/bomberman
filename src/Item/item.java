@@ -16,12 +16,32 @@ public class item {
     public int solidAreaDefaultY = 0;
 
     public void draw(Graphics2D g2, GamePanel gamePanel) {
-        for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
-            for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
-                int screenX = maxCol * gamePanel.tileSize;
-                int screenY = maxRow * gamePanel.tileSize;
-                g2.drawImage(image, worldX, worldY, gamePanel.tileSize, gamePanel.tileSize, null);
-            }
+        int scrX = worldX - gamePanel.tileManager.player.getScreenX() + gamePanel.tileManager.player.px;
+        int scrY = worldY - gamePanel.tileManager.player.getScreenY() + gamePanel.tileManager.player.py;
+                //px->srcX
+        //py->scrY
+        //ScreenX->worldX
+        //ScreenY->worldY
+
+        //stop the camera at the edge
+        if (gamePanel.tileManager.player.px > gamePanel.tileManager.player.getScreenX()) {
+            scrX = worldX;
+        }
+        if (gamePanel.tileManager.player.py > gamePanel.tileManager.player.getScreenY()) {
+            scrY = worldY;
+        }
+        int rightOffset = gamePanel.screenWidth - gamePanel.tileManager.player.px;
+        if (rightOffset > gamePanel.worldWidth - gamePanel.tileManager.player.getScreenX()) {
+            scrX = gamePanel.screenWidth - (gamePanel.worldWidth - worldX);
+        }
+        int bottomOffset = gamePanel.screenHeight - gamePanel.tileManager.player.py;
+        if (bottomOffset > gamePanel.worldHeight - gamePanel.tileManager.player.getScreenY()) {
+            scrY = gamePanel.screenHeight - (gamePanel.worldHeight - worldY);
+        }
+
+        g2.drawImage(image, scrX, scrY, gamePanel.tileSize, gamePanel.tileSize, null);
+        if (gamePanel.tileManager.player.px  > gamePanel.tileManager.player.getScreenX() || gamePanel.tileManager.player.py > gamePanel.tileManager.player.getScreenY() || rightOffset > gamePanel.worldWidth - gamePanel.tileManager.player.getScreenX() || bottomOffset > gamePanel.worldHeight - gamePanel.tileManager.player.getScreenY()) {
+            g2.drawImage(image, scrX, scrY, gamePanel.tileSize, gamePanel.tileSize, null);
         }
     }
 
