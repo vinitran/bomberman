@@ -48,9 +48,7 @@ public class TileManager extends Tile {
             tiles[2] = new Tile();// Brick tile
             tiles[2].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/brick.png")));
             tiles[2].collision = true;
-            tiles[3] = new Tile();// Portal tile
-            tiles[3].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/portal.png")));
-            tiles[3].collision = true;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,19 +103,29 @@ public class TileManager extends Tile {
     }
 
     public void draw(Graphics2D g2) {
-        int worldCol = 0;
-        int worldRow = 0;
-        while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
-            int worldX = worldCol * gamePanel.tileSize;
-            int worldY = worldRow * gamePanel.tileSize;
-            int screenX = worldX;
-            int screenY = worldY;
-            int tileNum = mapTile[worldCol][worldRow];
-            g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-            worldCol++;
-            if (worldCol == gamePanel.maxWorldCol) {
-                worldCol = 0;
-                worldRow++;
+        // int worldCol = 0;
+        // int worldRow = 0;
+        // while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
+        //     int worldX = worldCol * gamePanel.tileSize;
+        //     int worldY = worldRow * gamePanel.tileSize;
+        //     int screenX = worldX;
+        //     int screenY = worldY;
+        //     int tileNum = mapTile[worldCol][worldRow];
+        //     g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        //     worldCol++;
+        //     if (worldCol == gamePanel.maxWorldCol) {
+        //         worldCol = 0;
+        //         worldRow++;
+        for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
+            for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
+                int screenX = maxCol * gamePanel.tileSize;
+                int screenY = maxRow * gamePanel.tileSize;
+                g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+            }
+        }
+        for (int i=0; i<gamePanel.item.length; i++) {
+            if (gamePanel.item[i]!=null) {
+                gamePanel.item[i].draw(g2, gamePanel);
             }
         }
         checkRemoved();

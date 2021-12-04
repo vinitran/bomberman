@@ -16,10 +16,15 @@ public class Player extends MoveEntity {
     private ArrayList<Bomb> bombs = new ArrayList<>();
     private int nBombs;
     private int timeSetBombs = 0;
+    public boolean flash = false;
+    public boolean gameFinished = false;
+
     public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
         super(x, y, gp);
         this.keyHandler = keyH;
         solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         setDefaultValues();
     }
 
@@ -78,6 +83,8 @@ public class Player extends MoveEntity {
                 nBombs++;
             }
         }
+        int indexCheckC = CollisionChecker.checkItem(this, true, gamePanel);
+        pickUpItem(indexCheckC);
         // Check Tile Manager
         if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionChecker.CheckEntity(this, gamePanel.tileManager.enemy.get(0))) {
             if (!CollisionChecker.check(this, gamePanel)) {
@@ -122,6 +129,27 @@ public class Player extends MoveEntity {
             }
             spriteCounter = 0;
         }
+    }
+    public void pickUpItem(int index) {
+        if (index!=999) {
+            String itemName = gamePanel.item[index].name;
+            switch(itemName) {
+                case "Ghost":
+                    this.speed += 4;
+                    gamePanel.ui.ShowMessage("Ghost");
+                    gamePanel.item[index] = null;
+                    break;
+                case "flash":
+                    flash = true;
+                    gamePanel.ui.ShowMessage("Flash");
+                    gamePanel.item[index] = null;
+                    break;
+                case "Portal":
+                    gameFinished = true;
+                    break;
+            }
+        }
+
     }
 
     @Override

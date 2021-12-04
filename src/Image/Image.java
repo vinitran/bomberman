@@ -1,6 +1,7 @@
 package Image;
 
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class Image {
     public static final BufferedImage player_up = (new LoadImage("images/player_up.png")).getImage();
@@ -78,5 +79,9 @@ public class Image {
     public static final BufferedImage grass = (new LoadImage("images/grass.png")).getImage();
     public static final BufferedImage wall = (new LoadImage("images/wall.png")).getImage();
     public static final BufferedImage portal = (new LoadImage("images/portal.png")).getImage();
+
+    public static final BufferedImage Ghost = (new LoadImage("images/powerup_speed.png")).getImage();
+    public static final BufferedImage Flash = (new LoadImage("images/flash.png.png")).getImage();
+    public static final BufferedImage Portal = (new LoadImage("images/portal.png")).getImage();
 
 }
