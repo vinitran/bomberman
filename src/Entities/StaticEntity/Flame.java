@@ -1,8 +1,11 @@
 package Entities.StaticEntity;
 
 import java.awt.Graphics2D;
-import Image.Image;
+import java.awt.Rectangle;
 
+import Entities.MoveEntity.MoveEntity;
+import Image.Image;
+import Main.CollisionChecker;
 import Main.GamePanel;
 
 public class Flame extends StaticEntity {
@@ -13,11 +16,18 @@ public class Flame extends StaticEntity {
         super(x, y, gamePanel);
         this.direction = direction;
         this.checkLast = checkLast;
+        solidArea = new Rectangle(0 * gamePanel.scale, 0 * gamePanel.scale, 16 * gamePanel.scale, 16 * gamePanel.scale);
     }
 
     @Override
     public void update() {
-        
+        for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
+            if (CollisionChecker.CheckStaticEntity(moveEntity, this)) {
+                moveEntity.setAlive(false);
+            }
+        }
+
+        //up date nổ brick nữa
     }
 
     @Override

@@ -2,12 +2,16 @@ package Main;
 
 import Entities.MoveEntity.MoveEntity;
 import Entities.StaticEntity.StaticEntity;
+import Entities.StaticEntity.Bomb;
 
 import java.awt.*;
 
 public class CollisionChecker {
 
     public static boolean CheckEntity(MoveEntity moveEntity1, MoveEntity moveEntity2) {
+        if (!moveEntity1.isAlive() || !moveEntity2.isAlive()) {
+            return false;
+        }
         int entityLeftWorldX = moveEntity1.getScreenX() + moveEntity1.getSolidArea().x;
         int entityRightWorldX = moveEntity1.getScreenX() + moveEntity1.getSolidArea().x
                 + moveEntity1.getSolidArea().width;
@@ -39,33 +43,40 @@ public class CollisionChecker {
         rectStaticEntity.y = staticEntity.getScreenY() + staticEntity.getSolidArea().y;
         rectStaticEntity.width = staticEntity.getSolidArea().width;
         rectStaticEntity.height = staticEntity.getSolidArea().height;
-
-        if (isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
-                && isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
-                && isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity)
-                && isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity)) {
-            return false;
-        } else {
-            switch (moveEntity.getDirection()) {
-                case "up": {
-                    return isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
-                            || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity);
-                }
-                case "down": {
-                    return isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
-                            || isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity);
-                }
-                case "left": {
-                    return isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
-                            || isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity);
-                }
-                case "right": {
-                    return isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity)
-                            || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity);
+        if (staticEntity instanceof Bomb) {
+            if (!((Bomb) staticEntity).isExploded()) {
+                if (isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
+                        && isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
+                        && isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity)
+                        && isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity)) {
+                    return false;
+                } else {
+                    switch (moveEntity.getDirection()) {
+                        case "up": {
+                            return isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
+                                    || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity);
+                        }
+                        case "down": {
+                            return isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
+                                    || isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity);
+                        }
+                        case "left": {
+                            return isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
+                                    || isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity);
+                        }
+                        case "right": {
+                            return isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity)
+                                    || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity);
+                        }
+                    }
+                    return false;
                 }
             }
-            return false;
         }
+        return isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
+                || isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
+                || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity)
+                || isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectStaticEntity);
 
     }
 

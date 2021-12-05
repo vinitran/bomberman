@@ -7,7 +7,6 @@ import Main.KeyHandler;
 import java.awt.*;
 import java.util.ArrayList;
 
-import Entities.MoveEntity.enemy.Enemy;
 import Entities.StaticEntity.Bomb;
 import Image.Image;
 import Sound.Sound;
@@ -21,7 +20,6 @@ public class Player extends MoveEntity {
     public int px;
     public int py;
     private boolean CollisionBomb = false;
-    private boolean CollisionEnemy = false;
 
     public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
         super(x, y, gp);
@@ -60,6 +58,7 @@ public class Player extends MoveEntity {
             else
                 timeSetBombs--;
             move();
+            makeBomb();
         }
         if (timeToRemove == 0) {
             removed = true;
@@ -67,17 +66,15 @@ public class Player extends MoveEntity {
         // if (CollisionChecker.CheckEntity(this, gamePanel.tileManager.enemy.get(0))) {
         // alive = false;
         // }
-        makeBomb();
     }
 
     public void checkCollision() {
-        for (Enemy value : gamePanel.tileManager.enemy) {
-            if (CollisionChecker.CheckEntity(this, value)) {
-                alive = false;
-                CollisionEnemy = true;
-                break;
-            } else {
-                CollisionEnemy = false;
+        for (MoveEntity value : gamePanel.tileManager.MoveEntities) {
+            if (!(value instanceof Player)) {
+                if (CollisionChecker.CheckEntity(this, value)) {
+                    alive = false;
+                    break;
+                }
             }
         }
         if (bombs.size() != 0) {
@@ -86,6 +83,7 @@ public class Player extends MoveEntity {
                     if (value.isExploded()) {
                         alive = false;
                     }
+                    CollisionBomb = true;
                     break;
                 } else {
                     CollisionBomb = false;
@@ -132,7 +130,7 @@ public class Player extends MoveEntity {
             direction = "stand";
         }
         // Check Tile Manager
-        if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionEnemy && !CollisionBomb) {
+        if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionBomb) {
             if (!CollisionChecker.check(this, gamePanel)) {
                 switch (direction) {
                     case "up":
@@ -190,6 +188,9 @@ public class Player extends MoveEntity {
 
     @Override
     public void draw(Graphics2D g2) {
+        for (Bomb bomb : bombs) {
+            bomb.draw(g2);
+        }
         image = null;
         if (!removed) {
             spriteCounter++;
@@ -203,7 +204,7 @@ public class Player extends MoveEntity {
                 }
                 spriteCounter = 0;
             }
-            
+
             switch (direction) {
                 case "up":
                     switch (spriteNum) {
@@ -303,8 +304,6 @@ public class Player extends MoveEntity {
 
             g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
         }
-        for (Bomb bomb : bombs) {
-            bomb.draw(g2);
-        }
+
     }
 }
