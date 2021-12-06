@@ -252,25 +252,25 @@ public class Player extends MoveEntity {
                     }
                     break;
             }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-        // int x = px;
-            // int y = py;
-            // if (px > screenX) {
-            //     px = screenX;
-            // }
-            // if (py > screenY) {
-            //     py = screenY;
-            // }
-            // int rightOffset = gamePanel.screenWidth - px;
-            // if (rightOffset > gamePanel.worldWidth - getScreenX()) {
-            //     x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
-            // }
-            // int bottomOffset = gamePanel.screenHeight - py;
-            // if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
-            //     y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
-            // }
+        ///g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        int x = px;
+            int y = py;
+            if (px > screenX) {
+                px = screenX;
+            }
+            if (py > screenY) {
+                py = screenY;
+            }
+            int rightOffset = gamePanel.screenWidth - px;
+            if (rightOffset > gamePanel.worldWidth - getScreenX()) {
+                x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+            }
+            int bottomOffset = gamePanel.screenHeight - py;
+            if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
+                y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+            }
 
-            // g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
         }
 
     }
