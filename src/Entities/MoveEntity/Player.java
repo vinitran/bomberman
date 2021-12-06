@@ -5,7 +5,6 @@ import Main.GamePanel;
 import Main.KeyHandler;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import Entities.StaticEntity.Bomb;
 import Image.Image;
@@ -13,17 +12,14 @@ import Sound.Sound;
 
 public class Player extends MoveEntity {
     private KeyHandler keyHandler;
-    private ArrayList<Bomb> bombs = new ArrayList<>();
-    private int nBombs;
     private int timeSetBombs = 0;
     public boolean flash = false;
     public int px;
     public int py;
-    private boolean CollisionBomb = false;
 
-    public Player(int x, int y, GamePanel gp, KeyHandler keyH) {
+    public Player(int x, int y, GamePanel gp) {
         super(x, y, gp);
-        this.keyHandler = keyH;
+        this.keyHandler = gamePanel.getKeyHandler();
         solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -35,8 +31,8 @@ public class Player extends MoveEntity {
     public void setDefaultValues() {
         // worldX = 0;
         // worldY = 0;
-        gamePanel.setBombRadius(2);
-        nBombs = 2;
+        gamePanel.bombRadius = 2;
+        gamePanel.nBombs = 2;
         speed = 2;
         direction = "stand";
     }
@@ -58,7 +54,6 @@ public class Player extends MoveEntity {
             else
                 timeSetBombs--;
             move();
-            makeBomb();
         }
         if (timeToRemove == 0) {
             removed = true;
@@ -77,44 +72,19 @@ public class Player extends MoveEntity {
                 }
             }
         }
-        if (bombs.size() != 0) {
-            for (Bomb value : bombs) {
-                if (CollisionChecker.CheckStaticEntity(this, value)) {
-                    if (value.isExploded()) {
-                        alive = false;
-                    }
-                    CollisionBomb = true;
-                    break;
-                } else {
-                    CollisionBomb = false;
-                }
-            }
-        }
 
     }
 
-    public void makeBomb() {
-        if (keyHandler.spacePressed && nBombs > 0) {
-            if (timeSetBombs < 0) {
-                Sound.sound_makeBom.play();
-
-                int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
-                int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
-                bombs.add(new Bomb(xBomb, yBomb, gamePanel));
-                nBombs--;
-                timeSetBombs = 30;
-            }
+    public Bomb makeBomb() {
+        if (timeSetBombs < 0) {
+            int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
+            int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
+            timeSetBombs = 30;
+            return new Bomb(xBomb, yBomb, gamePanel);
         }
-        for (int i = 0; i < bombs.size(); i++) {
-            if (!bombs.get(i).isRemoved()) {
-                bombs.get(i).update();
-            } else {
-                bombs.remove(i);
-                nBombs++;
-            }
-        }
-        int indexCheckC = CollisionChecker.checkItem(this, true, gamePanel);
-        pickUpItem(indexCheckC);
+        return null;
+        // int indexCheckC = CollisionChecker.checkItem(this, true, gamePanel);
+        // pickUpItem(indexCheckC);
     }
 
     private void move() {
@@ -169,7 +139,7 @@ public class Player extends MoveEntity {
             String itemName = gamePanel.item[index].name;
             switch (itemName) {
                 case "Ghost":
-                    this.speed += 4;
+                    this.speed += 1;
                     gamePanel.ui.ShowMessage("Ghost");
                     gamePanel.item[index] = null;
                     break;
@@ -188,9 +158,6 @@ public class Player extends MoveEntity {
 
     @Override
     public void draw(Graphics2D g2) {
-        for (Bomb bomb : bombs) {
-            bomb.draw(g2);
-        }
         image = null;
         if (!removed) {
             spriteCounter++;
@@ -285,24 +252,25 @@ public class Player extends MoveEntity {
                     }
                     break;
             }
-            int x = px;
-            int y = py;
-            if (px > screenX) {
-                px = screenX;
-            }
-            if (py > screenY) {
-                py = screenY;
-            }
-            int rightOffset = gamePanel.screenWidth - px;
-            if (rightOffset > gamePanel.worldWidth - getScreenX()) {
-                x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
-            }
-            int bottomOffset = gamePanel.screenHeight - py;
-            if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
-                y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
-            }
+        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        // int x = px;
+            // int y = py;
+            // if (px > screenX) {
+            //     px = screenX;
+            // }
+            // if (py > screenY) {
+            //     py = screenY;
+            // }
+            // int rightOffset = gamePanel.screenWidth - px;
+            // if (rightOffset > gamePanel.worldWidth - getScreenX()) {
+            //     x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+            // }
+            // int bottomOffset = gamePanel.screenHeight - py;
+            // if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
+            //     y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+            // }
 
-            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+            // g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
         }
 
     }

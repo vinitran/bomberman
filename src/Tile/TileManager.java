@@ -9,12 +9,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
 import Entities.MoveEntity.enemy.Balloom;
 import Entities.MoveEntity.enemy.Oneal;
+import Entities.StaticEntity.Bomb;
+import Entities.StaticEntity.Brick;
+import Entities.StaticEntity.Grass;
 import Entities.StaticEntity.StaticEntity;
+import Entities.StaticEntity.Wall;
 import Entities.MoveEntity.MoveEntity;
 import Entities.MoveEntity.Player;
 
@@ -23,23 +28,25 @@ import static javax.imageio.ImageIO.read;
 public class TileManager extends Tile {
     GamePanel gamePanel;
     public Tile[] tiles;
+    public String[][] map;
     public int[][] mapTile;
     public List<MoveEntity> MoveEntities = new ArrayList<>();
-    public List<StaticEntity> sEntities = new ArrayList<>();
+    public List<StaticEntity> bricks = new ArrayList<>();
+    public List<Bomb> bombs = new LinkedList<>();
     public Player player;
 
-    public TileManager(GamePanel gp, KeyHandler keyHandler) {
+    public TileManager(GamePanel gp) {
         this.gamePanel = gp;
-        mapTile = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
+        map = new String[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
+        mapTile = new int[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
         tiles = new Tile[10];
         getTileImage();
-        loadMap("levels/level1.txt");
-        player = new Player(1, 1, gp, keyHandler);
-        // add moveEntity
-        MoveEntities.add(player);
-        MoveEntities.add(new Balloom(5, 1, gp));
-        MoveEntities.add(new Oneal(20, 1, gp));
+        loadMap("levels/level.txt");
+        // player = new Player(1, 1, gamePanel);
+        // MoveEntities.add(player);
+        MoveEntities.add(new Balloom(5, 1, gamePanel));
     }
+
     public void getTileImage() {
         try {
             tiles[0] = new Tile();// Grass tile
@@ -57,24 +64,50 @@ public class TileManager extends Tile {
     }
 
     public void loadMap(String filePath) {
+        loadFile(filePath);
+        for (int i = 0; i < gamePanel.maxWorldRow; i++) {
+            for (int j = 0; j < gamePanel.maxWorldCol; j++) {
+                mapTile[i][j] = 0;
+                switch (map[i][j]) {
+                    case "p": {
+                        player = new Player(j, i, gamePanel);
+                        MoveEntities.add(player);
+                    }
+                        break;
+                    case "1": {
+                        MoveEntities.add(new Balloom(j, i, gamePanel));
+                    }
+                        break;
+                    case "2": {
+                        MoveEntities.add(new Oneal(j, i, gamePanel));
+                    }
+                        break;
+                    case "#": {
+                        //sEntities.add(new Wall(j, i, gamePanel));
+                        mapTile[i][j] = 1;
+                    }
+                        break;
+                    case "*": {
+                        bricks.add(new Brick(j, i, gamePanel));
+                        mapTile[i][j] = 2;
+                    }
+                        break;
+                }
+                if (mapTile[i][j] == 0) {
+                    //sEntities.add(new Grass(j, i, gamePanel));
+                }
+            }
+        }
+    }
+
+    public void loadFile(String filePath) {
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
             assert is != null;
             BufferedReader br = new BufferedReader((new InputStreamReader(is)));
-            int col = 0;
-            int row = 0;
-            while(col < gamePanel.maxWorldCol && row < gamePanel.maxWorldRow) {
+            for (int i = 0; i < gamePanel.maxWorldRow; i++) {
                 String line = br.readLine();
-                while(col < gamePanel.maxWorldCol) {
-                    String[] numbers = line.split("");
-                    int num = Integer.parseInt(numbers[col]);
-                    mapTile[col][row] = num;
-                    col++;
-                }
-                if(col == gamePanel.maxWorldCol) {
-                    col = 0;
-                    row++;
-                }
+                map[i] = line.split("");
             }
             br.close();
         } catch (Exception e) {
@@ -82,61 +115,69 @@ public class TileManager extends Tile {
         }
     }
 
-    // public void loadFile(String filePath) {
-    //     try {
-    //         InputStream is = getClass().getResourceAsStream(filePath);
-    //         assert is != null;
-    //         BufferedReader br = new BufferedReader((new InputStreamReader(is)));
-    //         for (int i = 0; i < gamePanel.maxWorldRow; i++) {
-    //             String line = br.readLine();
-    //             mapTile[i] = line.split("");
-    //         }
-    //         br.close();
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-
     public void update() {
+        if (gamePanel.getKeyHandler().spacePressed && gamePanel.nBombs > 0) {
+            Bomb newBomb = player.makeBomb();
+            if (newBomb != null) {
+                bombs.add(newBomb);
+                gamePanel.nBombs--;
+            }
+        }
+        deleteBrick();
+        deleteBomb();
         for (MoveEntity value : MoveEntities) {
             value.update();
         }
     }
 
-    public void draw(Graphics2D g2) {
-        for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
-            for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
-                int screenX = maxCol * gamePanel.tileSize;
-                int screenY = maxRow * gamePanel.tileSize;
-                int px = screenX - player.getScreenX() + player.px;
-                int py = screenY - player.getScreenY() + player.py;
-
-                //stop the camera at the edge
-                if (player.px > player.getScreenX()) {
-                    px = screenX;
-                }
-                if (player.py > player.getScreenY()) {
-                    py = screenY;
-                }
-                int rightOffset = gamePanel.screenWidth - player.px;
-                if (rightOffset > gamePanel.worldWidth - player.getScreenX()) {
-                    px = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
-                }
-                int bottomOffset = gamePanel.screenHeight - player.py;
-                if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
-                    py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
-                }
-
-                g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
-                if (player.px  > player.getScreenX() || player.py > player.getScreenY() || rightOffset > gamePanel.worldWidth - player.getScreenX() || bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
-                    g2.drawImage(tiles[mapTile[maxCol][maxRow]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
-                }
+    public void deleteBrick() {
+        for (int i = 0; i < bricks.size(); i++) {
+            if (bricks.get(i).isRemoved()) {
+                bricks.remove(i);
+            } else {
+                bricks.get(i).update();
             }
         }
-        for (int i=0; i<gamePanel.item.length; i++) {
-            if (gamePanel.item[i]!=null) {
-                gamePanel.item[i].draw(g2, gamePanel);
+    }
+
+    public void deleteBomb() {
+        for (int i = 0; i < bombs.size(); i++) {
+            if (!bombs.get(i).isRemoved()) {
+                bombs.get(i).update();
+            } else {
+                bombs.remove(i);
+                gamePanel.nBombs++;
             }
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+        int worldCol = 0;
+        int worldRow = 0;
+        while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
+            int worldX = worldCol * gamePanel.tileSize;
+            int worldY = worldRow * gamePanel.tileSize;
+            int screenX = worldX; //+ gamePanel.player.worldX;
+            int screenY = worldY; //+ gamePanel.player.worldY;
+            int tileNum = mapTile[worldRow][worldCol];
+            g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+            worldCol++;
+            if (worldCol == gamePanel.maxWorldCol) {
+                worldCol = 0;
+                worldRow++;
+            }
+        }
+
+        for (StaticEntity brick : bricks) {
+            brick.draw(g2);
+        }
+        // for (int i=0; i<gamePanel.item.length; i++) {
+        // if (gamePanel.item[i]!=null) {
+        // gamePanel.item[i].draw(g2, gamePanel);
+        // }
+        // }
+        for (Bomb bomb : bombs) {
+            bomb.draw(g2);
         }
         checkRemoved();
         for (MoveEntity value : MoveEntities) {
@@ -150,8 +191,8 @@ public class TileManager extends Tile {
                 MoveEntities.remove(i);
             }
         }
-        if(player.isRemoved()) {
+        // if (player.isRemoved()) {
 
-        }
+        // }
     }
 }

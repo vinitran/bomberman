@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import Entities.MoveEntity.MoveEntity;
 import Image.Image;
 import Sound.Sound;
 import Main.CollisionChecker;
@@ -22,6 +23,7 @@ public class Bomb extends StaticEntity {
 
     @Override
     public void update() {
+        collisionMob();
         if (timeExplode > 0) {
             timeExplode--;
         } else {
@@ -38,6 +40,20 @@ public class Bomb extends StaticEntity {
                 timeToRemove--;
             } else {
                 removed = true;
+            }
+        }
+    }
+
+    private void collisionMob() {
+        for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
+            if (CollisionChecker.CheckStaticEntity(moveEntity, this)) {
+                if (this.isExploded()) {
+                    moveEntity.setAlive(false);
+                }
+                moveEntity.setCollisionBomb(true);
+                break;
+            } else {
+                moveEntity.setCollisionBomb(false);
             }
         }
     }
@@ -93,7 +109,7 @@ public class Bomb extends StaticEntity {
         for (int i = 0; i < 4; i++) {
             x = xt;
             y = yt;
-            for (int j = 0; j < gamePanel.getBombRadius(); j++) {
+            for (int j = 0; j < gamePanel.bombRadius; j++) {
                 switch (i) {
                     case 0:
                         y--;
@@ -108,12 +124,14 @@ public class Bomb extends StaticEntity {
                         x++;
                         break;
                 }
-                if (true) {//!CollisionChecker.checkFlame(x, y, gamePanel)) {
-                    if (j == gamePanel.getBombRadius() - 1) {
+                if (!CollisionChecker.checkFlame(x, y, gamePanel)) {
+                    if (j == gamePanel.bombRadius - 1) {
                         flames.add(new Flame(x, y, gamePanel, i, true));
                     } else {
                         flames.add(new Flame(x, y, gamePanel, i, false));
                     }
+                } else {
+                    break;
                 }
             }
         }

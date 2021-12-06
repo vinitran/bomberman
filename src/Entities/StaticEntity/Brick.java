@@ -6,22 +6,26 @@ import Main.GamePanel;
 import Image.Image;
 
 public class Brick extends StaticEntity {
+    int x, y;
     public Brick(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
+        this.x = x;
+        this.y = y;
     }
 
     @Override
     public void update() {
-        if (removed) {
-            direction = "exploded";
-        } else {
-            direction = "normal";
+        if (gamePanel.tileManager.mapTile[y][x] != 2) {
+            timeToRemove--;
+            if (timeToRemove == 0) {
+                removed = true;
+            }
         }
     }
 
     @Override
     public void draw(Graphics2D g2) {
-        if (removed) {
+        if (timeToRemove < 30) {
             spriteCounter++;
             if (spriteCounter > 10) {
                 if (spriteNum == 1) {
@@ -38,10 +42,10 @@ public class Brick extends StaticEntity {
                     image = Image.brick_exploded;
                     break;
                 case 2:
-                    image = Image.brick_exploded;
+                    image = Image.brick_exploded1;
                     break;
                 case 3:
-                    image = Image.brick_exploded;
+                    image = Image.brick_exploded2;
                     break;
             }
         } else {

@@ -13,20 +13,21 @@ public class GamePanel extends JPanel implements Runnable {
     public final int scale = 2;
 
     public final int tileSize = originalTileSize * scale;
-    public final int maxScreenCol = 20;
-    public final int maxScreenRow = 10;
+    public final int maxScreenCol = 31;
+    public final int maxScreenRow = 13;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
 
-    public final int maxWorldCol = 31;
     public final int maxWorldRow = 13;
-    public final int worldWidth = tileSize * maxWorldCol;
-    public final int worldHeight = tileSize * maxWorldRow;
+    public final int maxWorldCol = 31;
+    public final int worldWidth = tileSize * maxWorldRow;
+    public final int worldHeight = tileSize * maxWorldCol;
     Thread gameThread;
     private int FPS = 60;
     private KeyHandler keyHandler;
     public TileManager tileManager;
-    private int bombRadius; // bán kính bom
+    public int bombRadius = 1; // bán kính bom
+    public int nBombs = 1;
 
 
     public item item[] = new item[10];
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public GamePanel() {
         keyHandler = new KeyHandler(this);
-        tileManager = new TileManager(this, keyHandler);
+        tileManager = new TileManager(this);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -49,9 +50,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-        Sound.sound_Bomberman.play();
-        Sound.sound_loop.play();
-        Sound.sound_loop.loop();
+        // Sound.sound_Bomberman.play();
+        // Sound.sound_loop.play();
+        // Sound.sound_loop.loop();
     }
 
     public void setUpGame() {
@@ -101,11 +102,7 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
-    public int getBombRadius() {
-        return bombRadius;
-    }
-
-    public void setBombRadius(int bombRadius) {
-        this.bombRadius = bombRadius;
+    public KeyHandler getKeyHandler() {
+        return keyHandler;
     }
 }

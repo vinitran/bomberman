@@ -13,10 +13,6 @@ public abstract class Enemy extends MoveEntity {
 
     @Override
     public void update() {
-
-        if (CollisionChecker.CheckEntity(gamePanel.tileManager.player, this)) {
-            alive = false;
-        }
         if (!alive) {
             if (!direction.equals("dead")) {
                 direction = "dead";
@@ -29,13 +25,13 @@ public abstract class Enemy extends MoveEntity {
             move();
         }
         if (timeToRemove == 0) {
-            removed = true; // cần sửa lại 
+            removed = true;
         }
     }
 
     public void move() {
-        if (!AI1.BasicAI(this, gamePanel)) {
-            if (CollisionChecker.checkTile(this, gamePanel)) {
+        if (!AI1.BasicAI(this, gamePanel) || CollisionBomb) {
+            if (CollisionChecker.checkTile(this, gamePanel) || CollisionBomb) {
                 switch (direction) {
                     case "up":
                         direction = "down";

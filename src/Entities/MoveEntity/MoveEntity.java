@@ -9,6 +9,7 @@ public abstract class MoveEntity extends Entity {
     protected int speed;
     protected String direction; 
     protected boolean alive = true;
+    protected boolean CollisionBomb = false;
     
     public MoveEntity(int x, int y, GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -43,4 +44,11 @@ public abstract class MoveEntity extends Entity {
         this.direction = direction;
     }
 
+    public void setCollisionBomb(boolean collisionBomb) {
+        CollisionBomb = collisionBomb;
+    }
+
+    public boolean isCollisionBomb() {
+        return CollisionBomb;
+    }
 }
