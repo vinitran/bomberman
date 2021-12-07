@@ -57,4 +57,8 @@ public abstract class Entity {
     public void setScreenY(int screenY) {
         this.screenY = screenY;
     }
+
+    public void setWorldX(int worldX) {
+        this.worldX = worldX;
+    }
 }

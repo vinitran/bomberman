@@ -101,6 +101,23 @@ public class Balloom extends Enemy {
                         break;
                 }
         }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+            int x = screenX;
+            int y = screenY;
+            if (gamePanel.tileManager.player.px > screenX) {
+                x = screenX;
+            }
+            if (gamePanel.tileManager.player.py > screenY) {
+                y = screenY;
+            }
+            int rightOffset = gamePanel.screenWidth - gamePanel.tileManager.player.px;
+            if (rightOffset > gamePanel.worldWidth - getScreenX()) {
+                x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+            }
+            int bottomOffset = gamePanel.screenHeight - gamePanel.tileManager.player.py;
+            if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
+                y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+            }
+
+            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

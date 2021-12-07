@@ -173,7 +173,7 @@ public class TileManager {
         //         worldCol = 0;
         //         worldRow++;
         //     }
-        // }
+        // } 
         for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
             for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
                 int screenX = maxCol * gamePanel.tileSize;

@@ -1,14 +1,12 @@
 package Entities.MoveEntity;
 
+import Entities.StaticEntity.Bomb;
+import Image.Image;
 import Main.CollisionChecker;
 import Main.GamePanel;
 import Main.KeyHandler;
 
 import java.awt.*;
-
-import Entities.StaticEntity.Bomb;
-import Image.Image;
-import Sound.Sound;
 
 public class Player extends MoveEntity {
     private KeyHandler keyHandler;
@@ -253,13 +251,13 @@ public class Player extends MoveEntity {
                     break;
             }
         ///g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-        int x = px;
+            int x = px;
             int y = py;
             if (px > screenX) {
-                px = screenX;
+                x = screenX;
             }
             if (py > screenY) {
-                py = screenY;
+                y = screenY;
             }
             int rightOffset = gamePanel.screenWidth - px;
             if (rightOffset > gamePanel.worldWidth - getScreenX()) {
