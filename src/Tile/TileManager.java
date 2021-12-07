@@ -24,7 +24,7 @@ import Entities.MoveEntity.Player;
 
 import static javax.imageio.ImageIO.read;
 
-public class TileManager extends Tile {
+public class TileManager {
     GamePanel gamePanel;
     public Tile[] tiles;
     public String[][] map;
@@ -83,7 +83,6 @@ public class TileManager extends Tile {
                     }
                         break;
                     case "#": {
-                        //sEntities.add(new Wall(j, i, gamePanel));
                         mapTile[i][j] = 1;
                     }
                         break;
@@ -92,9 +91,6 @@ public class TileManager extends Tile {
                         mapTile[i][j] = 2;
                     }
                         break;
-                }
-                if (mapTile[i][j] == 0) {
-                    //sEntities.add(new Grass(j, i, gamePanel));
                 }
             }
         }
@@ -115,6 +111,7 @@ public class TileManager extends Tile {
         }
     }
 
+    //update tile
     public void update() {
         if (gamePanel.getKeyHandler().spacePressed && gamePanel.nBombs > 0) {
             Bomb newBomb = player.makeBomb();
@@ -123,14 +120,25 @@ public class TileManager extends Tile {
                 gamePanel.nBombs--;
             }
         }
-        deleteBrick();
-        deleteBomb();
-        for (MoveEntity value : MoveEntities) {
-            value.update();
+        updateBomb();
+        updateBrick();
+        updateMoveEntity();
+
+    }
+
+    // update or delete moveEntity
+    public void updateMoveEntity() {
+        for (int i = 0; i < MoveEntities.size(); i++) {
+            if (MoveEntities.get(i).isRemoved()) {
+                MoveEntities.remove(i);
+            } else {
+                MoveEntities.get(i).update();
+            }
         }
     }
 
-    public void deleteBrick() {
+    // update or delete brick
+    public void updateBrick() {
         for (int i = 0; i < bricks.size(); i++) {
             if (bricks.get(i).isRemoved()) {
                 bricks.remove(i);
@@ -140,7 +148,8 @@ public class TileManager extends Tile {
         }
     }
 
-    public void deleteBomb() {
+    // update or delete bomb
+    public void updateBomb() {
         for (int i = 0; i < bombs.size(); i++) {
             if (!bombs.get(i).isRemoved()) {
                 bombs.get(i).update();
@@ -152,25 +161,51 @@ public class TileManager extends Tile {
     }
 
     public void draw(Graphics2D g2) {
-        int worldCol = 0;
-        int worldRow = 0;
-        while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
-            int worldX = worldCol * gamePanel.tileSize;
-            int worldY = worldRow * gamePanel.tileSize;
-            int screenX = worldX; //+ gamePanel.player.worldX;
-            int screenY = worldY; //+ gamePanel.player.worldY;
-            int tileNum = mapTile[worldRow][worldCol];
-            g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-            worldCol++;
-            if (worldCol == gamePanel.maxWorldCol) {
-                worldCol = 0;
-                worldRow++;
+        // int worldCol = 0;
+        // int worldRow = 0;
+        // while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
+        //     int worldX = worldCol * gamePanel.tileSize;
+        //     int worldY = worldRow * gamePanel.tileSize;
+        //     int screenX = worldX; // + gamePanel.player.worldX;
+        //     int screenY = worldY; // + gamePanel.player.worldY;
+        //     int tileNum = mapTile[worldRow][worldCol];
+        //     g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        //     worldCol++;
+        //     if (worldCol == gamePanel.maxWorldCol) {
+        //         worldCol = 0;
+        //         worldRow++;
+        //     }
+        // }
+        for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
+            for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
+                int screenX = maxCol * gamePanel.tileSize;
+                int screenY = maxRow * gamePanel.tileSize;
+                int px = screenX - player.getScreenX() + player.px;
+                int py = screenY - player.getScreenY() + player.py;
+
+                //stop the camera at the edge
+                if (player.px > player.getScreenX()) {
+                    px = screenX;
+                }
+                if (player.py > player.getScreenY()) {
+                    py = screenY;
+                }
+                int rightOffset = gamePanel.screenWidth - player.px;
+                if (rightOffset > gamePanel.worldWidth - player.getScreenX()) {
+                    px = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
+                }
+                int bottomOffset = gamePanel.screenHeight - player.py;
+                if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
+                    py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
+                }
+
+                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                if (player.px  > player.getScreenX() || player.py > player.getScreenY() || rightOffset > gamePanel.worldWidth - player.getScreenX() || bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
+                    g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                }
             }
         }
 
-        for (StaticEntity brick : bricks) {
-            brick.draw(g2);
-        }
         // for (int i=0; i<gamePanel.item.length; i++) {
         // if (gamePanel.item[i]!=null) {
         // gamePanel.item[i].draw(g2, gamePanel);
@@ -179,20 +214,13 @@ public class TileManager extends Tile {
         for (Bomb bomb : bombs) {
             bomb.draw(g2);
         }
-        checkRemoved();
+        // draw brick
+        // for (StaticEntity brick : bricks) {
+        //     brick.draw(g2);
+        // }
         for (MoveEntity value : MoveEntities) {
             value.draw(g2);
         }
     }
 
-    public void checkRemoved() {
-        for (int i = 0; i < MoveEntities.size(); i++) {
-            if (MoveEntities.get(i).isRemoved()) {
-                MoveEntities.remove(i);
-            }
-        }
-        // if (player.isRemoved()) {
-
-        // }
-    }
 }
