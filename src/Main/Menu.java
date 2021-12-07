@@ -43,7 +43,6 @@ public class Menu implements MouseListener{
                 case 2:
                     gamePanel.gameState = gamePanel.playState;
                     break;
-
             }
             g2.drawImage(Image.start_game,580,250,192,32,null);
             g2.drawImage(Image.continueGame,580,280,192,30,null);
