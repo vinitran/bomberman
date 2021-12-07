@@ -6,6 +6,7 @@ import Tile.TileManager;
 import Item.item;
 import javax.swing.*;
 import java.awt.*;
+import Image.Image;
 
 public class GamePanel extends JPanel implements Runnable {
     // Screen Settings
@@ -13,8 +14,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int scale = 2;
 
     public final int tileSize = originalTileSize * scale;
-    public final int maxScreenCol = 20;
-    public final int maxScreenRow = 10;
+    public final int maxScreenCol = 24;
+    public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
 
@@ -25,9 +26,11 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     private int FPS = 60;
     private KeyHandler keyHandler;
+    private MouseHandler mouseHandler;
     public TileManager tileManager;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
+    public Menu menu;
 
 
     public item item[] = new item[10];
@@ -39,10 +42,13 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public GamePanel() {
         keyHandler = new KeyHandler(this);
+        mouseHandler = new MouseHandler(this);
         tileManager = new TileManager(this);
+        menu = new Menu(this,mouseHandler);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+        this.addMouseListener(mouseHandler);
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
     }
@@ -57,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setUpGame() {
         assetSetter.setObject();
-        gameState = playState;
+        gameState = pauseState;
     }
 
     @Override
@@ -75,7 +81,6 @@ public class GamePanel extends JPanel implements Runnable {
                     remainingTime = 0;
                 }
                 Thread.sleep((long) remainingTime);
-
                 nextDrawTime += drawInterval;
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -97,12 +102,25 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        tileManager.draw(g2);
-        ui.draw(g2);
+        if (gameState == playState) {
+            tileManager.draw(g2);
+            ui.draw(g2);
+        }
+        if (gameState == pauseState) {
+            menu.draw(g2);
+        }
+
         g2.dispose();
     }
 
     public KeyHandler getKeyHandler() {
         return keyHandler;
     }
+    public int getBombRadius() {
+        return bombRadius;
+    }
+
+    public void setBombRadius(int bombRadius) {
+        this.bombRadius = bombRadius;
+     }
 }

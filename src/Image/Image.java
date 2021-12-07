@@ -83,4 +83,9 @@ public class Image {
     public static final BufferedImage wall = (new LoadImage("images/wall.png")).getImage();
     public static final BufferedImage portal = (new LoadImage("images/portal.png")).getImage();
 
+    public static final BufferedImage backGroundGame = (new LoadImage("images/Bomberman.png")).getImage();
+    public static final BufferedImage continueGame = (new LoadImage("images/Continue.png")).getImage();
+    public static final BufferedImage howToPlay = (new LoadImage("images/HowToPlay.png")).getImage();
+    public static final BufferedImage start_game = (new LoadImage("images/start_game.png")).getImage();
+
 }
