@@ -24,7 +24,7 @@ public class Brick extends StaticEntity {
     }
 
     @Override
-    public void draw(Graphics2D g2) {
+    public void setImage(Graphics2D g2) {
         if (timeToRemove < 30) {
             spriteCounter++;
             if (spriteCounter > 10) {
@@ -51,6 +51,6 @@ public class Brick extends StaticEntity {
         } else {
             image = Image.brick;
         }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

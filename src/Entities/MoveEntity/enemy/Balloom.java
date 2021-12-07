@@ -16,7 +16,7 @@ public class Balloom extends Enemy {
     }
 
     @Override
-    public void draw(Graphics2D g2) {
+    public void setImage(Graphics2D g2) {
         spriteCounter++;
         if (spriteCounter > 10) {
             if (spriteNum == 1) {
@@ -101,6 +101,6 @@ public class Balloom extends Enemy {
                         break;
                 }
         }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

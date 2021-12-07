@@ -21,6 +21,7 @@ public abstract class Entity {
     protected int timeToRemove = 30;
     
     public abstract void update();
+    public abstract void draw(Graphics2D g2);
 
     public boolean isRemoved() {
         return removed;

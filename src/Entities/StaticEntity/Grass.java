@@ -14,7 +14,7 @@ public class Grass extends StaticEntity {
     }
 
     @Override
-    public void draw(Graphics2D g2) {
-        g2.drawImage(Image.grass, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+    public void setImage(Graphics2D g2) {
+        image = Image.grass;
     }
 }

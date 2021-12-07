@@ -58,9 +58,6 @@ public class Player extends MoveEntity {
         if (timeToRemove == 0) {
             removed = true;
         }
-        // if (CollisionChecker.CheckEntity(this, gamePanel.tileManager.enemy.get(0))) {
-        // alive = false;
-        // }
     }
 
     public void checkCollision() {
@@ -154,6 +151,12 @@ public class Player extends MoveEntity {
             }
         }
 
+    }
+
+    @Override
+    public void setImage(Graphics2D g2) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override

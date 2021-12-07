@@ -44,7 +44,7 @@ public class TileManager {
         loadMap("levels/level.txt");
         // player = new Player(1, 1, gamePanel);
         // MoveEntities.add(player);
-        MoveEntities.add(new Balloom(5, 1, gamePanel));
+        //MoveEntities.add(new Balloom(5, 1, gamePanel));
     }
 
     public void getTileImage() {
@@ -198,10 +198,15 @@ public class TileManager {
                 if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
                     py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
                 }
-
-                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                int tile = mapTile[maxRow][maxCol];
+                if (tile == 1) {
+                    image = tiles[tile].image;
+                } else {
+                    image = tiles[0].image;
+                }
+                g2.drawImage(image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
                 if (player.px  > player.getScreenX() || player.py > player.getScreenY() || rightOffset > gamePanel.worldWidth - player.getScreenX() || bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
-                    g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                    g2.drawImage(image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
                 }
             }
         }
@@ -215,9 +220,9 @@ public class TileManager {
             bomb.draw(g2);
         }
         // draw brick
-        // for (StaticEntity brick : bricks) {
-        //     brick.draw(g2);
-        // }
+        for (StaticEntity brick : bricks) {
+            brick.draw(g2);
+        }
         for (MoveEntity value : MoveEntities) {
             value.draw(g2);
         }

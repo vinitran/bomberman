@@ -31,7 +31,7 @@ public class Flame extends StaticEntity {
     }
 
     @Override
-    public void draw(Graphics2D g2) {
+    public void setImage(Graphics2D g2) {
         image = null;
         spriteCounter++;
         if (spriteCounter > 10) {
@@ -126,6 +126,6 @@ public class Flame extends StaticEntity {
                 }
             }
         }
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

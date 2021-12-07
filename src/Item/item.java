@@ -39,7 +39,6 @@ public class item {
             scrY = gamePanel.screenHeight - (gamePanel.worldHeight - worldY);
         }
 
-        g2.drawImage(image, scrX, scrY, gamePanel.tileSize, gamePanel.tileSize, null);
         if (gamePanel.tileManager.player.px  > gamePanel.tileManager.player.getScreenX() || gamePanel.tileManager.player.py > gamePanel.tileManager.player.getScreenY() || rightOffset > gamePanel.worldWidth - gamePanel.tileManager.player.getScreenX() || bottomOffset > gamePanel.worldHeight - gamePanel.tileManager.player.getScreenY()) {
             g2.drawImage(image, scrX, scrY, gamePanel.tileSize, gamePanel.tileSize, null);
         }
