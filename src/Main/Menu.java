@@ -48,7 +48,6 @@ public class Menu implements MouseListener{
             g2.drawImage(Image.continueGame,580,280,192,30,null);
             g2.drawImage(Image.howToPlay,580,310,192,33,null);
             index = 0;
-
         }
     }
 
