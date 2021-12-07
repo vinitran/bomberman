@@ -1,7 +1,6 @@
 package Image;
 
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class Image {
     public static final BufferedImage player_up = (new LoadImage("images/player_up.png")).getImage();

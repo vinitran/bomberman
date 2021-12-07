@@ -1,7 +1,6 @@
 package Tile;
 
 import Main.GamePanel;
-import Main.KeyHandler;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -12,14 +11,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.awt.image.BufferedImage;
+
 
 import Entities.MoveEntity.enemy.Balloom;
 import Entities.MoveEntity.enemy.Oneal;
 import Entities.StaticEntity.Bomb;
 import Entities.StaticEntity.Brick;
-import Entities.StaticEntity.Grass;
 import Entities.StaticEntity.StaticEntity;
-import Entities.StaticEntity.Wall;
 import Entities.MoveEntity.MoveEntity;
 import Entities.MoveEntity.Player;
 
@@ -34,6 +33,7 @@ public class TileManager extends Tile {
     public List<StaticEntity> bricks = new ArrayList<>();
     public List<Bomb> bombs = new LinkedList<>();
     public Player player;
+    private BufferedImage image;
 
     public TileManager(GamePanel gp) {
         this.gamePanel = gp;
