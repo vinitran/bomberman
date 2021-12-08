@@ -13,14 +13,10 @@ import java.util.List;
 import java.util.Objects;
 import java.awt.image.BufferedImage;
 
-
-import Entities.MoveEntity.enemy.Balloom;
-import Entities.MoveEntity.enemy.Oneal;
-import Entities.StaticEntity.Bomb;
-import Entities.StaticEntity.Brick;
-import Entities.StaticEntity.StaticEntity;
-import Entities.MoveEntity.MoveEntity;
-import Entities.MoveEntity.Player;
+import Entities.MoveEntity.enemy.*;
+import Entities.StaticEntity.*;
+import Entities.StaticEntity.Item.*;
+import Entities.MoveEntity.*;
 
 import static javax.imageio.ImageIO.read;
 
@@ -30,7 +26,7 @@ public class TileManager {
     public String[][] map;
     public int[][] mapTile;
     public List<MoveEntity> MoveEntities = new ArrayList<>();
-    public List<StaticEntity> bricks = new ArrayList<>();
+    public List<StaticEntity> staticEntities = new ArrayList<>();
     public List<Bomb> bombs = new LinkedList<>();
     public Player player;
     private BufferedImage image;
@@ -44,7 +40,7 @@ public class TileManager {
         loadMap("levels/level.txt");
         // player = new Player(1, 1, gamePanel);
         // MoveEntities.add(player);
-        //MoveEntities.add(new Balloom(5, 1, gamePanel));
+        // MoveEntities.add(new Balloom(5, 1, gamePanel));
     }
 
     public void getTileImage() {
@@ -55,9 +51,11 @@ public class TileManager {
             tiles[1].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/wall.png")));
             tiles[1].collision = true;
             tiles[2] = new Tile();// Brick tile
-            tiles[2].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/brick.png")));
+            tiles[2].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
             tiles[2].collision = true;
-
+            tiles[3] = new Tile();// item
+            tiles[3].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
+            tiles[3].collision = false;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,12 +80,35 @@ public class TileManager {
                         MoveEntities.add(new Oneal(j, i, gamePanel));
                     }
                         break;
+                    case "x": {
+                        //staticEntities.add(new Portal(j, i, gamePanel));
+                        staticEntities.add(new Brick(j, i, gamePanel));
+                        mapTile[i][j] = 2;
+                    }
+                    case "b": {
+                        // staticEntities.add(new BombItem(j, i, gamePanel));
+                        staticEntities.add(new Brick(j, i, gamePanel));
+                        mapTile[i][j] = 2;
+                    }
+                        break;
+                    case "f": {
+                        // staticEntities.add(new FlameItem(j, i, gamePanel));
+                        staticEntities.add(new Brick(j, i, gamePanel));
+                        mapTile[i][j] = 2;
+                    }
+                        break;
+                    case "s": {
+                        // staticEntities.add(new SpeedItem(j, i, gamePanel));
+                        staticEntities.add(new Brick(j, i, gamePanel));
+                        mapTile[i][j] = 2;
+                    }
+                        break;
                     case "#": {
                         mapTile[i][j] = 1;
                     }
                         break;
                     case "*": {
-                        bricks.add(new Brick(j, i, gamePanel));
+                        staticEntities.add(new Brick(j, i, gamePanel));
                         mapTile[i][j] = 2;
                     }
                         break;
@@ -111,7 +132,7 @@ public class TileManager {
         }
     }
 
-    //update tile
+    // update tile
     public void update() {
         if (gamePanel.getKeyHandler().spacePressed && gamePanel.nBombs > 0) {
             Bomb newBomb = player.makeBomb();
@@ -139,11 +160,11 @@ public class TileManager {
 
     // update or delete brick
     public void updateBrick() {
-        for (int i = 0; i < bricks.size(); i++) {
-            if (bricks.get(i).isRemoved()) {
-                bricks.remove(i);
+        for (int i = 0; i < staticEntities.size(); i++) {
+            if (staticEntities.get(i).isRemoved()) {
+                staticEntities.remove(i);
             } else {
-                bricks.get(i).update();
+                staticEntities.get(i).update();
             }
         }
     }
@@ -163,27 +184,29 @@ public class TileManager {
     public void draw(Graphics2D g2) {
         // int worldCol = 0;
         // int worldRow = 0;
-        // while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow) {
-        //     int worldX = worldCol * gamePanel.tileSize;
-        //     int worldY = worldRow * gamePanel.tileSize;
-        //     int screenX = worldX; // + gamePanel.player.worldX;
-        //     int screenY = worldY; // + gamePanel.player.worldY;
-        //     int tileNum = mapTile[worldRow][worldCol];
-        //     g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-        //     worldCol++;
-        //     if (worldCol == gamePanel.maxWorldCol) {
-        //         worldCol = 0;
-        //         worldRow++;
-        //     }
+        // while (worldCol < gamePanel.maxWorldCol && worldRow < gamePanel.maxWorldRow)
+        // {
+        // int worldX = worldCol * gamePanel.tileSize;
+        // int worldY = worldRow * gamePanel.tileSize;
+        // int screenX = worldX; // + gamePanel.player.worldX;
+        // int screenY = worldY; // + gamePanel.player.worldY;
+        // int tileNum = mapTile[worldRow][worldCol];
+        // g2.drawImage(tiles[tileNum].image, screenX, screenY, gamePanel.tileSize,
+        // gamePanel.tileSize, null);
+        // worldCol++;
+        // if (worldCol == gamePanel.maxWorldCol) {
+        // worldCol = 0;
+        // worldRow++;
         // }
-        for (int maxCol = 0; maxCol<gamePanel.maxWorldCol; maxCol++) {
-            for (int maxRow = 0; maxRow<gamePanel.maxWorldRow; maxRow++) {
+        // }
+        for (int maxCol = 0; maxCol < gamePanel.maxWorldCol; maxCol++) {
+            for (int maxRow = 0; maxRow < gamePanel.maxWorldRow; maxRow++) {
                 int screenX = maxCol * gamePanel.tileSize;
                 int screenY = maxRow * gamePanel.tileSize;
                 int px = screenX - player.getScreenX() + player.px;
                 int py = screenY - player.getScreenY() + player.py;
 
-                //stop the camera at the edge
+                // stop the camera at the edge
                 if (player.px > player.getScreenX()) {
                     px = screenX;
                 }
@@ -198,16 +221,7 @@ public class TileManager {
                 if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
                     py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
                 }
-                int tile = mapTile[maxRow][maxCol];
-                if (tile == 1) {
-                    image = tiles[tile].image;
-                } else {
-                    image = tiles[0].image;
-                }
-                g2.drawImage(image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
-                if (player.px  > player.getScreenX() || player.py > player.getScreenY() || rightOffset > gamePanel.worldWidth - player.getScreenX() || bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
-                    g2.drawImage(image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
-                }
+                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
             }
         }
 
@@ -220,8 +234,8 @@ public class TileManager {
             bomb.draw(g2);
         }
         // draw brick
-        for (StaticEntity brick : bricks) {
-            brick.draw(g2);
+        for (StaticEntity staticEntity : staticEntities) {
+            staticEntity.draw(g2);
         }
         for (MoveEntity value : MoveEntities) {
             value.draw(g2);

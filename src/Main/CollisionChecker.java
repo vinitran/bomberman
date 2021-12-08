@@ -1,5 +1,6 @@
 package Main;
 
+import Entities.Entity;
 import Entities.MoveEntity.MoveEntity;
 import Entities.StaticEntity.StaticEntity;
 import Entities.StaticEntity.Bomb;
@@ -8,30 +9,17 @@ import java.awt.*;
 
 public class CollisionChecker {
 
-    public static boolean CheckEntity(MoveEntity moveEntity1, MoveEntity moveEntity2) {
-        if (!moveEntity1.isAlive() || !moveEntity2.isAlive()) {
+    public static boolean CheckEntity(MoveEntity moveEntity, Entity entity) {
+        if (!moveEntity.isAlive()) {
             return false;
         }
-        int entityLeftWorldX = moveEntity1.getScreenX() + moveEntity1.getSolidArea().x;
-        int entityRightWorldX = moveEntity1.getScreenX() + moveEntity1.getSolidArea().x
-                + moveEntity1.getSolidArea().width;
-        int entityTopWorldY = moveEntity1.getScreenY() + moveEntity1.getSolidArea().y;
-        int entityBottomWorldY = moveEntity1.getScreenY() + moveEntity1.getSolidArea().y
-                + moveEntity1.getSolidArea().height;
 
-        Rectangle rectEntyity2 = new Rectangle();
-        rectEntyity2.x = moveEntity2.getScreenX() + moveEntity2.getSolidArea().x;
-        rectEntyity2.y = moveEntity2.getScreenY() + moveEntity2.getSolidArea().y;
-        rectEntyity2.width = moveEntity2.getSolidArea().width;
-        rectEntyity2.height = moveEntity2.getSolidArea().height;
+        if (entity instanceof MoveEntity) {
+            if (!((MoveEntity) entity).isAlive()) {
+                return false;
+            }
+        }
 
-        return isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectEntyity2)
-                || isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectEntyity2)
-                || isPointInsideRect(entityRightWorldX, entityTopWorldY, rectEntyity2)
-                || isPointInsideRect(entityRightWorldX, entityBottomWorldY, rectEntyity2);
-    }
-
-    public static boolean CheckStaticEntity(MoveEntity moveEntity, StaticEntity staticEntity) {
         int entityLeftWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
         int entityRightWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x + moveEntity.getSolidArea().width;
         int entityTopWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
@@ -39,12 +27,12 @@ public class CollisionChecker {
                 + moveEntity.getSolidArea().height;
 
         Rectangle rectStaticEntity = new Rectangle();
-        rectStaticEntity.x = staticEntity.getScreenX() + staticEntity.getSolidArea().x;
-        rectStaticEntity.y = staticEntity.getScreenY() + staticEntity.getSolidArea().y;
-        rectStaticEntity.width = staticEntity.getSolidArea().width;
-        rectStaticEntity.height = staticEntity.getSolidArea().height;
-        if (staticEntity instanceof Bomb) {
-            if (!((Bomb) staticEntity).isExploded()) {
+        rectStaticEntity.x = entity.getScreenX() + entity.getSolidArea().x;
+        rectStaticEntity.y = entity.getScreenY() + entity.getSolidArea().y;
+        rectStaticEntity.width = entity.getSolidArea().width;
+        rectStaticEntity.height = entity.getSolidArea().height;
+        if (entity instanceof Bomb) {
+            if (!((Bomb) entity).isExploded()) {
                 if (isPointInsideRect(entityLeftWorldX, entityTopWorldY, rectStaticEntity)
                         && isPointInsideRect(entityLeftWorldX, entityBottomWorldY, rectStaticEntity)
                         && isPointInsideRect(entityRightWorldX, entityTopWorldY, rectStaticEntity)
@@ -272,10 +260,13 @@ public class CollisionChecker {
         if (x < gamePanel.maxWorldCol && y < gamePanel.maxWorldRow && x >= 0 && y >= 0) {
             int tile = gamePanel.tileManager.mapTile[y][x];
             // remove brick
-            if (tile == 0) {
+            if (tile == 3) {
+                gamePanel.tileManager.mapTile[y][x] = 0;
+                return false;
+            } else if (tile == 0) {
                 return false;
             } else if (tile == 2) {
-                gamePanel.tileManager.mapTile[y][x] = 0;
+                gamePanel.tileManager.mapTile[y][x] = 3;
             }
         }
         return true;

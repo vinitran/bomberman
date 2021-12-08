@@ -18,7 +18,6 @@ public class Bomb extends StaticEntity {
 
     public Bomb(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        solidArea = new Rectangle(0 * gamePanel.scale, 0 * gamePanel.scale, 16 * gamePanel.scale, 16 * gamePanel.scale);
     }
 
     @Override
@@ -46,7 +45,7 @@ public class Bomb extends StaticEntity {
 
     private void collisionMob() {
         for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
-            if (CollisionChecker.CheckStaticEntity(moveEntity, this)) {
+            if (CollisionChecker.CheckEntity(moveEntity, this)) {
                 if (this.isExploded()) {
                     moveEntity.setAlive(false);
                 }

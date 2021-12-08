@@ -76,6 +76,16 @@ public class Player extends MoveEntity {
         if (timeSetBombs < 0) {
             int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
             int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
+            for (Bomb bomb : gamePanel.tileManager.bombs) {
+                if (bomb.getScreenX() == xBomb * gamePanel.tileSize) {
+                    if (bomb.getScreenY() == yBomb * gamePanel.tileSize) {
+                        return null;
+                    }
+                }
+            }
+            if (timeToRemove < 30) {
+                return null;
+            }
             timeSetBombs = 30;
             return new Bomb(xBomb, yBomb, gamePanel);
         }
@@ -255,8 +265,7 @@ public class Player extends MoveEntity {
                     }
                     break;
             }
-        ///g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
-        int x = px;
+            int x = px;
             int y = py;
             if (px > screenX) {
                 px = screenX;

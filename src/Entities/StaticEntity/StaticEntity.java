@@ -11,6 +11,7 @@ public abstract class StaticEntity extends Entity {
         this.gamePanel = gamePanel;
         this.screenX = x * gamePanel.tileSize;
         this.screenY = y * gamePanel.tileSize; 
+        solidArea = new Rectangle(0 * gamePanel.scale, 0 * gamePanel.scale, 16 * gamePanel.scale, 16 * gamePanel.scale);
     }
 
     public abstract void update();

@@ -16,13 +16,12 @@ public class Flame extends StaticEntity {
         super(x, y, gamePanel);
         this.direction = direction;
         this.checkLast = checkLast;
-        solidArea = new Rectangle(0 * gamePanel.scale, 0 * gamePanel.scale, 16 * gamePanel.scale, 16 * gamePanel.scale);
     }
 
     @Override
     public void update() {
         for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
-            if (CollisionChecker.CheckStaticEntity(moveEntity, this)) {
+            if (CollisionChecker.CheckEntity(moveEntity, this)) {
                 moveEntity.setAlive(false);
             }
         }
