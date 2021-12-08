@@ -21,21 +21,21 @@ public class Portal extends StaticEntity {
     public void update() {
         int x = screenY / gamePanel.tileSize;
         int y = screenX / gamePanel.tileSize;
-        int tile = gamePanel.tileManager.mapTile[x][y];
+        int tile = gamePanel.BoardManager.mapTile[x][y];
         if (tile == 3) {
             appear = true;
         } else if (tile == 0) {
-            gamePanel.tileManager.mapTile[x][y] = 3;
+            gamePanel.BoardManager.mapTile[x][y] = 3;
         }
         nextLevel = true;
-        for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
+        for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
             if (moveEntity instanceof Enemy) {
                 nextLevel = false;
                 break;
             }
         }
         if (appear && nextLevel) {
-            for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
+            for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
                 if (moveEntity instanceof Player) {
                     if (CollisionChecker.CheckEntity(moveEntity, this)) {
                         gamePanel.ui.gameFinished = true; // end (or next level)

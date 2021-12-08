@@ -41,23 +41,23 @@ public class KeyHandler implements KeyListener {
             }
         }
         if (code == KeyEvent.VK_F) {
-            if (gamePanel.tileManager.player.flash && !CollisionChecker.checkTile(gamePanel.tileManager.player, gamePanel, 2)) {
-                switch (gamePanel.tileManager.player.getDirection()) {
+            if (gamePanel.BoardManager.player.flash && !CollisionChecker.checkTile(gamePanel.BoardManager.player, gamePanel, 2)) {
+                switch (gamePanel.BoardManager.player.getDirection()) {
                     case "right":
-                        this.gamePanel.tileManager.player
-                                .setScreenX(this.gamePanel.tileManager.player.getScreenX() + gamePanel.tileSize * 2);
+                        this.gamePanel.BoardManager.player
+                                .setScreenX(this.gamePanel.BoardManager.player.getScreenX() + gamePanel.tileSize * 2);
                         break;
                     case "left":
-                        this.gamePanel.tileManager.player
-                                .setScreenX(this.gamePanel.tileManager.player.getScreenX() - gamePanel.tileSize * 2);
+                        this.gamePanel.BoardManager.player
+                                .setScreenX(this.gamePanel.BoardManager.player.getScreenX() - gamePanel.tileSize * 2);
                         break;
                     case "up":
-                        this.gamePanel.tileManager.player
-                                .setScreenY(this.gamePanel.tileManager.player.getScreenY() - gamePanel.tileSize * 2);
+                        this.gamePanel.BoardManager.player
+                                .setScreenY(this.gamePanel.BoardManager.player.getScreenY() - gamePanel.tileSize * 2);
                         break;
                     case "down":
-                        this.gamePanel.tileManager.player
-                                .setScreenY(this.gamePanel.tileManager.player.getScreenY() + gamePanel.tileSize * 2);
+                        this.gamePanel.BoardManager.player
+                                .setScreenY(this.gamePanel.BoardManager.player.getScreenY() + gamePanel.tileSize * 2);
                         break;
                 }
             }

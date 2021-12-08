@@ -15,7 +15,7 @@ public class Flash extends Item {
     public void update() {
         super.update();
         if (useItem && removed) {
-            gamePanel.tileManager.player.flash = true;
+            gamePanel.BoardManager.player.flash = true;
         }
     }
 

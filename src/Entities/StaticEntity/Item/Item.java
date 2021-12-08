@@ -19,19 +19,19 @@ public abstract class Item extends StaticEntity {
     public void update() {
         int x = screenY / gamePanel.tileSize;
         int y = screenX / gamePanel.tileSize;
-        int tile = gamePanel.tileManager.mapTile[x][y];
+        int tile = gamePanel.BoardManager.mapTile[x][y];
         if (tile == 3) {
             appear = true;
         } else if (tile == 0) {
             removed = true;
         }
         if (appear && !removed) {
-            for (MoveEntity moveEntity : gamePanel.tileManager.MoveEntities) {
+            for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
                 if (CollisionChecker.CheckEntity(moveEntity, this)) {
                     if (moveEntity instanceof Player) {
                         useItem = true;
                     }
-                    gamePanel.tileManager.mapTile[x][y] = 0;
+                    gamePanel.BoardManager.mapTile[x][y] = 0;
                     removed = true;
                     break;
                 }

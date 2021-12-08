@@ -26,26 +26,26 @@ public abstract class Entity {
 
     public  void draw(Graphics2D g2) {
         setImage(g2);
-        int scrX = screenX - gamePanel.tileManager.player.getScreenX() + gamePanel.tileManager.player.px;
-        int scrY = screenY - gamePanel.tileManager.player.getScreenY() + gamePanel.tileManager.player.py;
+        int scrX = screenX - gamePanel.BoardManager.player.getScreenX() + gamePanel.BoardManager.player.px;
+        int scrY = screenY - gamePanel.BoardManager.player.getScreenY() + gamePanel.BoardManager.player.py;
                 //px->srcX
         //py->scrY
         //ScreenX->worldX
         //ScreenY->worldY
 
         //stop the camera at the edge
-        if (gamePanel.tileManager.player.px > gamePanel.tileManager.player.getScreenX()) {
+        if (gamePanel.BoardManager.player.px > gamePanel.BoardManager.player.getScreenX()) {
             scrX = screenX;
         }
-        if (gamePanel.tileManager.player.py > gamePanel.tileManager.player.getScreenY()) {
+        if (gamePanel.BoardManager.player.py > gamePanel.BoardManager.player.getScreenY()) {
             scrY = screenY;
         }
-        int rightOffset = gamePanel.screenWidth - gamePanel.tileManager.player.px;
-        if (rightOffset > gamePanel.worldWidth - gamePanel.tileManager.player.getScreenX()) {
+        int rightOffset = gamePanel.screenWidth - gamePanel.BoardManager.player.px;
+        if (rightOffset > gamePanel.worldWidth - gamePanel.BoardManager.player.getScreenX()) {
             scrX = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
         }
-        int bottomOffset = gamePanel.screenHeight - gamePanel.tileManager.player.py;
-        if (bottomOffset > gamePanel.worldHeight - gamePanel.tileManager.player.getScreenY()) {
+        int bottomOffset = gamePanel.screenHeight - gamePanel.BoardManager.player.py;
+        if (bottomOffset > gamePanel.worldHeight - gamePanel.BoardManager.player.getScreenY()) {
             scrY = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
         }
         g2.drawImage(image, scrX, scrY, gamePanel.tileSize, gamePanel.tileSize, null);
