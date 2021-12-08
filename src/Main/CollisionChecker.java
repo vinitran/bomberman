@@ -167,12 +167,14 @@ public class CollisionChecker {
         if (x < gamePanel.maxWorldCol && y < gamePanel.maxWorldRow && x >= 0 && y >= 0) {
             int tile = gamePanel.BoardManager.mapTile[y][x];
             // remove brick
-            if (tile == 3) {
-                gamePanel.BoardManager.mapTile[y][x] = 0;
-                return false;
-            } else if (tile == 0) {
+            if (tile == 0) {
                 return false;
             } else if (tile == 2) {
+                gamePanel.BoardManager.mapTile[y][x] = 0;
+            } else if (tile == 3) {
+                gamePanel.BoardManager.mapTile[y][x] = 0;
+                return false;
+            } else if (tile == 4) {
                 gamePanel.BoardManager.mapTile[y][x] = 3;
             }
         }

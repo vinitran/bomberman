@@ -25,8 +25,6 @@ public class Flame extends StaticEntity {
                 moveEntity.setAlive(false);
             }
         }
-
-        //up date nổ brick nữa
     }
 
     @Override

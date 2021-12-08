@@ -15,7 +15,8 @@ public class Brick extends StaticEntity {
 
     @Override
     public void update() {
-        if (gamePanel.BoardManager.mapTile[y][x] != 2) {
+        int tile = gamePanel.BoardManager.mapTile[y][x];
+        if (tile != 2 && tile != 4) {
             timeToRemove--;
             if (timeToRemove == 0) {
                 removed = true;
@@ -51,6 +52,5 @@ public class Brick extends StaticEntity {
         } else {
             image = Image.brick;
         }
-        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

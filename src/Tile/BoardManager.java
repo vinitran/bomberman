@@ -55,6 +55,9 @@ public class BoardManager {
             tiles[3] = new Tile();// item
             tiles[3].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
             tiles[3].collision = false;
+            tiles[4] = new Tile();// Brick tile have item
+            tiles[4].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
+            tiles[4].collision = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,31 +85,31 @@ public class BoardManager {
                     case "x": {
                         staticEntities.add(new Portal(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
-                        mapTile[i][j] = 2;
+                        mapTile[i][j] = 4;
                     }
                         break;
                     case "b": {
                         staticEntities.add(new BombItem(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
-                        mapTile[i][j] = 2;
+                        mapTile[i][j] = 4;
                     }
                         break;
                     case "f": {
                         staticEntities.add(new FlameItem(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
-                        mapTile[i][j] = 2;
+                        mapTile[i][j] = 4;
                     }
                         break;
                     case "s": {
                         staticEntities.add(new SpeedItem(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
-                        mapTile[i][j] = 2;
+                        mapTile[i][j] = 4;
                     }
                         break;
                     case "t": {
                         staticEntities.add(new Flash(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
-                        mapTile[i][j] = 2;
+                        mapTile[i][j] = 4;
                     }
                         break;
                     case "#": {
