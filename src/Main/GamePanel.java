@@ -1,11 +1,9 @@
 package Main;
 
-import Entities.StaticEntity.StaticEntity;
-import Tile.TileManager;
+import Tile.BoardManager;
 
 import javax.swing.*;
 import java.awt.*;
-import Image.Image;
 
 public class GamePanel extends JPanel implements Runnable {
     // Screen Settings
@@ -26,23 +24,22 @@ public class GamePanel extends JPanel implements Runnable {
     private int FPS = 60;
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
-    public TileManager tileManager;
+    public BoardManager BoardManager;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
     public Menu menu;
 
-
-    public StaticEntity item[] = new StaticEntity[10];
     public UI ui = new UI(this);
 
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
+
     public GamePanel() {
         keyHandler = new KeyHandler(this);
         mouseHandler = new MouseHandler(this);
-        tileManager = new TileManager(this);
-        menu = new Menu(this,mouseHandler);
+        BoardManager = new BoardManager(this);
+        menu = new Menu(this, mouseHandler);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -88,10 +85,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         if (gameState == playState) {
-            tileManager.update();
+            BoardManager.update();
         }
         if (gameState == pauseState) {
-            //nothing happend
+            // nothing happend
         }
 
     }
@@ -100,7 +97,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (gameState == playState) {
-            tileManager.draw(g2);
+            BoardManager.draw(g2);
             ui.draw(g2);
         }
         if (gameState == pauseState) {
@@ -113,11 +110,12 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler getKeyHandler() {
         return keyHandler;
     }
+
     public int getBombRadius() {
         return bombRadius;
     }
 
     public void setBombRadius(int bombRadius) {
         this.bombRadius = bombRadius;
-     }
+    }
 }

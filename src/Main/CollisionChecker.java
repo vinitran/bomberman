@@ -68,7 +68,7 @@ public class CollisionChecker {
 
     }
 
-    public static boolean checkTile(MoveEntity moveEntity, GamePanel gamePanel) {
+    public static boolean checkTile(MoveEntity moveEntity, GamePanel gamePanel, int type) {
         int entityLeftWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
         int entityRightWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x + moveEntity.getSolidArea().width;
         int entityTopWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
@@ -83,7 +83,14 @@ public class CollisionChecker {
         int tileNum1, tileNum2;
         switch (moveEntity.getDirection()) {
             case "up": {
-                entityTopRow = (entityTopWorldY - moveEntity.getSpeed()) / gamePanel.tileSize;
+                if (type == 0) {
+                    entityTopRow = (entityTopWorldY - moveEntity.getSpeed()) / gamePanel.tileSize;
+                } else {
+                    entityTopRow -= type;
+                }
+                if (entityTopRow < 0) {
+                    return true;
+                }
                 tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityLeftCol];
                 tileNum2 = gamePanel.tileManager.mapTile[entityTopRow][entityRightCol];
                 if (gamePanel.tileManager.tiles[tileNum1].collision
@@ -93,7 +100,14 @@ public class CollisionChecker {
             }
                 break;
             case "down": {
-                entityBottomRow = (entityBottomWorldY + moveEntity.getSpeed()) / gamePanel.tileSize;
+                if (type == 0) {
+                    entityBottomRow = (entityBottomWorldY + moveEntity.getSpeed()) / gamePanel.tileSize;
+                } else {
+                    entityBottomRow += type;
+                }
+                if (entityBottomRow >= gamePanel.tileManager.mapTile.length) {
+                    return true;
+                }
                 tileNum1 = gamePanel.tileManager.mapTile[entityBottomRow][entityLeftCol];
                 tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityRightCol];
                 if (gamePanel.tileManager.tiles[tileNum1].collision
@@ -103,7 +117,14 @@ public class CollisionChecker {
             }
                 break;
             case "left": {
-                entityLeftCol = (entityLeftWorldX - moveEntity.getSpeed()) / gamePanel.tileSize;
+                if (type == 0) {
+                    entityLeftCol = (entityLeftWorldX - moveEntity.getSpeed()) / gamePanel.tileSize;
+                } else {
+                    entityLeftCol -= type;
+                }
+                if (entityLeftCol < 0) {
+                    return true;
+                }
                 tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityLeftCol];
                 tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityLeftCol];
                 if (gamePanel.tileManager.tiles[tileNum1].collision
@@ -113,65 +134,17 @@ public class CollisionChecker {
             }
                 break;
             case "right": {
-                entityRightCol = (entityRightWorldX + moveEntity.getSpeed()) / gamePanel.tileSize;
-                tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityRightCol];
-                tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.tileManager.tiles[tileNum1].collision
-                        || gamePanel.tileManager.tiles[tileNum2].collision) {
+                if (type == 0) {
+                    entityRightCol = (entityRightWorldX + moveEntity.getSpeed()) / gamePanel.tileSize;
+                } else {
+                    entityRightCol += type;
+                }
+                if (entityRightCol >= gamePanel.tileManager.mapTile[entityBottomRow].length) {
                     return true;
                 }
-            }
-        }
-        return false;
-    }
-
-    public static boolean check(MoveEntity moveEntity, GamePanel gamePanel) {
-        // if (moveEntity.getScreenX() % )
-        int entityLeftWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
-        int entityRightWorldX = moveEntity.getScreenX() + moveEntity.getSolidArea().x + moveEntity.getSolidArea().width;
-        int entityTopWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
-        int entityBottomWorldY = moveEntity.getScreenY() + moveEntity.getSolidArea().y
-                + moveEntity.getSolidArea().height;
-
-        int entityLeftCol = entityLeftWorldX / gamePanel.tileSize;
-        int entityRightCol = entityRightWorldX / gamePanel.tileSize;
-        int entityTopRow = entityTopWorldY / gamePanel.tileSize;
-        int entityBottomRow = entityBottomWorldY / gamePanel.tileSize;
-
-        int tileNum1, tileNum2;
-        switch (moveEntity.getDirection()) {
-            case "up": {
-                entityTopRow -= 1;
-                tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityLeftCol];
-                tileNum2 = gamePanel.tileManager.mapTile[entityTopRow][entityRightCol];
-                if (gamePanel.tileManager.tiles[tileNum1].collision
-                        || gamePanel.tileManager.tiles[tileNum2].collision) {
+                if (entityRightCol >= gamePanel.tileManager.mapTile[entityTopRow].length) {
                     return true;
                 }
-            }
-                break;
-            case "down": {
-                entityBottomRow += 1;
-                tileNum1 = gamePanel.tileManager.mapTile[entityBottomRow][entityLeftCol];
-                tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.tileManager.tiles[tileNum1].collision
-                        || gamePanel.tileManager.tiles[tileNum2].collision) {
-                    return true;
-                }
-            }
-                break;
-            case "left": {
-                entityLeftCol -= 1;
-                tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityLeftCol];
-                tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityLeftCol];
-                if (gamePanel.tileManager.tiles[tileNum1].collision
-                        || gamePanel.tileManager.tiles[tileNum2].collision) {
-                    return true;
-                }
-            }
-                break;
-            case "right": {
-                entityRightCol += 1;
                 tileNum1 = gamePanel.tileManager.mapTile[entityTopRow][entityRightCol];
                 tileNum2 = gamePanel.tileManager.mapTile[entityBottomRow][entityRightCol];
                 if (gamePanel.tileManager.tiles[tileNum1].collision
@@ -188,76 +161,6 @@ public class CollisionChecker {
             return true;
         }
         return false;
-    }
-
-    public static int checkItem(MoveEntity moveEntity, boolean player, GamePanel gamePanel) {
-        int index = 999;
-        for (int i = 0; i < gamePanel.item.length; i++) {
-            if (gamePanel.item[i] != null) {
-                // Get entity's solid area position
-                moveEntity.getSolidArea().x = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
-                moveEntity.getSolidArea().y = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
-                // Get the object's solid area position
-                gamePanel.item[i].getSolidArea().x = gamePanel.item[i].getScreenX() + gamePanel.item[i].getSolidArea().x;
-                gamePanel.item[i].getSolidArea().y = gamePanel.item[i].getScreenY() + gamePanel.item[i].getSolidArea().y;
-
-                switch (moveEntity.getDirection()) {
-                    case "up":
-                        moveEntity.getSolidArea().y -= moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
-                            System.out.println("up collision");
-                            if (gamePanel.item[i].isCollision()) {
-                                moveEntity.setCollision(true);
-                            }
-                            if (player == true) {
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "down":
-                        moveEntity.getSolidArea().y += moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
-                            System.out.println("down collision");
-                            if (gamePanel.item[i].isCollision()) {
-                                moveEntity.setCollision(true);
-                            }
-                            if (player == true) {
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "left":
-                        moveEntity.getSolidArea().x -= moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
-                            System.out.println("left collision");
-                            if (gamePanel.item[i].isCollision()) {
-                                moveEntity.setCollision(true);
-                            }
-                            if (player == true) {
-                                index = i;
-                            }
-                        }
-                        break;
-                    case "right":
-                        moveEntity.getSolidArea().x += moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
-                            System.out.println("right collision");
-                            if (gamePanel.item[i].isCollision()) {
-                                moveEntity.setCollision(true);
-                            }
-                            if (player == true) {
-                                index = i;
-                            }
-                        }
-                        break;
-                }
-                moveEntity.getSolidArea().x = moveEntity.solidAreaDefaultX;
-                moveEntity.getSolidArea().y = moveEntity.solidAreaDefaultY;
-                gamePanel.item[i].getSolidArea().x = gamePanel.item[i].solidAreaDefaultX;
-                gamePanel.item[i].getSolidArea().y = gamePanel.item[i].solidAreaDefaultY;
-            }
-        }
-        return index;
     }
 
     public static boolean checkFlame(int x, int y, GamePanel gamePanel) {

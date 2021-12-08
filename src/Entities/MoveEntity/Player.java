@@ -79,7 +79,7 @@ public class Player extends MoveEntity {
                     }
                 }
             }
-            if (gamePanel.tileManager.mapTile[yBomb][xBomb] != 0) {
+            if (gamePanel.tileManager.mapTile[yBomb][xBomb] == 3) {
                 return null;
             }
             if (timeToRemove < 30) {
@@ -105,8 +105,8 @@ public class Player extends MoveEntity {
         }
 
         // Check Tile Manager
-        if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionBomb) {
-            if (!CollisionChecker.check(this, gamePanel)) {
+        if (!CollisionChecker.checkTile(this, gamePanel, 0) && !CollisionBomb) {
+            if (!CollisionChecker.checkTile(this, gamePanel, 1)) {
                 switch (direction) {
                     case "up":
                         screenX -= ((screenX + solidArea.x) % gamePanel.tileSize - 8);

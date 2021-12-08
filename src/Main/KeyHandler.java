@@ -41,7 +41,7 @@ public class KeyHandler implements KeyListener {
             }
         }
         if (code == KeyEvent.VK_F) {
-            if (gamePanel.tileManager.player.flash) {
+            if (gamePanel.tileManager.player.flash && !CollisionChecker.checkTile(gamePanel.tileManager.player, gamePanel, 2)) {
                 switch (gamePanel.tileManager.player.getDirection()) {
                     case "right":
                         this.gamePanel.tileManager.player

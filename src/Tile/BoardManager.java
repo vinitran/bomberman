@@ -20,7 +20,7 @@ import Entities.MoveEntity.*;
 
 import static javax.imageio.ImageIO.read;
 
-public class TileManager {
+public class BoardManager {
     GamePanel gamePanel;
     public Tile[] tiles;
     public String[][] map;
@@ -29,9 +29,8 @@ public class TileManager {
     public List<StaticEntity> staticEntities = new ArrayList<>();
     public List<Bomb> bombs = new LinkedList<>();
     public Player player;
-    private BufferedImage image;
 
-    public TileManager(GamePanel gp) {
+    public BoardManager(GamePanel gp) {
         this.gamePanel = gp;
         map = new String[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
         mapTile = new int[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
@@ -165,7 +164,6 @@ public class TileManager {
         }
     }
 
-    
     // update or delete bomb
     public void updateBomb() {
         for (int i = 0; i < bombs.size(); i++) {
@@ -177,7 +175,7 @@ public class TileManager {
             }
         }
     }
-    
+
     // update or delete brick
     public void updateStaticEntities() {
         for (int i = 0; i < staticEntities.size(); i++) {
@@ -212,7 +210,8 @@ public class TileManager {
                 if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
                     py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
                 }
-                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize, null);
+                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize,
+                        null);
             }
         }
 
@@ -223,7 +222,6 @@ public class TileManager {
         for (Bomb bomb : bombs) {
             bomb.draw(g2);
         }
-
 
         for (MoveEntity value : MoveEntities) {
             value.draw(g2);

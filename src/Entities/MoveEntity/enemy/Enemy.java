@@ -31,7 +31,7 @@ public abstract class Enemy extends MoveEntity {
 
     public void move() {
         if (!AI1.BasicAI(this, gamePanel) || CollisionBomb) {
-            if (CollisionChecker.checkTile(this, gamePanel) || CollisionBomb) {
+            if (CollisionChecker.checkTile(this, gamePanel, 0) || CollisionBomb) {
                 switch (direction) {
                     case "up":
                         direction = "down";
@@ -49,7 +49,7 @@ public abstract class Enemy extends MoveEntity {
             }
         }
 
-        if (!CollisionChecker.checkTile(this, gamePanel)) {
+        if (!CollisionChecker.checkTile(this, gamePanel, 0)) {
             switch (direction) {
                 case "up":
                     screenY -= speed;

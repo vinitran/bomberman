@@ -19,13 +19,13 @@ public class AI1 {
             } else if (temp == 1) {
                 enemy.setDirection("right");
             }
-            if (CollisionChecker.checkTile(enemy, gamePanel)) {
+            if (CollisionChecker.checkTile(enemy, gamePanel, 0)) {
                 if (enemy.getDirection().equals("left")) {
                     enemy.setDirection("right");
                 } else {
                     enemy.setDirection("left");
                 }
-                if (!CollisionChecker.checkTile(enemy, gamePanel)) {
+                if (!CollisionChecker.checkTile(enemy, gamePanel, 0)) {
                     return true;
                 }
             } else {
@@ -37,13 +37,13 @@ public class AI1 {
             } else if (temp == 1) {
                 enemy.setDirection("down");
             }
-            if (CollisionChecker.checkTile(enemy, gamePanel)) {
+            if (CollisionChecker.checkTile(enemy, gamePanel, 0)) {
                 if (enemy.getDirection().equals("up")) {
                     enemy.setDirection("down");
                 } else {
                     enemy.setDirection("up");
                 }
-                if (!CollisionChecker.checkTile(enemy, gamePanel)) {
+                if (!CollisionChecker.checkTile(enemy, gamePanel, 0)) {
                     return true;
                 }
             } else {
