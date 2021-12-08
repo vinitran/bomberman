@@ -102,6 +102,5 @@ public class Oneal extends Enemy {
                     break;
             }
         }
-        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

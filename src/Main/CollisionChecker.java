@@ -2,8 +2,8 @@ package Main;
 
 import Entities.Entity;
 import Entities.MoveEntity.MoveEntity;
-import Entities.StaticEntity.StaticEntity;
 import Entities.StaticEntity.Bomb;
+import Entities.StaticEntity.StaticEntity;
 
 import java.awt.*;
 
@@ -198,14 +198,15 @@ public class CollisionChecker {
                 moveEntity.getSolidArea().x = moveEntity.getScreenX() + moveEntity.getSolidArea().x;
                 moveEntity.getSolidArea().y = moveEntity.getScreenY() + moveEntity.getSolidArea().y;
                 // Get the object's solid area position
-                gamePanel.item[i].solidArea.x = gamePanel.item[i].worldX + gamePanel.item[i].solidArea.x;
-                gamePanel.item[i].solidArea.y = gamePanel.item[i].worldY + gamePanel.item[i].solidArea.y;
+                gamePanel.item[i].getSolidArea().x = gamePanel.item[i].getScreenX() + gamePanel.item[i].getSolidArea().x;
+                gamePanel.item[i].getSolidArea().y = gamePanel.item[i].getScreenY() + gamePanel.item[i].getSolidArea().y;
 
                 switch (moveEntity.getDirection()) {
                     case "up":
                         moveEntity.getSolidArea().y -= moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
-                            if (gamePanel.item[i].collision) {
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
+                            System.out.println("up collision");
+                            if (gamePanel.item[i].isCollision()) {
                                 moveEntity.setCollision(true);
                             }
                             if (player == true) {
@@ -215,8 +216,9 @@ public class CollisionChecker {
                         break;
                     case "down":
                         moveEntity.getSolidArea().y += moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
-                            if (gamePanel.item[i].collision) {
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
+                            System.out.println("down collision");
+                            if (gamePanel.item[i].isCollision()) {
                                 moveEntity.setCollision(true);
                             }
                             if (player == true) {
@@ -226,8 +228,9 @@ public class CollisionChecker {
                         break;
                     case "left":
                         moveEntity.getSolidArea().x -= moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
-                            if (gamePanel.item[i].collision) {
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
+                            System.out.println("left collision");
+                            if (gamePanel.item[i].isCollision()) {
                                 moveEntity.setCollision(true);
                             }
                             if (player == true) {
@@ -237,8 +240,9 @@ public class CollisionChecker {
                         break;
                     case "right":
                         moveEntity.getSolidArea().x += moveEntity.getSpeed();
-                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].solidArea)) {
-                            if (gamePanel.item[i].collision) {
+                        if (moveEntity.getSolidArea().intersects(gamePanel.item[i].getSolidArea())) {
+                            System.out.println("right collision");
+                            if (gamePanel.item[i].isCollision()) {
                                 moveEntity.setCollision(true);
                             }
                             if (player == true) {
@@ -249,8 +253,8 @@ public class CollisionChecker {
                 }
                 moveEntity.getSolidArea().x = moveEntity.solidAreaDefaultX;
                 moveEntity.getSolidArea().y = moveEntity.solidAreaDefaultY;
-                gamePanel.item[i].solidArea.x = gamePanel.item[i].solidAreaDefaultX;
-                gamePanel.item[i].solidArea.y = gamePanel.item[i].solidAreaDefaultY;
+                gamePanel.item[i].getSolidArea().x = gamePanel.item[i].solidAreaDefaultX;
+                gamePanel.item[i].getSolidArea().y = gamePanel.item[i].solidAreaDefaultY;
             }
         }
         return index;

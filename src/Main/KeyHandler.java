@@ -46,22 +46,18 @@ public class KeyHandler implements KeyListener {
                     case "right":
                         this.gamePanel.tileManager.player
                                 .setScreenX(this.gamePanel.tileManager.player.getScreenX() + gamePanel.tileSize * 2);
-                        gamePanel.tileManager.player.flash = false;
                         break;
                     case "left":
                         this.gamePanel.tileManager.player
                                 .setScreenX(this.gamePanel.tileManager.player.getScreenX() - gamePanel.tileSize * 2);
-                        gamePanel.tileManager.player.flash = false;
                         break;
                     case "up":
                         this.gamePanel.tileManager.player
                                 .setScreenY(this.gamePanel.tileManager.player.getScreenY() - gamePanel.tileSize * 2);
-                        gamePanel.tileManager.player.flash = false;
                         break;
                     case "down":
                         this.gamePanel.tileManager.player
                                 .setScreenY(this.gamePanel.tileManager.player.getScreenY() + gamePanel.tileSize * 2);
-                        gamePanel.tileManager.player.flash = false;
                         break;
                 }
             }

@@ -2,6 +2,7 @@ package Entities.StaticEntity.Item;
 
 import java.awt.Graphics2D;
 
+import Image.Image;
 import Main.GamePanel;
 
 public class FlameItem extends Item {
@@ -11,17 +12,19 @@ public class FlameItem extends Item {
 
     @Override
     public void update() {
+        super.update();
+        if (useItem && removed) {
+            gamePanel.bombRadius++;
+        }
     }
 
     @Override
     public void draw(Graphics2D g2) {
-        // TODO Auto-generated method stub
         super.draw(g2);
     }
 
     @Override
     public void setImage(Graphics2D g2) {
-        // TODO Auto-generated method stub
-        
+        image = Image.bomb_exploded;
     }
 }

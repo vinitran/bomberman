@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Flash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/Ghost.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/MoveEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/MoveEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/SpeedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/SpeedItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/StaticEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/StaticEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/AssetSetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="21z4CV3GFlsMyWzgZjfb655NTwm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="nam" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="bomberman" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="" />
+      <created>1638930455190</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638930455190</updated>
+      <workItem from="1638930456648" duration="2229000" />
+      <workItem from="1638936474514" duration="1397000" />
+      <workItem from="1638950013625" duration="2059000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/bomberman$nam.ic" NAME="nam Coverage Results" MODIFIED="1638950615384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

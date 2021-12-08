@@ -1,14 +1,12 @@
 package Entities.MoveEntity;
 
+import Entities.StaticEntity.Bomb;
+import Image.Image;
 import Main.CollisionChecker;
 import Main.GamePanel;
 import Main.KeyHandler;
 
 import java.awt.*;
-
-import Entities.StaticEntity.Bomb;
-import Image.Image;
-import Sound.Sound;
 
 public class Player extends MoveEntity {
     private KeyHandler keyHandler;
@@ -29,10 +27,8 @@ public class Player extends MoveEntity {
     }
 
     public void setDefaultValues() {
-        // worldX = 0;
-        // worldY = 0;
-        gamePanel.bombRadius = 2;
-        gamePanel.nBombs = 2;
+        gamePanel.bombRadius = 1;
+        gamePanel.nBombs = 1;
         speed = 2;
         direction = "stand";
     }
@@ -83,6 +79,9 @@ public class Player extends MoveEntity {
                     }
                 }
             }
+            if (gamePanel.tileManager.mapTile[yBomb][xBomb] != 0) {
+                return null;
+            }
             if (timeToRemove < 30) {
                 return null;
             }
@@ -90,8 +89,6 @@ public class Player extends MoveEntity {
             return new Bomb(xBomb, yBomb, gamePanel);
         }
         return null;
-        // int indexCheckC = CollisionChecker.checkItem(this, true, gamePanel);
-        // pickUpItem(indexCheckC);
     }
 
     private void move() {
@@ -106,6 +103,7 @@ public class Player extends MoveEntity {
         } else {
             direction = "stand";
         }
+
         // Check Tile Manager
         if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionBomb) {
             if (!CollisionChecker.check(this, gamePanel)) {
@@ -141,36 +139,35 @@ public class Player extends MoveEntity {
         }
     }
 
-    public void pickUpItem(int index) {
-        if (index != 999) {
-            String itemName = gamePanel.item[index].name;
-            switch (itemName) {
-                case "Ghost":
-                    this.speed += 1;
-                    gamePanel.ui.ShowMessage("Ghost");
-                    gamePanel.item[index] = null;
-                    break;
-                case "flash":
-                    flash = true;
-                    gamePanel.ui.ShowMessage("Flash");
-                    gamePanel.item[index] = null;
-                    break;
-                case "Portal":
-                    gamePanel.ui.gameFinished = true;
-                    break;
-            }
-        }
+    // public void pickUpItem(int index) {
+    //     if (index != 999) {
+    //         String itemName = gamePanel.item[index].getName();
+    //         switch (itemName) {
+    //             case "Ghost":
+    //                 this.speed += 4;
+    //                 gamePanel.ui.ShowMessage("Ghost");
+    //                 gamePanel.item[index] = null;
+    //                 break;
+    //             case "Flash":
+    //                 flash = true;
+    //                 gamePanel.ui.ShowMessage("Flash");
+    //                 gamePanel.item[index] = null;
+    //                 break;
+    //             case "Portal":
+    //                 gamePanel.ui.gameFinished = true;
+    //                 break;
+    //         }
+    //     }
 
+    // }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        super.draw(g2); 
     }
 
     @Override
     public void setImage(Graphics2D g2) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void draw(Graphics2D g2) {
         image = null;
         if (!removed) {
             spriteCounter++;
@@ -265,24 +262,6 @@ public class Player extends MoveEntity {
                     }
                     break;
             }
-            int x = px;
-            int y = py;
-            if (px > screenX) {
-                px = screenX;
-            }
-            if (py > screenY) {
-                py = screenY;
-            }
-            int rightOffset = gamePanel.screenWidth - px;
-            if (rightOffset > gamePanel.worldWidth - getScreenX()) {
-                x = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
-            }
-            int bottomOffset = gamePanel.screenHeight - py;
-            if (bottomOffset > gamePanel.worldHeight - getScreenY()) {
-                y = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
-            }
-
-            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
         }
 
     }

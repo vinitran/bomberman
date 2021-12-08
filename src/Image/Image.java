@@ -70,8 +70,8 @@ public class Image {
     public static final BufferedImage bomb1 = (new LoadImage("images/bomb_1.png")).getImage();
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
     
-    public static final BufferedImage Ghost = (new LoadImage("images/powerup_speed.png")).getImage();
-    public static final BufferedImage Flash = (new LoadImage("images/flash.png.png")).getImage();
+    public static final BufferedImage Ghost = (new LoadImage("images/Ghost.png")).getImage();
+    public static final BufferedImage Flash = (new LoadImage("images/Flash.png")).getImage();
     public static final BufferedImage Portal = (new LoadImage("images/portal.png")).getImage();
     
     public static final BufferedImage brick = (new LoadImage("images/brick.png")).getImage();
