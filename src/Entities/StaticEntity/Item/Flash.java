@@ -6,11 +6,10 @@ import Image.Image;
 
 import java.awt.*;
 
-
-public class SpeedItem extends StaticEntity {
-    public SpeedItem(int x, int y, GamePanel gamePanel) {
+public class Flash extends StaticEntity {
+    public Flash(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        this.name = "Ghost";
+        this.name = "Flash";
     }
 
     @Override
@@ -19,7 +18,7 @@ public class SpeedItem extends StaticEntity {
     }
 
     public void setImage(Graphics2D g2) {
-        this.image = Image.Ghost;
+        this.image = Image.Flash;
     }
 
     @Override

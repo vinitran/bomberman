@@ -15,6 +15,10 @@ public abstract class MoveEntity extends Entity {
         this.gamePanel = gamePanel;
         this.screenX = x * gamePanel.tileSize;
         this.screenY = y * gamePanel.tileSize;
+        solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
     }
     
     public abstract void update();

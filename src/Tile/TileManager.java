@@ -216,6 +216,12 @@ public class TileManager {
         // for (StaticEntity brick : bricks) {
         //     brick.draw(g2);
         // }
+
+        for (StaticEntity staticEntity : gamePanel.item) {
+            if (staticEntity != null) {
+                staticEntity.draw(g2);
+            }
+        }
         for (MoveEntity value : MoveEntities) {
             value.draw(g2);
         }

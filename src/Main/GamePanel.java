@@ -1,9 +1,9 @@
 package Main;
 
-import Sound.Sound;
+import Entities.StaticEntity.Item.Item;
+import Entities.StaticEntity.StaticEntity;
 import Tile.TileManager;
 
-import Item.item;
 import javax.swing.*;
 import java.awt.*;
 
@@ -30,9 +30,9 @@ public class GamePanel extends JPanel implements Runnable {
     public int nBombs = 1;
 
 
-    public item item[] = new item[10];
+    public StaticEntity item[] = new StaticEntity[10];
     public UI ui = new UI(this);
-    public AssetSetter assetSetter = new AssetSetter(this);
+    public Item setItem = new Item(this);
 
     public int gameState;
     public final int playState = 1;
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setUpGame() {
-        assetSetter.setObject();
+        setItem.setObject();
         gameState = playState;
     }
 

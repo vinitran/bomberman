@@ -37,6 +37,8 @@ public class Player extends MoveEntity {
 
     @Override
     public void update() {
+        int index = CollisionChecker.checkItem(this, true, gamePanel);
+        pickUpItem(index);
         checkCollision();
         if (!alive) {
             if (!direction.equals("dead")) {
@@ -97,7 +99,11 @@ public class Player extends MoveEntity {
         } else {
             direction = "stand";
         }
+
+
+
         // Check Tile Manager
+
         if (!CollisionChecker.checkTile(this, gamePanel) && !CollisionBomb) {
             if (!CollisionChecker.check(this, gamePanel)) {
                 switch (direction) {
@@ -134,14 +140,14 @@ public class Player extends MoveEntity {
 
     public void pickUpItem(int index) {
         if (index != 999) {
-            String itemName = gamePanel.item[index].name;
+            String itemName = gamePanel.item[index].getName();
             switch (itemName) {
                 case "Ghost":
-                    this.speed += 1;
+                    this.speed += 4;
                     gamePanel.ui.ShowMessage("Ghost");
                     gamePanel.item[index] = null;
                     break;
-                case "flash":
+                case "Flash":
                     flash = true;
                     gamePanel.ui.ShowMessage("Flash");
                     gamePanel.item[index] = null;

@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import Main.GamePanel;
 
 public abstract class Entity {
+    protected String name;
     protected int worldX, worldY;
     protected int screenX;
     protected int screenY;
@@ -60,5 +61,9 @@ public abstract class Entity {
 
     public void setWorldX(int worldX) {
         this.worldX = worldX;
+    }
+
+    public String getName() {
+        return name;
     }
 }
