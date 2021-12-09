@@ -25,6 +25,6 @@ public class FlameItem extends Item {
 
     @Override
     public void setImage(Graphics2D g2) {
-        image = Image.bomb_exploded;
+        image = Image.flameItem;
     }
 }

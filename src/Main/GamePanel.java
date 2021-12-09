@@ -1,7 +1,7 @@
 package Main;
 
 import Tile.BoardManager;
-
+import Sound.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -52,8 +52,8 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
         // Sound.sound_Bomberman.play();
-        // Sound.sound_loop.play();
-        // Sound.sound_loop.loop();
+        Sound.sound_loop.play();
+        Sound.sound_loop.loop();
     }
 
     public void setUpGame() {

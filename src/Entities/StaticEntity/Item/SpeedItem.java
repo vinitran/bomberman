@@ -27,6 +27,6 @@ public class SpeedItem extends Item {
 
     @Override
     public void setImage(Graphics2D g2) {
-        this.image = Image.Ghost;
+        this.image = Image.speedItem;
     }
 }

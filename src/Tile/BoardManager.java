@@ -36,7 +36,7 @@ public class BoardManager {
         mapTile = new int[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
         tiles = new Tile[10];
         getTileImage();
-        loadMap("levels/level.txt");
+        loadMap("levels/level1.txt");
         // player = new Player(1, 1, gamePanel);
         // MoveEntities.add(player);
         // MoveEntities.add(new Balloom(5, 1, gamePanel));
