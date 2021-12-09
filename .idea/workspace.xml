@@ -2,22 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Flash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Image/images/Ghost.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/Gameover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/GameoverBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/HowToPlayPanel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/back.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/MoveEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/MoveEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/SpeedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/SpeedItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/StaticEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/StaticEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/MoveEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/MoveEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Balloom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Balloom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Oneal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/Oneal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/ai/AI1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/MoveEntity/enemy/ai/AI1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Brick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Brick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Flame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Flame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Grass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Grass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Flash.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Flash.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/SpeedItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/SpeedItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Portal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Portal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/StaticEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/StaticEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Item/Flash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Item/Portal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Item/SpeedUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Item/item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/CollisionChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/KeyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/KeyHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/UI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Tile/TileManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Tile/levels/Level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Tile/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Tile/levels/Level1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/AssetSetter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MouseHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +69,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Image/images" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Image\images" />
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Main" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="nam" type="Application" factoryName="Application">
@@ -68,6 +97,13 @@
       <workItem from="1638930456648" duration="2229000" />
       <workItem from="1638936474514" duration="1397000" />
       <workItem from="1638950013625" duration="2059000" />
+      <workItem from="1639044498440" duration="1084000" />
+      <workItem from="1639065749639" duration="793000" />
+      <workItem from="1639071970226" duration="1279000" />
+      <workItem from="1639078291353" duration="883000" />
+      <workItem from="1639079256527" duration="172000" />
+      <workItem from="1639079484181" duration="178000" />
+      <workItem from="1639079697222" duration="1595000" />
     </task>
     <servers />
   </component>

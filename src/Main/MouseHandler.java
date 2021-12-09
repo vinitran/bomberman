@@ -21,18 +21,54 @@ public class MouseHandler implements MouseListener {
     public void mousePressed(MouseEvent e) {
         double xPos = e.getX();
         double yPos = e.getY();
-        if (xPos > 580 && xPos < (580 + 192)) {
-            if (yPos > 250 && yPos < 280) {
-                direction = "Start";
-            } else if (yPos > 280 && yPos < 310) {
-                direction = "Coutinue";
-            } else if (yPos > 310 && yPos < 340) {
-                direction = "HowToPlay";
-            }
-            pressed = true;
-        } else {
-            direction = "background";
-            pressed = false;
+        switch (gamePanel.menu.direction) {
+            case "StartGame":
+                if (xPos > 580 && xPos < (580 + 192)) {
+                    if (yPos > 280 && yPos < 310) {
+                        direction = "Start";
+                    } else if (yPos > 310 && yPos < 340) {
+                        direction = "HowToPlay";
+                    }
+                    pressed = true;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
+            case "Gameover":
+                if (xPos > 320 && xPos < (320 + 172)
+                    && yPos > 270 && yPos < (270 + 41)) {
+                direction = "Back";
+                pressed = true;
+                } else {
+                direction = "Background";
+                pressed = false;
+                }
+                break;
+            case "Coutinue":
+                if (xPos > 580 && xPos < (580 + 192)) {
+                    if (yPos > 250 && yPos < 280) {
+                        direction = "Start";
+                    } else if (yPos > 280 && yPos < 310) {
+                        direction = "Coutinue";
+                    } else if (yPos > 310 && yPos < 340) {
+                        direction = "HowToPlay";
+                    }
+                    pressed = true;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
+            case "HowToPlay":
+                if (xPos > 600 && xPos < (600 + 143)
+                        && yPos > 310 && yPos < 310+34) {
+                    direction = "Back";
+                    pressed = true;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
         }
     }
 
@@ -40,18 +76,55 @@ public class MouseHandler implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         double xPos = e.getX();
         double yPos = e.getY();
-        if (xPos > 580 && xPos < (580 + 192)) {
-            if (yPos > 250 && yPos < 280) {
-                direction = "Start";
-            } else if (yPos > 280 && yPos < 310) {
-                direction = "Coutinue";
-            } else if (yPos > 310 && yPos < 340) {
-                direction = "HowToPlay";
-            }
-            pressed = false ;
-        } else {
-            direction = "background";
-            pressed = false;
+        switch (gamePanel.menu.direction) {
+            case "StartGame":
+                if (xPos > 580 && xPos < (580 + 192)) {
+                    if (yPos > 250 && yPos < 280) {
+                        direction = "Start";
+                    } else if (yPos > 280 && yPos < 310) {
+                        direction = "Coutinue";
+                    } else if (yPos > 310 && yPos < 340) {
+                        direction = "HowToPlay";
+                    }
+                    pressed = false ;
+                } else {
+                    direction = "background";
+                    pressed = false;
+                }
+                break;
+            case "HowToPlay":
+                if (xPos > 600 && xPos < (600 + 143)
+                        && yPos > 310 && yPos < 310+34) {
+                    direction = "Back";
+                    pressed = false;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
+            case "Gameover":
+                if (xPos > 320 && xPos < (320 + 172)
+                        && yPos > 270 && yPos < (270 + 41)) {
+                    direction = "Back";
+                    pressed = false;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
+            case "Coutinue":
+                if (xPos > 580 && xPos < (580 + 192)) {
+                    if (yPos > 280 && yPos < 310) {
+                        direction = "Start";
+                    } else if (yPos > 310 && yPos < 340) {
+                        direction = "HowToPlay";
+                    }
+                    pressed = false;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
         }
     }
 

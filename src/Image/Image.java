@@ -92,5 +92,9 @@ public class Image {
     public static final BufferedImage continueGame = (new LoadImage("images/Continue.png")).getImage();
     public static final BufferedImage howToPlay = (new LoadImage("images/HowToPlay.png")).getImage();
     public static final BufferedImage start_game = (new LoadImage("images/start_game.png")).getImage();
+    public static final BufferedImage back = (new LoadImage("images/back.png")).getImage();
+    public static final BufferedImage howToPlayPanel = (new LoadImage("images/howToPlayPanel.png")).getImage();
+    public static final BufferedImage getBackGroundGameover = (new LoadImage("images/GameoverBackground.png")).getImage();
+    public static final BufferedImage gameover = (new LoadImage("images/Gameover.png")).getImage();
 
 }
