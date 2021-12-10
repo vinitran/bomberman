@@ -11,7 +11,7 @@ public class Oneal extends Enemy {
     public Oneal(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
         speed = 2;
-        solidArea = new Rectangle(speed, speed, 16 * gamePanel.scale - speed, 16 * gamePanel.scale - speed);
+        super.setRectangle();
     }
 
     @Override

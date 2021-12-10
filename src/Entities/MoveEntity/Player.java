@@ -55,7 +55,7 @@ public class Player extends MoveEntity {
     }
 
     public void checkCollision() {
-        for (MoveEntity value : gamePanel.BoardManager.MoveEntities) {
+        for (MoveEntity value : gamePanel.BoardManager.moveEntities) {
             if (!(value instanceof Player)) {
                 if (CollisionChecker.CheckEntity(this, value)) {
                     alive = false;

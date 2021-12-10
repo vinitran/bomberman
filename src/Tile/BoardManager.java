@@ -20,7 +20,7 @@ public class BoardManager {
     public boolean[] tiles;
     public String[][] map;
     public int[][] mapTile;
-    public List<MoveEntity> MoveEntities = new ArrayList<>();
+    public List<MoveEntity> moveEntities = new ArrayList<>();
     public List<StaticEntity> staticEntities = new ArrayList<>();
     public List<Bomb> bombs = new LinkedList<>();
     public Player player;
@@ -35,11 +35,11 @@ public class BoardManager {
     }
 
     public void getTile() {
-        tiles[0] = false;   // Grass tile
-        tiles[1] = true;    // Wall tile
-        tiles[2] = true;    // Brick tile
-        tiles[3] = false;   // item
-        tiles[4] = true;    // Brick tile have item
+        tiles[0] = false; // Grass tile
+        tiles[1] = true; // Wall tile
+        tiles[2] = true; // Brick tile
+        tiles[3] = false; // item
+        tiles[4] = true; // Brick tile have item
     }
 
     public void loadMap(String filePath) {
@@ -53,15 +53,23 @@ public class BoardManager {
                 switch (map[i][j]) {
                     case "p": {
                         player = new Player(j, i, gamePanel);
-                        MoveEntities.add(player);
+                        moveEntities.add(player);
                     }
                         break;
                     case "1": {
-                        MoveEntities.add(new Balloom(j, i, gamePanel));
+                        moveEntities.add(new Balloom(j, i, gamePanel));
                     }
                         break;
                     case "2": {
-                        MoveEntities.add(new Oneal(j, i, gamePanel));
+                        moveEntities.add(new Oneal(j, i, gamePanel));
+                    }
+                        break;
+                    case "3": {
+                        moveEntities.add(new Doll(j, i, gamePanel));
+                    }
+                        break;
+                    case "4": {
+                        moveEntities.add(new Minvo(j, i, gamePanel));
                     }
                         break;
                     case "x": {
@@ -141,11 +149,11 @@ public class BoardManager {
 
     // update or delete moveEntity
     public void updateMoveEntity() {
-        for (int i = 0; i < MoveEntities.size(); i++) {
-            if (MoveEntities.get(i).isRemoved()) {
-                MoveEntities.remove(i);
+        for (int i = 0; i < moveEntities.size(); i++) {
+            if (moveEntities.get(i).isRemoved()) {
+                moveEntities.remove(i);
             } else {
-                MoveEntities.get(i).update();
+                moveEntities.get(i).update();
             }
         }
     }
@@ -182,9 +190,13 @@ public class BoardManager {
             bomb.draw(g2);
         }
 
-        for (MoveEntity value : MoveEntities) {
+        for (MoveEntity value : moveEntities) {
             value.draw(g2);
         }
+    }
+
+    public void addMoveEntities(MoveEntity moveEntity) {
+        moveEntities.add(moveEntity);
     }
 
 }

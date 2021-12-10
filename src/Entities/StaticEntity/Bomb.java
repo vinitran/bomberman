@@ -43,7 +43,7 @@ public class Bomb extends StaticEntity {
     }
 
     private void collisionMob() {
-        for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
+        for (MoveEntity moveEntity : gamePanel.BoardManager.moveEntities) {
             if (CollisionChecker.CheckEntity(moveEntity, this)) {
                 if (this.isExploded()) {
                     moveEntity.setAlive(false);

@@ -30,7 +30,6 @@ public class Image {
     public static final BufferedImage balloom_right2 = (new LoadImage("images/balloom_right_2.png")).getImage();
     public static final BufferedImage balloom_dead = (new LoadImage("images/balloom_dead.png")).getImage();
     
-
     public static final BufferedImage oneal_left = (new LoadImage("images/oneal_left1.png")).getImage();
     public static final BufferedImage oneal_left1 = (new LoadImage("images/oneal_left2.png")).getImage();
     public static final BufferedImage oneal_left2 = (new LoadImage("images/oneal_left3.png")).getImage();
@@ -38,6 +37,22 @@ public class Image {
     public static final BufferedImage oneal_right1 = (new LoadImage("images/oneal_right2.png")).getImage();
     public static final BufferedImage oneal_right2 = (new LoadImage("images/oneal_right3.png")).getImage();
     public static final BufferedImage oneal_dead = (new LoadImage("images/oneal_dead.png")).getImage();
+    
+    public static final BufferedImage doll_left = (new LoadImage("images/doll_left1.png")).getImage();
+    public static final BufferedImage doll_left1 = (new LoadImage("images/doll_left2.png")).getImage();
+    public static final BufferedImage doll_left2 = (new LoadImage("images/doll_left3.png")).getImage();
+    public static final BufferedImage doll_right = (new LoadImage("images/doll_right1.png")).getImage();
+    public static final BufferedImage doll_right1 = (new LoadImage("images/doll_right2.png")).getImage();
+    public static final BufferedImage doll_right2 = (new LoadImage("images/doll_right3.png")).getImage();
+    public static final BufferedImage doll_dead = (new LoadImage("images/doll_dead.png")).getImage();
+    
+    public static final BufferedImage minvo_left = (new LoadImage("images/minvo_left1.png")).getImage();
+    public static final BufferedImage minvo_left1 = (new LoadImage("images/minvo_left2.png")).getImage();
+    public static final BufferedImage minvo_left2 = (new LoadImage("images/minvo_left3.png")).getImage();
+    public static final BufferedImage minvo_right = (new LoadImage("images/minvo_right1.png")).getImage();
+    public static final BufferedImage minvo_right1 = (new LoadImage("images/minvo_right2.png")).getImage();
+    public static final BufferedImage minvo_right2 = (new LoadImage("images/minvo_right3.png")).getImage();
+    public static final BufferedImage minvo_dead = (new LoadImage("images/minvo_dead.png")).getImage();
     
     public static final BufferedImage mob_dead1 = (new LoadImage("images/mob_dead1.png")).getImage();
     public static final BufferedImage mob_dead2 = (new LoadImage("images/mob_dead2.png")).getImage();

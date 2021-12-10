@@ -16,7 +16,6 @@ public class Portal extends StaticEntity {
 
     public Portal(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        solidArea = new Rectangle(7 * gamePanel.scale, 7 * gamePanel.scale, 2 * gamePanel.scale, 2 * gamePanel.scale);
     }
 
     @Override
@@ -30,14 +29,14 @@ public class Portal extends StaticEntity {
             gamePanel.BoardManager.mapTile[x][y] = 3;
         }
         nextLevel = true;
-        for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
+        for (MoveEntity moveEntity : gamePanel.BoardManager.moveEntities) {
             if (moveEntity instanceof Enemy) {
                 nextLevel = false;
                 break;
             }
         }
         if (appear && nextLevel) {
-            for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
+            for (MoveEntity moveEntity : gamePanel.BoardManager.moveEntities) {
                 if (moveEntity instanceof Player) {
                     if (CollisionChecker.CheckEntity(moveEntity, this)) {
                         gamePanel.ui.gameFinished = true; // end (or next level)

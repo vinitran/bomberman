@@ -3,19 +3,45 @@ package Entities.MoveEntity.enemy;
 import java.awt.Graphics2D;
 
 import Main.GamePanel;
-import java.awt.*;
 import Image.Image;
 
-public class Balloom extends Enemy {
-    public Balloom(int x, int y, GamePanel gamePanel) {
+public class Doll extends Enemy {
+    private int live;
+    private int timeDead;
+
+    public Doll(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        speed = 1;
+        speed = 3;
+        live = 2;
+        timeDead = 60;
         super.setRectangle();
     }
 
     @Override
+    public void update() {
+        if (!alive && live >= 1 && timeDead > 0) {
+            if (live > 1) {
+                live--;
+            }
+            timeDead--;
+            super.move();
+            if (timeDead == 0) {
+                alive = true;
+            }
+        } else {
+            super.update();
+        }
+    }
+
+    @Override
     public void setImage(Graphics2D g2) {
-        image = null;
+        if (live == 1) {
+            if (timeDead > 0 && timeDead % 8 < 4) {
+                image = null;
+                return;
+            }
+        }
+
         if (timeToRemove <= 30) {
             super.setImage(g2);
         } else {
@@ -23,57 +49,57 @@ public class Balloom extends Enemy {
                 case "up":
                     switch (spriteNum) {
                         case 1:
-                            image = Image.balloom_right;
+                            image = Image.doll_right;
                             break;
                         case 2:
-                            image = Image.balloom_right1;
+                            image = Image.doll_right1;
                             break;
                         case 3:
-                            image = Image.balloom_right2;
+                            image = Image.doll_right2;
                             break;
                     }
                     break;
                 case "down":
                     switch (spriteNum) {
                         case 1:
-                            image = Image.balloom_left;
+                            image = Image.doll_left;
                             break;
                         case 2:
-                            image = Image.balloom_left1;
+                            image = Image.doll_left1;
                             break;
                         case 3:
-                            image = Image.balloom_left2;
+                            image = Image.doll_left2;
                             break;
                     }
                     break;
                 case "left":
                     switch (spriteNum) {
                         case 1:
-                            image = Image.balloom_left;
+                            image = Image.doll_left;
                             break;
                         case 2:
-                            image = Image.balloom_left1;
+                            image = Image.doll_left1;
                             break;
                         case 3:
-                            image = Image.balloom_left2;
+                            image = Image.doll_left2;
                             break;
                     }
                     break;
                 case "right":
                     switch (spriteNum) {
                         case 1:
-                            image = Image.balloom_right;
+                            image = Image.doll_right;
                             break;
                         case 2:
-                            image = Image.balloom_right1;
+                            image = Image.doll_right1;
                             break;
                         case 3:
-                            image = Image.balloom_right2;
+                            image = Image.doll_right2;
                             break;
                     }
                     break;
                 case "dead":
-                    image = Image.balloom_dead;
+                    image = Image.doll_dead;
                     break;
             }
         }

@@ -26,7 +26,7 @@ public abstract class Item extends StaticEntity {
             removed = true;
         }
         if (appear && !removed) {
-            for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
+            for (MoveEntity moveEntity : gamePanel.BoardManager.moveEntities) {
                 if (CollisionChecker.CheckEntity(moveEntity, this)) {
                     if (moveEntity instanceof Player) {
                         useItem = true;

@@ -1,6 +1,7 @@
 package Entities.MoveEntity.enemy;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import Entities.MoveEntity.MoveEntity;
 import Entities.MoveEntity.enemy.ai.AI1;
@@ -15,6 +16,10 @@ public abstract class Enemy extends MoveEntity {
         direction = "right";
         collision = true;
         timeToRemove = 60;
+    }
+
+    public void setRectangle() {
+        solidArea = new Rectangle(speed, speed, 16 * gamePanel.scale - speed, 16 * gamePanel.scale - speed);
     }
 
     @Override

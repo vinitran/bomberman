@@ -19,7 +19,7 @@ public class Flame extends StaticEntity {
 
     @Override
     public void update() {
-        for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
+        for (MoveEntity moveEntity : gamePanel.BoardManager.moveEntities) {
             if (CollisionChecker.CheckEntity(moveEntity, this)) {
                 moveEntity.setAlive(false);
             }
