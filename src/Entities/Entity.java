@@ -6,20 +6,25 @@ import java.awt.image.BufferedImage;
 import Main.GamePanel;
 
 public abstract class Entity {
-    protected String name;
     protected int worldX, worldY;
     protected int screenX;
     protected int screenY;
     protected Rectangle solidArea;
     protected GamePanel gamePanel;
     protected String direction; 
-    public int solidAreaDefaultX, solidAreaDefaultY;
     protected BufferedImage image = null;
     protected int spriteNum = 1;
     protected int spriteCounter = 0;
+    protected int maxSpriteCounter = 10;
     protected boolean collision = false;
     protected boolean removed = false;
     protected int timeToRemove = 30;
+
+    public Entity(int x, int y, GamePanel gamePanel) {
+        this.screenX = x * gamePanel.tileSize;
+        this.screenY = y * gamePanel.tileSize; 
+        this.gamePanel = gamePanel;
+    }
     
     public abstract void update();
     public abstract void setImage(Graphics2D g2);
@@ -28,7 +33,7 @@ public abstract class Entity {
         setImage(g2);
         int scrX = screenX - gamePanel.BoardManager.player.getScreenX() + gamePanel.BoardManager.player.px;
         int scrY = screenY - gamePanel.BoardManager.player.getScreenY() + gamePanel.BoardManager.player.py;
-                //px->srcX
+        //px->srcX
         //py->scrY
         //ScreenX->worldX
         //ScreenY->worldY
@@ -89,9 +94,5 @@ public abstract class Entity {
 
     public void setWorldX(int worldX) {
         this.worldX = worldX;
-    }
-
-    public String getName() {
-        return name;
     }
 }

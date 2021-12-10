@@ -3,7 +3,6 @@ package Main;
 import Entities.Entity;
 import Entities.MoveEntity.MoveEntity;
 import Entities.StaticEntity.Bomb;
-import Entities.StaticEntity.StaticEntity;
 
 import java.awt.*;
 
@@ -93,8 +92,8 @@ public class CollisionChecker {
                 }
                 tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityLeftCol];
                 tileNum2 = gamePanel.BoardManager.mapTile[entityTopRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1].collision
-                        || gamePanel.BoardManager.tiles[tileNum2].collision) {
+                if (gamePanel.BoardManager.tiles[tileNum1]
+                        || gamePanel.BoardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -110,8 +109,8 @@ public class CollisionChecker {
                 }
                 tileNum1 = gamePanel.BoardManager.mapTile[entityBottomRow][entityLeftCol];
                 tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1].collision
-                        || gamePanel.BoardManager.tiles[tileNum2].collision) {
+                if (gamePanel.BoardManager.tiles[tileNum1]
+                        || gamePanel.BoardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -127,8 +126,8 @@ public class CollisionChecker {
                 }
                 tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityLeftCol];
                 tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityLeftCol];
-                if (gamePanel.BoardManager.tiles[tileNum1].collision
-                        || gamePanel.BoardManager.tiles[tileNum2].collision) {
+                if (gamePanel.BoardManager.tiles[tileNum1]
+                        || gamePanel.BoardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -147,8 +146,8 @@ public class CollisionChecker {
                 }
                 tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityRightCol];
                 tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1].collision
-                        || gamePanel.BoardManager.tiles[tileNum2].collision) {
+                if (gamePanel.BoardManager.tiles[tileNum1]
+                        || gamePanel.BoardManager.tiles[tileNum2]) {
                     return true;
                 }
             }

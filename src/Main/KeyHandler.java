@@ -12,7 +12,8 @@ public class KeyHandler implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -41,7 +42,8 @@ public class KeyHandler implements KeyListener {
             }
         }
         if (code == KeyEvent.VK_F) {
-            if (gamePanel.BoardManager.player.flash && !CollisionChecker.checkTile(gamePanel.BoardManager.player, gamePanel, 2)) {
+            if (gamePanel.flash > 0 && !CollisionChecker.checkTile(gamePanel.BoardManager.player, gamePanel, 2)) {
+                gamePanel.flash--;
                 switch (gamePanel.BoardManager.player.getDirection()) {
                     case "right":
                         this.gamePanel.BoardManager.player
@@ -58,6 +60,9 @@ public class KeyHandler implements KeyListener {
                     case "down":
                         this.gamePanel.BoardManager.player
                                 .setScreenY(this.gamePanel.BoardManager.player.getScreenY() + gamePanel.tileSize * 2);
+                        break;
+                    default:
+                        gamePanel.flash++;
                         break;
                 }
             }

@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
     public BoardManager BoardManager;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
+    public int flash = 0;
     public Menu menu;
 
     public UI ui = new UI(this);
@@ -52,8 +53,8 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
         // Sound.sound_Bomberman.play();
-        Sound.sound_loop.play();
-        Sound.sound_loop.loop();
+        // Sound.sound_loop.play();
+        // Sound.sound_loop.loop();
     }
 
     public void setUpGame() {

@@ -1,7 +1,10 @@
 package Entities.MoveEntity.enemy;
 
+import java.awt.Graphics2D;
+
 import Entities.MoveEntity.MoveEntity;
 import Entities.MoveEntity.enemy.ai.AI1;
+import Image.Image;
 import Main.CollisionChecker;
 import Main.GamePanel;
 
@@ -9,16 +12,17 @@ public abstract class Enemy extends MoveEntity {
 
     public Enemy(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
+        direction = "right";
+        collision = true;
+        timeToRemove = 60;
     }
 
     @Override
     public void update() {
+        super.update();
         if (!alive) {
             if (!direction.equals("dead")) {
                 direction = "dead";
-                spriteCounter = 0;
-                spriteNum = 1;
-                timeToRemove = 40;
             }
             timeToRemove--;
         } else {
@@ -65,5 +69,28 @@ public abstract class Enemy extends MoveEntity {
                     break;
             }
         }
+    }
+
+    @Override
+    public void setImage(Graphics2D g2) {
+        if (timeToRemove == 30) {
+            spriteNum = 1;
+            spriteCounter = 0;
+        }
+        switch(spriteNum) {
+            case 1: 
+                image = Image.mob_dead1;
+                break;
+            case 2:
+                image = Image.mob_dead2;
+                break;
+            case 3:
+                image = Image.mob_dead3;
+                break;
+        }
+    }
+
+    public void drawDeadEnemy() {
+
     }
 }

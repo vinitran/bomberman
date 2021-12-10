@@ -4,25 +4,20 @@ import Main.GamePanel;
 
 import java.awt.*;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-import java.awt.image.BufferedImage;
 
 import Entities.MoveEntity.enemy.*;
 import Entities.StaticEntity.*;
 import Entities.StaticEntity.Item.*;
 import Entities.MoveEntity.*;
 
-import static javax.imageio.ImageIO.read;
-
 public class BoardManager {
     GamePanel gamePanel;
-    public Tile[] tiles;
+    public boolean[] tiles;
     public String[][] map;
     public int[][] mapTile;
     public List<MoveEntity> MoveEntities = new ArrayList<>();
@@ -34,33 +29,17 @@ public class BoardManager {
         this.gamePanel = gp;
         map = new String[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
         mapTile = new int[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
-        tiles = new Tile[10];
-        getTileImage();
+        tiles = new boolean[5];
+        getTile();
         loadMap("levels/level1.txt");
-        // player = new Player(1, 1, gamePanel);
-        // MoveEntities.add(player);
-        // MoveEntities.add(new Balloom(5, 1, gamePanel));
     }
 
-    public void getTileImage() {
-        try {
-            tiles[0] = new Tile();// Grass tile
-            tiles[0].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
-            tiles[1] = new Tile();// Wall tile
-            tiles[1].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/wall.png")));
-            tiles[1].collision = true;
-            tiles[2] = new Tile();// Brick tile
-            tiles[2].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
-            tiles[2].collision = true;
-            tiles[3] = new Tile();// item
-            tiles[3].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
-            tiles[3].collision = false;
-            tiles[4] = new Tile();// Brick tile have item
-            tiles[4].image = read(Objects.requireNonNull(getClass().getResourceAsStream("images_tile/grass.png")));
-            tiles[4].collision = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void getTile() {
+        tiles[0] = false;   // Grass tile
+        tiles[1] = true;    // Wall tile
+        tiles[2] = true;    // Brick tile
+        tiles[3] = false;   // item
+        tiles[4] = true;    // Brick tile have item
     }
 
     public void loadMap(String filePath) {
@@ -68,6 +47,9 @@ public class BoardManager {
         for (int i = 0; i < gamePanel.maxWorldRow; i++) {
             for (int j = 0; j < gamePanel.maxWorldCol; j++) {
                 mapTile[i][j] = 0;
+                if (!map[i][j].equals("#")) {
+                    staticEntities.add(new Grass(j, i, gamePanel));
+                }
                 switch (map[i][j]) {
                     case "p": {
                         player = new Player(j, i, gamePanel);
@@ -107,12 +89,13 @@ public class BoardManager {
                     }
                         break;
                     case "t": {
-                        staticEntities.add(new Flash(j, i, gamePanel));
+                        staticEntities.add(new FlashItem(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));
                         mapTile[i][j] = 4;
                     }
                         break;
                     case "#": {
+                        staticEntities.add(new Wall(j, i, gamePanel));
                         mapTile[i][j] = 1;
                     }
                         break;
@@ -191,33 +174,6 @@ public class BoardManager {
     }
 
     public void draw(Graphics2D g2) {
-        for (int maxCol = 0; maxCol < gamePanel.maxWorldCol; maxCol++) {
-            for (int maxRow = 0; maxRow < gamePanel.maxWorldRow; maxRow++) {
-                int screenX = maxCol * gamePanel.tileSize;
-                int screenY = maxRow * gamePanel.tileSize;
-                int px = screenX - player.getScreenX() + player.px;
-                int py = screenY - player.getScreenY() + player.py;
-
-                // stop the camera at the edge
-                if (player.px > player.getScreenX()) {
-                    px = screenX;
-                }
-                if (player.py > player.getScreenY()) {
-                    py = screenY;
-                }
-                int rightOffset = gamePanel.screenWidth - player.px;
-                if (rightOffset > gamePanel.worldWidth - player.getScreenX()) {
-                    px = gamePanel.screenWidth - (gamePanel.worldWidth - screenX);
-                }
-                int bottomOffset = gamePanel.screenHeight - player.py;
-                if (bottomOffset > gamePanel.worldHeight - player.getScreenY()) {
-                    py = gamePanel.screenHeight - (gamePanel.worldHeight - screenY);
-                }
-                g2.drawImage(tiles[mapTile[maxRow][maxCol]].image, px, py, gamePanel.tileSize, gamePanel.tileSize,
-                        null);
-            }
-        }
-
         for (StaticEntity staticEntity : staticEntities) {
             staticEntity.draw(g2);
         }

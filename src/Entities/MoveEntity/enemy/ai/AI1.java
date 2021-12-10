@@ -7,7 +7,6 @@ import Main.CollisionChecker;
 import Main.GamePanel;
 
 public class AI1 {
-
     public static boolean BasicAI(Enemy enemy, GamePanel gamePanel) {
         Random random = new Random();
         int temp = random.nextInt() % 3;

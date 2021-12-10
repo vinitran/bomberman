@@ -59,7 +59,7 @@ public class Bomb extends StaticEntity {
     @Override
     public void setImage(Graphics2D g2) {
         spriteCounter++;
-        if (spriteCounter > 10) {
+        if (spriteCounter > maxSpriteCounter) {
             if (spriteNum == 1) {
                 spriteNum = 2;
             } else if (spriteNum == 2) {
@@ -97,7 +97,6 @@ public class Bomb extends StaticEntity {
                 flame.draw(g2);
             }
         }
-        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 
     public void creatFrame() {

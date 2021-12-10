@@ -1,7 +1,6 @@
 package Entities.StaticEntity;
 
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 
 import Entities.MoveEntity.MoveEntity;
 import Image.Image;
@@ -31,7 +30,7 @@ public class Flame extends StaticEntity {
     public void setImage(Graphics2D g2) {
         image = null;
         spriteCounter++;
-        if (spriteCounter > 10) {
+        if (spriteCounter > maxSpriteCounter) {
             if (spriteNum == 1) {
                 spriteNum = 2;
             } else if (spriteNum == 2) {
@@ -123,6 +122,5 @@ public class Flame extends StaticEntity {
                 }
             }
         }
-        //g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }
