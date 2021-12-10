@@ -5,21 +5,25 @@ import Image.Image;
 
 import java.awt.*;
 
-public class Flash extends Item {
-    public Flash(int x, int y, GamePanel gamePanel) {
+public class FlashItem extends Item {
+    public FlashItem(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        this.name = "Flash";
     }
 
     @Override
     public void update() {
         super.update();
         if (useItem && removed) {
-            gamePanel.BoardManager.player.flash = true;
+            gamePanel.flash = 3;
         }
     }
 
+    @Override
+    public void draw(Graphics2D g2) {
+        super.draw(g2);
+    }
+
     public void setImage(Graphics2D g2) {
-        this.image = Image.Flash;
+        this.image = Image.flashItem;
     }
 }

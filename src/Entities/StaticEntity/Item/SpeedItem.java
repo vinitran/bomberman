@@ -9,7 +9,6 @@ import java.awt.*;
 public class SpeedItem extends Item {
     public SpeedItem(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
-        this.name = "Ghost";
     }
 
     @Override

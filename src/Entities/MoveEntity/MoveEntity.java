@@ -1,7 +1,5 @@
 package Entities.MoveEntity;
 
-import java.awt.*;
-
 import Entities.Entity;
 import Main.GamePanel;
 
@@ -12,13 +10,23 @@ public abstract class MoveEntity extends Entity {
     protected boolean CollisionBomb = false;
     
     public MoveEntity(int x, int y, GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
-        this.screenX = x * gamePanel.tileSize;
-        this.screenY = y * gamePanel.tileSize;
-        solidArea = new Rectangle(2 * gamePanel.scale, 4 * gamePanel.scale, 8 * gamePanel.scale, 9 * gamePanel.scale);
-        solidAreaDefaultX = solidArea.x;
-        solidAreaDefaultY = solidArea.y;
+        super(x, y, gamePanel);
+        maxSpriteCounter = 10;
+    }
 
+    @Override
+    public void update() {
+        spriteCounter++;
+        if (spriteCounter > maxSpriteCounter) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 3;
+            } else if (spriteNum == 3) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
     }
 
     public boolean isAlive() {

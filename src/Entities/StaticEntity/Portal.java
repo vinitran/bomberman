@@ -1,6 +1,7 @@
 package Entities.StaticEntity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import Entities.MoveEntity.MoveEntity;
 import Entities.MoveEntity.Player;
@@ -15,6 +16,7 @@ public class Portal extends StaticEntity {
 
     public Portal(int x, int y, GamePanel gamePanel) {
         super(x, y, gamePanel);
+        solidArea = new Rectangle(7 * gamePanel.scale, 7 * gamePanel.scale, 2 * gamePanel.scale, 2 * gamePanel.scale);
     }
 
     @Override
