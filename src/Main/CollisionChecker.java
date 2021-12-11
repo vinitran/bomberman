@@ -90,10 +90,10 @@ public class CollisionChecker {
                 if (entityTopRow < 0) {
                     return true;
                 }
-                tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityLeftCol];
-                tileNum2 = gamePanel.BoardManager.mapTile[entityTopRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1]
-                        || gamePanel.BoardManager.tiles[tileNum2]) {
+                tileNum1 = gamePanel.boardManager.mapTile[entityTopRow][entityLeftCol];
+                tileNum2 = gamePanel.boardManager.mapTile[entityTopRow][entityRightCol];
+                if (gamePanel.boardManager.tiles[tileNum1]
+                        || gamePanel.boardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -104,13 +104,13 @@ public class CollisionChecker {
                 } else {
                     entityBottomRow += type;
                 }
-                if (entityBottomRow >= gamePanel.BoardManager.mapTile.length) {
+                if (entityBottomRow >= gamePanel.boardManager.mapTile.length) {
                     return true;
                 }
-                tileNum1 = gamePanel.BoardManager.mapTile[entityBottomRow][entityLeftCol];
-                tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1]
-                        || gamePanel.BoardManager.tiles[tileNum2]) {
+                tileNum1 = gamePanel.boardManager.mapTile[entityBottomRow][entityLeftCol];
+                tileNum2 = gamePanel.boardManager.mapTile[entityBottomRow][entityRightCol];
+                if (gamePanel.boardManager.tiles[tileNum1]
+                        || gamePanel.boardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -124,10 +124,10 @@ public class CollisionChecker {
                 if (entityLeftCol < 0) {
                     return true;
                 }
-                tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityLeftCol];
-                tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityLeftCol];
-                if (gamePanel.BoardManager.tiles[tileNum1]
-                        || gamePanel.BoardManager.tiles[tileNum2]) {
+                tileNum1 = gamePanel.boardManager.mapTile[entityTopRow][entityLeftCol];
+                tileNum2 = gamePanel.boardManager.mapTile[entityBottomRow][entityLeftCol];
+                if (gamePanel.boardManager.tiles[tileNum1]
+                        || gamePanel.boardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -138,16 +138,16 @@ public class CollisionChecker {
                 } else {
                     entityRightCol += type;
                 }
-                if (entityRightCol >= gamePanel.BoardManager.mapTile[entityBottomRow].length) {
+                if (entityRightCol >= gamePanel.boardManager.mapTile[entityBottomRow].length) {
                     return true;
                 }
-                if (entityRightCol >= gamePanel.BoardManager.mapTile[entityTopRow].length) {
+                if (entityRightCol >= gamePanel.boardManager.mapTile[entityTopRow].length) {
                     return true;
                 }
-                tileNum1 = gamePanel.BoardManager.mapTile[entityTopRow][entityRightCol];
-                tileNum2 = gamePanel.BoardManager.mapTile[entityBottomRow][entityRightCol];
-                if (gamePanel.BoardManager.tiles[tileNum1]
-                        || gamePanel.BoardManager.tiles[tileNum2]) {
+                tileNum1 = gamePanel.boardManager.mapTile[entityTopRow][entityRightCol];
+                tileNum2 = gamePanel.boardManager.mapTile[entityBottomRow][entityRightCol];
+                if (gamePanel.boardManager.tiles[tileNum1]
+                        || gamePanel.boardManager.tiles[tileNum2]) {
                     return true;
                 }
             }
@@ -164,17 +164,17 @@ public class CollisionChecker {
 
     public static boolean checkFlame(int x, int y, GamePanel gamePanel) {
         if (x < gamePanel.maxWorldCol && y < gamePanel.maxWorldRow && x >= 0 && y >= 0) {
-            int tile = gamePanel.BoardManager.mapTile[y][x];
+            int tile = gamePanel.boardManager.mapTile[y][x];
             // remove brick
             if (tile == 0) {
                 return false;
             } else if (tile == 2) {
-                gamePanel.BoardManager.mapTile[y][x] = 0;
+                gamePanel.boardManager.mapTile[y][x] = 0;
             } else if (tile == 3) {
-                gamePanel.BoardManager.mapTile[y][x] = 0;
+                gamePanel.boardManager.mapTile[y][x] = 0;
                 return false;
             } else if (tile == 4) {
-                gamePanel.BoardManager.mapTile[y][x] = 3;
+                gamePanel.boardManager.mapTile[y][x] = 3;
             }
         }
         return true;

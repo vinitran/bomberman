@@ -24,7 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     private int FPS = 60;
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
-    public BoardManager BoardManager;
+    private int level = 0;
+    private int levelMax = 2;
+    public BoardManager boardManager;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
     public int flash = 0;
@@ -39,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel() {
         keyHandler = new KeyHandler(this);
         mouseHandler = new MouseHandler(this);
-        BoardManager = new BoardManager(this);
+        boardManager = new BoardManager(this);
         menu = new Menu(this, mouseHandler);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -50,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void startGameThread() {
+        nextLevel();
         gameThread = new Thread(this);
         gameThread.start();
         // Sound.sound_Bomberman.play();
@@ -86,7 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         if (gameState == playState) {
-            BoardManager.update();
+            boardManager.update();
         }
         if (gameState == pauseState) {
             // nothing happend
@@ -98,7 +101,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (gameState == playState) {
-            BoardManager.draw(g2);
+            boardManager.draw(g2);
             ui.draw(g2);
         }
         if (gameState == pauseState) {
@@ -118,5 +121,30 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setBombRadius(int bombRadius) {
         this.bombRadius = bombRadius;
+    }
+
+    public void nextLevel() {
+        level++;
+        if (level > levelMax) {
+            gameThread = null;
+            ui.gameFinished = true;
+            return;
+        }
+        if (level != 1) {
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        boardManager.startGame();
+        ui.setNextLevel(true);
+        bombRadius = 1;
+        nBombs = 1;
+        flash = 0;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

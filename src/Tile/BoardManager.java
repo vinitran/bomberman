@@ -31,7 +31,13 @@ public class BoardManager {
         mapTile = new int[gamePanel.maxWorldRow][gamePanel.maxWorldCol];
         tiles = new boolean[5];
         getTile();
-        loadMap("levels/level1.txt");
+    }
+
+    public void startGame() {
+        moveEntities.clear();
+        staticEntities.clear();
+        bombs.clear();
+        loadLevel();
     }
 
     public void getTile() {
@@ -197,6 +203,11 @@ public class BoardManager {
 
     public void addMoveEntities(MoveEntity moveEntity) {
         moveEntities.add(moveEntity);
+    }
+
+    public void loadLevel() {
+        String filePath = "levels/level" + gamePanel.getLevel() + ".txt";
+        loadMap(filePath);
     }
 
 }

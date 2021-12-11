@@ -15,7 +15,7 @@ public class Brick extends StaticEntity {
 
     @Override
     public void update() {
-        int tile = gamePanel.BoardManager.mapTile[y][x];
+        int tile = gamePanel.boardManager.mapTile[y][x];
         if (tile != 2 && tile != 4) {
             timeToRemove--;
             if (timeToRemove == 0) {

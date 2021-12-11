@@ -55,7 +55,7 @@ public class Player extends MoveEntity {
     }
 
     public void checkCollision() {
-        for (MoveEntity value : gamePanel.BoardManager.moveEntities) {
+        for (MoveEntity value : gamePanel.boardManager.moveEntities) {
             if (!(value instanceof Player)) {
                 if (CollisionChecker.CheckEntity(this, value)) {
                     alive = false;
@@ -70,14 +70,14 @@ public class Player extends MoveEntity {
         if (timeSetBombs <= 0) {
             int xBomb = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
             int yBomb = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
-            for (Bomb bomb : gamePanel.BoardManager.bombs) {
+            for (Bomb bomb : gamePanel.boardManager.bombs) {
                 if (bomb.getScreenX() == xBomb * gamePanel.tileSize) {
                     if (bomb.getScreenY() == yBomb * gamePanel.tileSize) {
                         return null;
                     }
                 }
             }
-            if (gamePanel.BoardManager.mapTile[yBomb][xBomb] == 3) {
+            if (gamePanel.boardManager.mapTile[yBomb][xBomb] == 3) {
                 return null;
             }
             if (timeToRemove < 30) {

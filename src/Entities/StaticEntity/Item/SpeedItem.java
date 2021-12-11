@@ -15,7 +15,7 @@ public class SpeedItem extends Item {
     public void update() {
         super.update();
         if (useItem && removed) {
-            gamePanel.BoardManager.player.setSpeed(3);
+            gamePanel.boardManager.player.setSpeed(3);
         }
     }
 
