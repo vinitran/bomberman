@@ -5,6 +5,7 @@ import Entities.MoveEntity.Player;
 import Entities.StaticEntity.StaticEntity;
 import Main.CollisionChecker;
 import Main.GamePanel;
+import Sound.Sound;
 
 public abstract class Item extends StaticEntity {
     protected boolean appear = false;
@@ -14,7 +15,6 @@ public abstract class Item extends StaticEntity {
         appear = false;
         useItem = false;
     }
-
     @Override
     public void update() {
         int x = screenY / gamePanel.tileSize;
@@ -29,6 +29,7 @@ public abstract class Item extends StaticEntity {
             for (MoveEntity moveEntity : gamePanel.BoardManager.MoveEntities) {
                 if (CollisionChecker.CheckEntity(moveEntity, this)) {
                     if (moveEntity instanceof Player) {
+                        gamePanel.sound.item.play();
                         useItem = true;
                     }
                     gamePanel.BoardManager.mapTile[x][y] = 0;

@@ -9,7 +9,6 @@ public class LoadSound {
     URL soundURL[] = new URL[1];
     public LoadSound(String path) {
         soundURL[0] = getClass().getResource(path);
-
     }
     public void play() {
         try{
@@ -18,7 +17,6 @@ public class LoadSound {
             clip.open(ais);
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-
         }
         clip.start();
     }
@@ -26,6 +24,9 @@ public class LoadSound {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public void stop() {
-        clip.stop();
+        if (clip != null) {
+            clip.stop();
+        }
+
     }
 }

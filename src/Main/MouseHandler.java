@@ -1,5 +1,7 @@
 package Main;
 
+import Sound.Sound;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -16,7 +18,6 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
         double xPos = e.getX();
@@ -77,13 +78,16 @@ public class MouseHandler implements MouseListener {
         double xPos = e.getX();
         double yPos = e.getY();
         switch (gamePanel.menu.direction) {
-            case "StartGame":
+            case "Coutinue":
                 if (xPos > 580 && xPos < (580 + 192)) {
                     if (yPos > 250 && yPos < 280) {
+                        gamePanel.sound.click.play();
                         direction = "Start";
                     } else if (yPos > 280 && yPos < 310) {
+                        gamePanel.sound.click.play();
                         direction = "Coutinue";
                     } else if (yPos > 310 && yPos < 340) {
+                        gamePanel.sound.click.play();
                         direction = "HowToPlay";
                     }
                     pressed = false ;
@@ -95,6 +99,7 @@ public class MouseHandler implements MouseListener {
             case "HowToPlay":
                 if (xPos > 600 && xPos < (600 + 143)
                         && yPos > 310 && yPos < 310+34) {
+                    gamePanel.sound.click.play();
                     direction = "Back";
                     pressed = false;
                 } else {
@@ -105,6 +110,7 @@ public class MouseHandler implements MouseListener {
             case "Gameover":
                 if (xPos > 320 && xPos < (320 + 172)
                         && yPos > 270 && yPos < (270 + 41)) {
+                    gamePanel.sound.click.play();
                     direction = "Back";
                     pressed = false;
                 } else {
@@ -112,11 +118,13 @@ public class MouseHandler implements MouseListener {
                     pressed = false;
                 }
                 break;
-            case "Coutinue":
+            case "StartGame":
                 if (xPos > 580 && xPos < (580 + 192)) {
                     if (yPos > 280 && yPos < 310) {
+                        gamePanel.sound.click.play();
                         direction = "Start";
                     } else if (yPos > 310 && yPos < 340) {
+                        gamePanel.sound.click.play();
                         direction = "HowToPlay";
                     }
                     pressed = false;
@@ -126,6 +134,7 @@ public class MouseHandler implements MouseListener {
                 }
                 break;
         }
+
     }
 
     @Override

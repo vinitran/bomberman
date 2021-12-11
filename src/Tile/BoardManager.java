@@ -146,6 +146,7 @@ public class BoardManager {
         if (gamePanel.getKeyHandler().spacePressed && gamePanel.nBombs > 0) {
             Bomb newBomb = player.makeBomb();
             if (newBomb != null) {
+                gamePanel.sound.makeBom.play();
                 bombs.add(newBomb);
                 gamePanel.nBombs--;
             }

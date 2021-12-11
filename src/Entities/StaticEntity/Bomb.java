@@ -26,7 +26,7 @@ public class Bomb extends StaticEntity {
             timeExplode--;
         } else {
             if (!exploded) {
-                Sound.sound_Bom.play();
+                gamePanel.sound.bom.play();
                 exploded = true;
                 spriteCounter = 0;
                 spriteNum = 1;

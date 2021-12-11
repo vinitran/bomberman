@@ -5,22 +5,29 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import Image.Image;
+import Sound.Sound;
+
 public class Menu implements MouseListener{
     GamePanel gamePanel;
-    private MouseHandler mouseHandler;
-    private double scale;
+    private final MouseHandler mouseHandler;
     private int index = 0;
+    public boolean playSound;
     public String direction;
     private int indexGameover = 0;
     public Menu(GamePanel gamePanel, MouseHandler mouseHandler) {
         this.gamePanel = gamePanel;
         this.mouseHandler = mouseHandler;
-        scale = 1;
-        direction = "Gameover";
+        direction = "StartGame";
+        playSound = true;
     }
     public void draw(Graphics2D g2) {
         switch(direction) {
             case "StartGame":
+                if (playSound) {
+                    gamePanel.sound.titleScreen.play();
+                    gamePanel.sound.titleScreen.loop();
+                }
+                playSound = false;
                 g2.drawImage(Image.backGroundGame,0,0,768,384,null);
                 if (mouseHandler.pressed) {
                     if ("Start".equals(mouseHandler.direction)) {
@@ -35,9 +42,13 @@ public class Menu implements MouseListener{
                 } else {
                     switch (index) {
                         case 1:
+                            gamePanel.sound.stopAllSound();
+                            gamePanel.menu.playSound = true;
                             gamePanel.gameState = gamePanel.playState;
                             break;
                         case 2:
+                            gamePanel.sound.stopAllSound();
+                            gamePanel.menu.playSound = true;
                             direction = "HowToPlay";
                             break;
                     }
@@ -47,6 +58,11 @@ public class Menu implements MouseListener{
                 }
                 break;
             case "Coutinue":
+                if (playSound) {
+                    gamePanel.sound.titleScreen.play();
+                    gamePanel.sound.titleScreen.loop();
+                }
+                playSound = false;
                 g2.drawImage(Image.backGroundGame,0,0,768,384,null);
                 if (mouseHandler.pressed) {
                     if ("Start".equals(mouseHandler.direction)) {
@@ -75,6 +91,8 @@ public class Menu implements MouseListener{
                             gamePanel.gameState = gamePanel.playState;
                             break;
                         case 3:
+                            gamePanel.sound.stopAllSound();
+                            gamePanel.menu.playSound = true;
                             direction = "HowToPlay";
                             break;
                     }
@@ -85,6 +103,11 @@ public class Menu implements MouseListener{
                 }
                 break;
             case "HowToPlay":
+                if (playSound) {
+                    gamePanel.sound.titleScreen.play();
+                    gamePanel.sound.titleScreen.loop();
+                }
+                playSound = false;
                 g2.drawImage(Image.howToPlayPanel,0,0,768,384,null);
                 if (mouseHandler.pressed) {
                     if ("Back".equals(mouseHandler.direction)) {
@@ -95,6 +118,8 @@ public class Menu implements MouseListener{
                     switch (index) {
                         case 1:
                             if (gamePanel.gameState != gamePanel.playState) {
+                                gamePanel.sound.stopAllSound();
+                                gamePanel.menu.playSound = true;
                                 direction = "StartGame";
                             }
                             break;
@@ -104,6 +129,11 @@ public class Menu implements MouseListener{
                 }
                 break;
             case "Gameover":
+                if (playSound) {
+                    gamePanel.sound.gameOver.play();
+                    gamePanel.sound.gameOver.loop();
+                }
+                playSound = false;
                 g2.drawImage(Image.getBackGroundGameover,0,0,768,384,null);
                 g2.drawImage(Image.gameover,220,150,353,57,null);
                 if (mouseHandler.pressed) {
@@ -115,6 +145,8 @@ public class Menu implements MouseListener{
                     switch (index) {
                         case 1:
                             if (gamePanel.gameState != gamePanel.playState) {
+                                gamePanel.sound.stopAllSound();
+                                gamePanel.menu.playSound = true;
                                 direction = "StartGame";
                             }
                             break;

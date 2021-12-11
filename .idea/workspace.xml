@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="" />
+    <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/BonusStage.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/FindDoor.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/LevelComplete.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/StageTheme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/TitleScreen.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/item.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/MouseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/GameOver.wav" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/GameOver.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/power01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/power01.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Portal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Portal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MouseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/LoadSound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/LoadSound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound/GameOver.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/BoardManager.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,10 +60,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Image/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Sound/Sound" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Sound\Sound" />
       <recent name="C:\Users\Vinh\Downloads\bomberman\src\Image\images" />
       <recent name="C:\Users\Vinh\Downloads\bomberman\src\Main" />
     </key>
@@ -65,6 +96,15 @@
       <workItem from="1639079256527" duration="172000" />
       <workItem from="1639079484181" duration="178000" />
       <workItem from="1639079697222" duration="1595000" />
+      <workItem from="1639130346780" duration="272000" />
+      <workItem from="1639157257163" duration="2491000" />
+      <workItem from="1639160309738" duration="1942000" />
+      <workItem from="1639162680991" duration="2978000" />
+      <workItem from="1639203532934" duration="559000" />
+      <workItem from="1639204135430" duration="2520000" />
+      <workItem from="1639208397169" duration="3163000" />
+      <workItem from="1639211625304" duration="873000" />
+      <workItem from="1639214637407" duration="3668000" />
     </task>
     <servers />
   </component>

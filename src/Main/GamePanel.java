@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
     public BoardManager BoardManager;
+    public Sound sound;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
     public Menu menu;
@@ -39,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
         keyHandler = new KeyHandler(this);
         mouseHandler = new MouseHandler(this);
         BoardManager = new BoardManager(this);
+        sound = new Sound();
         menu = new Menu(this, mouseHandler);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -51,9 +53,10 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
+
         // Sound.sound_Bomberman.play();
-        Sound.sound_loop.play();
-        Sound.sound_loop.loop();
+        //Sound.sound_loop.play();
+        //Sound.sound_loop.loop();
     }
 
     public void setUpGame() {
@@ -90,20 +93,23 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == pauseState) {
             // nothing happend
         }
-
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (gameState == playState) {
+            if(menu.playSound) {
+                sound.stageTheme.play();
+                sound.stageTheme.loop();
+            }
+            menu.playSound = false;
             BoardManager.draw(g2);
             ui.draw(g2);
         }
         if (gameState == pauseState) {
             menu.draw(g2);
         }
-
         g2.dispose();
     }
 

@@ -71,12 +71,11 @@ public class Image {
     public static final BufferedImage bomb2 = (new LoadImage("images/bomb_2.png")).getImage();
     
     public static final BufferedImage Ghost = (new LoadImage("images/Ghost.png")).getImage();
-    public static final BufferedImage Flash = (new LoadImage("images/Flash.png")).getImage();
+    public static final BufferedImage Flash = (new LoadImage("images/powerup_wallpass.png")).getImage();
     public static final BufferedImage Portal = (new LoadImage("images/portal.png")).getImage();
     public static final BufferedImage bombItem = (new LoadImage("images/powerup_bombs.png")).getImage();
     public static final BufferedImage speedItem = (new LoadImage("images/powerup_speed.png")).getImage();
     public static final BufferedImage flameItem = (new LoadImage("images/powerup_flames.png")).getImage();
-    public static final BufferedImage wallPassItem = (new LoadImage("images/powerup_wallpass.png")).getImage();
     public static final BufferedImage flamePassItem = (new LoadImage("images/powerup_flamepass.png")).getImage();
     
     public static final BufferedImage brick = (new LoadImage("images/brick.png")).getImage();
