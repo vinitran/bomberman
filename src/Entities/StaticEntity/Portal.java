@@ -23,7 +23,9 @@ public class Portal extends StaticEntity {
         int x = screenY / gamePanel.tileSize;
         int y = screenX / gamePanel.tileSize;
         int tile = gamePanel.boardManager.mapTile[x][y];
-        if (tile == 3) {
+        if (tile == 3 && !appear) {
+            gamePanel.sound.stopAllSound();
+            gamePanel.menu.playSound = true;
             appear = true;
         } else if (tile == 0) {
             gamePanel.boardManager.mapTile[x][y] = 3;
@@ -34,6 +36,11 @@ public class Portal extends StaticEntity {
                 nextLevel = false;
                 break;
             }
+        }
+        if (appear && gamePanel.menu.playSound) {
+            gamePanel.sound.findDoor.play();
+            gamePanel.sound.findDoor.loop();
+            gamePanel.menu.playSound = false;
         }
         if (appear && nextLevel) {
             for (MoveEntity moveEntity : gamePanel.boardManager.moveEntities) {

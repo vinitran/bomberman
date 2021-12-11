@@ -25,10 +25,11 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
     private int level = 0;
-    private int levelMax = 2;
+    private int levelMax = 1;
     private boolean gameOver = false;
     private boolean winGame = false;
     public BoardManager boardManager;
+    public Sound sound;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
     public int flash = 0;
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
         keyHandler = new KeyHandler(this);
         mouseHandler = new MouseHandler(this);
         boardManager = new BoardManager(this);
+        sound = new Sound();
         menu = new Menu(this, mouseHandler);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -57,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
         nextLevel();
         gameThread = new Thread(this);
         gameThread.start();
+
         // Sound.sound_Bomberman.play();
         // Sound.sound_loop.play();
         // Sound.sound_loop.loop();
@@ -96,20 +99,23 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == pauseState) {
             // nothing happend
         }
-
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (gameState == playState) {
+            if(menu.playSound) {
+                sound.stageTheme.play();
+                sound.stageTheme.loop();
+            }
+            menu.playSound = false;
             boardManager.draw(g2);
             ui.draw(g2);
         }
         if (gameState == pauseState) {
             menu.draw(g2);
         }
-
         g2.dispose();
     }
 
@@ -129,8 +135,7 @@ public class GamePanel extends JPanel implements Runnable {
         level++;
         if (level > levelMax) {
             winGame = true;
-            // gameThread = null;
-            // ui.gameFinished = true;
+            //ui.gameFinished = true;
             return;
         }
         if (level != 1) {
