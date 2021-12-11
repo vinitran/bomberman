@@ -1,6 +1,7 @@
 package Image;
 
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class Image {
     public static final BufferedImage player_up = (new LoadImage("images/player_up.png")).getImage();
@@ -110,5 +111,13 @@ public class Image {
     public static final BufferedImage howToPlayPanel = (new LoadImage("images/howToPlayPanel.png")).getImage();
     public static final BufferedImage getBackGroundGameover = (new LoadImage("images/GameoverBackground.png")).getImage();
     public static final BufferedImage gameover = (new LoadImage("images/Gameover.png")).getImage();
+
+    public static final BufferedImage kondoria_dead = (new LoadImage("images/kondoria_dead.png")).getImage();
+    public static final BufferedImage kondoria_left1 = (new LoadImage("images/kondoria_left1.png")).getImage();
+    public static final BufferedImage kondoria_left2 = (new LoadImage("images/kondoria_left2.png")).getImage();
+    public static final BufferedImage kondoria_left3 = (new LoadImage("images/kondoria_left3.png")).getImage();
+    public static final BufferedImage kondoria_right1 = (new LoadImage("images/kondoria_right1.png")).getImage();
+    public static final BufferedImage kondoria_right2 = (new LoadImage("images/kondoria_right2.png")).getImage();
+    public static final BufferedImage kondoria_right3 = (new LoadImage("images/kondoria_right3.png")).getImage();
 
 }
