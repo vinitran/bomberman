@@ -26,6 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     private MouseHandler mouseHandler;
     private int level = 0;
     private int levelMax = 2;
+    private boolean gameOver = false;
+    private boolean winGame = false;
     public BoardManager boardManager;
     public int bombRadius = 1; // bán kính bom
     public int nBombs = 1;
@@ -126,8 +128,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void nextLevel() {
         level++;
         if (level > levelMax) {
-            gameThread = null;
-            ui.gameFinished = true;
+            winGame = true;
+            // gameThread = null;
+            // ui.gameFinished = true;
             return;
         }
         if (level != 1) {
@@ -146,5 +149,17 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getLevel() {
         return level;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isWinGame() {
+        return winGame;
     }
 }
