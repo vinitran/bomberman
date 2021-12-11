@@ -93,6 +93,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+        menu.update();
         if (gameState == playState) {
             boardManager.update();
         }

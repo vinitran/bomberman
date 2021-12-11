@@ -52,6 +52,12 @@ public class Player extends MoveEntity {
         if (timeToRemove == 0) {
             removed = true;
             gamePanel.setGameOver(true);
+            gamePanel.setUpGame(); //pause stage
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

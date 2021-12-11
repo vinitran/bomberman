@@ -20,6 +20,13 @@ public class Menu implements MouseListener{
         direction = "StartGame";
         playSound = true;
     }
+
+    public void update() {
+        if (gamePanel.isGameOver()) {
+            direction = "GameOver";
+        }
+    }
+
     public void draw(Graphics2D g2) {
         switch(direction) {
             case "StartGame":
@@ -128,7 +135,7 @@ public class Menu implements MouseListener{
                     index = 0;
                 }
                 break;
-            case "Gameover":
+            case "GameOver":
                 if (playSound) {
                     gamePanel.sound.gameOver.play();
                     gamePanel.sound.gameOver.loop();
