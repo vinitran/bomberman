@@ -20,7 +20,7 @@ public class Minvo extends Enemy {
         if (!alive && timeToRemove == 0) {
             int x = (screenX + solidArea.x + solidArea.width / 2) / gamePanel.tileSize;
             int y = (screenY + solidArea.y + solidArea.height / 2) / gamePanel.tileSize;
-            MoveEntity moveEntity = new Balloom(x, y, gamePanel);
+            MoveEntity moveEntity = new Oneal(x, y, gamePanel);
             gamePanel.boardManager.addMoveEntities(moveEntity);
         }
     }

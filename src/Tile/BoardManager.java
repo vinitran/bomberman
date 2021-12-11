@@ -78,6 +78,10 @@ public class BoardManager {
                         moveEntities.add(new Minvo(j, i, gamePanel));
                     }
                         break;
+                    case "5": {
+                        moveEntities.add(new Kondoria(j, i, gamePanel, 1));
+                    }
+                        break;
                     case "x": {
                         staticEntities.add(new Portal(j, i, gamePanel));
                         staticEntities.add(new Brick(j, i, gamePanel));

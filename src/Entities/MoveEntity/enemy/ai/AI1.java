@@ -52,4 +52,5 @@ public class AI1 {
         enemy.setDirection(direct);
         return false;
     }
+
 }

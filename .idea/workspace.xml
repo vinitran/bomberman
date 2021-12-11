@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/Sound/Sound/BonusStage.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Sound/Sound/FindDoor.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Sound/Sound/LevelComplete.wav" afterDir="false" />
@@ -31,6 +32,21 @@
       <change beforePath="$PROJECT_DIR$/src/Sound/Sound/GameOver.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/BoardManager.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/Kondoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_dead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/ai/AI1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/ai/AI1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/BoardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/levels/Level1.txt" afterDir="false" />
+>>>>>>> dung1
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +62,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="21z4CV3GFlsMyWzgZjfb655NTwm" />
   <component name="ProjectLevelVcsManager">
@@ -69,7 +93,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Users\Vinh\Downloads\bomberman\src\Sound\Sound" />
+=======
+      <recent name="C:\Users\Nghiem Quoc Dung\Desktop\bomberman\src\Image\images" />
+>>>>>>> dung1
       <recent name="C:\Users\Vinh\Downloads\bomberman\src\Image\images" />
       <recent name="C:\Users\Vinh\Downloads\bomberman\src\Main" />
     </key>
@@ -102,6 +130,7 @@
       <workItem from="1639079484181" duration="178000" />
 <<<<<<< HEAD
       <workItem from="1639079697222" duration="1994000" />
+<<<<<<< HEAD
 =======
       <workItem from="1639079697222" duration="1595000" />
       <workItem from="1639130346780" duration="272000" />
@@ -114,6 +143,10 @@
       <workItem from="1639211625304" duration="873000" />
       <workItem from="1639214637407" duration="3668000" />
 >>>>>>> 05e7560afe33fb1fd7c14e757a258aa412a7f0e8
+=======
+      <workItem from="1639216941764" duration="2050000" />
+      <workItem from="1639227554799" duration="8829000" />
+>>>>>>> dung1
     </task>
     <servers />
   </component>
@@ -136,6 +169,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/bomberman$nam.ic" NAME="nam Coverage Results" MODIFIED="1638950615384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bomberman$nam.ic" NAME="nam Coverage Results" MODIFIED="1639227916866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
