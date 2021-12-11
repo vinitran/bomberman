@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/BonusStage.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/FindDoor.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/LevelComplete.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/StageTheme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/TitleScreen.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound/Sound/item.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Entities/StaticEntity/Item/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Image/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Main/MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Main/MouseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/LoadSound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/GameOver.wav" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/GameOver.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/power01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bomberman/Sound/Sound/power01.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StaticEntity/Portal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StaticEntity/Portal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MouseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/LoadSound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/LoadSound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound/GameOver.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound/Sound/power01.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/BoardManager.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/Kondoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_dead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_left3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/images/kondoria_right3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/ai/AI1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/MoveEntity/enemy/ai/AI1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/BoardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/levels/Level1.txt" afterDir="false" />
+>>>>>>> dung1
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="21z4CV3GFlsMyWzgZjfb655NTwm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Image/images" />
+    <property name="nodejs_package_manager_path" value="npm" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Sound/Sound" />
+>>>>>>> 05e7560afe33fb1fd7c14e757a258aa412a7f0e8
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Sound\Sound" />
+=======
+      <recent name="C:\Users\Nghiem Quoc Dung\Desktop\bomberman\src\Image\images" />
+>>>>>>> dung1
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Image\images" />
+      <recent name="C:\Users\Vinh\Downloads\bomberman\src\Main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="nam" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="bomberman" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81a0ba6c-ddaa-4eca-940f-3abbdd846639" name="Changes" comment="" />
+      <created>1638930455190</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638930455190</updated>
+      <workItem from="1638930456648" duration="2229000" />
+      <workItem from="1638936474514" duration="1397000" />
+      <workItem from="1638950013625" duration="2059000" />
+      <workItem from="1639044498440" duration="1084000" />
+      <workItem from="1639065749639" duration="793000" />
+      <workItem from="1639071970226" duration="1279000" />
+      <workItem from="1639078291353" duration="883000" />
+      <workItem from="1639079256527" duration="172000" />
+      <workItem from="1639079484181" duration="178000" />
+<<<<<<< HEAD
+      <workItem from="1639079697222" duration="1994000" />
+<<<<<<< HEAD
+=======
+      <workItem from="1639079697222" duration="1595000" />
+      <workItem from="1639130346780" duration="272000" />
+      <workItem from="1639157257163" duration="2491000" />
+      <workItem from="1639160309738" duration="1942000" />
+      <workItem from="1639162680991" duration="2978000" />
+      <workItem from="1639203532934" duration="559000" />
+      <workItem from="1639204135430" duration="2520000" />
+      <workItem from="1639208397169" duration="3163000" />
+      <workItem from="1639211625304" duration="873000" />
+      <workItem from="1639214637407" duration="3668000" />
+>>>>>>> 05e7560afe33fb1fd7c14e757a258aa412a7f0e8
+=======
+      <workItem from="1639216941764" duration="2050000" />
+      <workItem from="1639227554799" duration="8829000" />
+>>>>>>> dung1
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/bomberman$nam.ic" NAME="nam Coverage Results" MODIFIED="1639227916866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
