@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
     private int level = 0;
-    private int levelMax = 1;
+    private int levelMax = 2;
     private boolean gameOver = false;
     private boolean winGame = false;
     public BoardManager boardManager;
