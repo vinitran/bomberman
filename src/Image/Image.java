@@ -110,6 +110,7 @@ public class Image {
     public static final BufferedImage howToPlayPanel = (new LoadImage("images/howToPlayPanel.png")).getImage();
     public static final BufferedImage getBackGroundGameover = (new LoadImage("images/GameoverBackground.png")).getImage();
     public static final BufferedImage gameover = (new LoadImage("images/Gameover.png")).getImage();
+    public static final BufferedImage victory = (new LoadImage("images/Victory.png")).getImage();
 
     public static final BufferedImage kondoria_dead = (new LoadImage("images/kondoria_dead.png")).getImage();
     public static final BufferedImage kondoria_left1 = (new LoadImage("images/kondoria_left1.png")).getImage();

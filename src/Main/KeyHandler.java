@@ -37,9 +37,11 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ESCAPE) {
             if (gamePanel.gameState == gamePanel.playState) {
                 gamePanel.gameState = gamePanel.pauseState;
-            } else if (gamePanel.gameState == gamePanel.pauseState) {
-                gamePanel.gameState = gamePanel.playState;
+                gamePanel.menu.direction = "StartGame";
             }
+            // } else if (gamePanel.gameState == gamePanel.pauseState) {
+            // gamePanel.gameState = gamePanel.playState;
+            // }
         }
         if (code == KeyEvent.VK_F) {
             if (gamePanel.flash > 0 && !CollisionChecker.checkTile(gamePanel.boardManager.player, gamePanel, 2)) {

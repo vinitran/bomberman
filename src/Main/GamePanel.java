@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler keyHandler;
     private MouseHandler mouseHandler;
     private int level = 0;
-    private int levelMax = 2;
+    private int levelMax = 1;
     private boolean gameOver = false;
     private boolean winGame = false;
     public BoardManager boardManager;
@@ -59,10 +59,6 @@ public class GamePanel extends JPanel implements Runnable {
         nextLevel();
         gameThread = new Thread(this);
         gameThread.start();
-
-        // Sound.sound_Bomberman.play();
-        // Sound.sound_loop.play();
-        // Sound.sound_loop.loop();
     }
 
     public void setUpGame() {
@@ -136,7 +132,7 @@ public class GamePanel extends JPanel implements Runnable {
         level++;
         if (level > levelMax) {
             winGame = true;
-            //ui.gameFinished = true;
+            gameState = pauseState;
             return;
         }
         if (level != 1) {
@@ -166,6 +162,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public void setWinGame(boolean winGame) {
+        this.winGame = winGame;
     }
 
     public boolean isWinGame() {

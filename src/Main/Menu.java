@@ -12,19 +12,38 @@ public class Menu implements MouseListener {
     private final MouseHandler mouseHandler;
     private int index = 0;
     public boolean playSound;
+    public boolean playSoundGameoverVictory;
     public String direction;
     private int indexGameover = 0;
+    private boolean restart = false;
 
     public Menu(GamePanel gamePanel, MouseHandler mouseHandler) {
         this.gamePanel = gamePanel;
         this.mouseHandler = mouseHandler;
         direction = "StartGame";
         playSound = true;
+        playSoundGameoverVictory = true;
     }
 
     public void update() {
-        if (gamePanel.isGameOver()) {
-            direction = "GameOver";
+        if (gamePanel.isGameOver() && direction != "StartGame") {
+            direction = "Gameover";
+            restart = true;
+            if (playSoundGameoverVictory) {
+                gamePanel.sound.stopAllSound();
+                gamePanel.menu.playSound = true;
+            }
+            playSoundGameoverVictory = false;
+        }
+        if (gamePanel.isWinGame() && direction != "StartGame") {
+            direction = "Victory";
+            restart = true;
+            if (playSoundGameoverVictory) {
+                gamePanel.sound.stopAllSound();
+                gamePanel.menu.playSound = true;
+            }
+            playSoundGameoverVictory = false;
+
         }
     }
 
@@ -49,12 +68,17 @@ public class Menu implements MouseListener {
                     }
                 } else {
                     switch (index) {
-                        case 1:
+                        case 1: {
                             gamePanel.sound.stopAllSound();
                             gamePanel.menu.playSound = true;
                             gamePanel.gameState = gamePanel.playState;
-                            gamePanel.setLevel(0);
-                            gamePanel.nextLevel();
+                            direction = "Background";
+                            if (restart) {
+                                gamePanel.setLevel(0);
+                                gamePanel.nextLevel();
+                                restart = false;
+                            }
+                        }
                             break;
                         case 2:
                             gamePanel.sound.stopAllSound();
@@ -138,7 +162,7 @@ public class Menu implements MouseListener {
                     index = 0;
                 }
                 break;
-            case "GameOver":
+            case "Gameover":
                 if (playSound) {
                     gamePanel.sound.gameOver.play();
                     gamePanel.sound.gameOver.loop();
@@ -158,6 +182,34 @@ public class Menu implements MouseListener {
                                 gamePanel.sound.stopAllSound();
                                 gamePanel.menu.playSound = true;
                                 direction = "StartGame";
+                                gamePanel.setGameOver(false);
+                            }
+                            break;
+                    }
+                    g2.drawImage(Image.back, 320, 270, 172, 41, null);
+                    index = 0;
+                }
+                break;
+            case "Victory":
+                if (playSound) {
+                    gamePanel.sound.victory.play();
+                    gamePanel.sound.victory.loop();
+                }
+                playSound = false;
+                g2.drawImage(Image.victory, 0, 0, 768, 384, null);
+                if (mouseHandler.pressed) {
+                    if ("Back".equals(mouseHandler.direction)) {
+                        g2.drawImage(Image.back, 337, 270, 129, 31, null);
+                        index = 1;
+                    }
+                } else {
+                    switch (index) {
+                        case 1:
+                            if (gamePanel.gameState != gamePanel.playState) {
+                                gamePanel.sound.stopAllSound();
+                                gamePanel.menu.playSound = true;
+                                direction = "StartGame";
+                                gamePanel.setWinGame(false);
                             }
                             break;
                     }

@@ -11,16 +11,13 @@ public class MouseHandler implements MouseListener {
     GamePanel gamePanel;
     public String direction;
     public boolean pressed;
-
     public MouseHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
         double xPos = e.getX();
@@ -40,14 +37,25 @@ public class MouseHandler implements MouseListener {
                 }
                 break;
             case "Gameover":
-                if (xPos > 320 && xPos < (320 + 172) && yPos > 270 && yPos < (270 + 41)) {
-                    direction = "Back";
-                    pressed = true;
+                if (xPos > 320 && xPos < (320 + 172)
+                    && yPos > 270 && yPos < (270 + 41)) {
+                direction = "Back";
+                pressed = true;
                 } else {
-                    direction = "Background";
-                    pressed = false;
+                direction = "Background";
+                pressed = false;
                 }
                 break;
+            case "Victory":
+                if (xPos > 320 && xPos < (320 + 172)
+                    && yPos > 270 && yPos < (270 + 41)) {
+                direction = "Back";
+                pressed = true;
+                } else {
+                direction = "Background";
+                pressed = false;
+                }
+                break;    
             case "Coutinue":
                 if (xPos > 580 && xPos < (580 + 192)) {
                     if (yPos > 250 && yPos < 280) {
@@ -64,13 +72,15 @@ public class MouseHandler implements MouseListener {
                 }
                 break;
             case "HowToPlay":
-                if (xPos > 600 && xPos < (600 + 143) && yPos > 310 && yPos < 310 + 34) {
+                if (xPos > 600 && xPos < (600 + 143)
+                        && yPos > 310 && yPos < 310+34) {
                     direction = "Back";
                     pressed = true;
                 } else {
                     direction = "Background";
                     pressed = false;
                 }
+                break;
         }
     }
 
@@ -91,14 +101,15 @@ public class MouseHandler implements MouseListener {
                         gamePanel.sound.click.play();
                         direction = "HowToPlay";
                     }
-                    pressed = false;
+                    pressed = false ;
                 } else {
                     direction = "background";
                     pressed = false;
                 }
                 break;
             case "HowToPlay":
-                if (xPos > 600 && xPos < (600 + 143) && yPos > 310 && yPos < 310 + 34) {
+                if (xPos > 600 && xPos < (600 + 143)
+                        && yPos > 310 && yPos < 310+34) {
                     gamePanel.sound.click.play();
                     direction = "Back";
                     pressed = false;
@@ -108,7 +119,19 @@ public class MouseHandler implements MouseListener {
                 }
                 break;
             case "Gameover":
-                if (xPos > 320 && xPos < (320 + 172) && yPos > 270 && yPos < (270 + 41)) {
+                if (xPos > 320 && xPos < (320 + 172)
+                        && yPos > 270 && yPos < (270 + 41)) {
+                    gamePanel.sound.click.play();
+                    direction = "Back";
+                    pressed = false;
+                } else {
+                    direction = "Background";
+                    pressed = false;
+                }
+                break;
+            case "Victory":
+                if (xPos > 320 && xPos < (320 + 172)
+                        && yPos > 270 && yPos < (270 + 41)) {
                     gamePanel.sound.click.play();
                     direction = "Back";
                     pressed = false;
@@ -133,7 +156,6 @@ public class MouseHandler implements MouseListener {
                 }
                 break;
         }
-
     }
 
     @Override

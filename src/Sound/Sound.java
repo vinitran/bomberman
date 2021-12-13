@@ -13,6 +13,7 @@ public class Sound {
     public final LoadSound bom;
     public final LoadSound makeBom;
     public final LoadSound click;
+    public final LoadSound victory;
 
 
 
@@ -27,6 +28,7 @@ public class Sound {
         bom = new LoadSound("Sound/BOM_11_L.wav");
         makeBom = new LoadSound("Sound/Link bonuslife.wav");
         click = new LoadSound("Sound/Link bonuslife.wav");
+        victory = new LoadSound("Sound/EndingTheme.wav");
     }
     public void stopAllSound() {
         titleScreen.stop();
@@ -38,5 +40,6 @@ public class Sound {
         stageTheme.stop();
         bom.stop();
         makeBom.stop();
+        victory.stop();
     }
 }
